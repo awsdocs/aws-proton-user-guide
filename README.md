@@ -1,6 +1,6 @@
 ## AWS Proton User Guide
 
-The open source version of the AWS Proton User Guide. You can submit feedback & requests for changes by submitting issues in this repo or by making proposed changes & submitting a pull request.
+The open source version of the AWS Proton User Guide. You can submit feedback & requests for changes by submitting issues in this repo or by making proposed changes & submitting a pull request. See the [index](doc_source/index.md) for a summary of content.
 
 ## Security
 
