@@ -1,15 +1,4 @@
---------
-
-**AWS Proton is governed as a preview program under the [AWS Service Terms](https://aws.amazon.com/service-terms/)\. Report issues and feature requests by connecting with us at [GitHub](https://github.com/aws/aws-proton-public-roadmap) where you can open issues, provide feedback and report bugs\.**
-
-## Additional terms and conditions<a name="preview-banner"></a>
-+ The Preview is intended only for evaluation with development or test workloads\. You should not use it for production workloads\.
-+ AWS may change the functionality of the Preview during and after the term of the Preview at its sole discretion or based on participant feedback\. The functionality, features, and documentation may change during the Preview term and may be different from any generally available version\.
-+ Although the Preview is a free service, you are responsible for fees incurred for other AWS Services that you use in connection with the Preview\. Standard pricing will apply for your use of those AWS Services\.
-
---------
-
-# Security Best Practices for AWS Proton<a name="security-best-practices"></a>
+# Security best practices for AWS Proton<a name="security-best-practices"></a>
 
 AWS Proton provides security features to consider as you develop and implement your own security policies\. The following best practices are general guidelines and don’t represent a complete security solution\. Because these best practices might not be appropriate or sufficient for your environment, treat them as helpful considerations rather than prescriptions\. 
 
@@ -21,9 +10,9 @@ AWS Proton provides security features to consider as you develop and implement y
 
 ## Use IAM to control access<a name="use-iam-to-control-access"></a>
 
-IAM is an AWS service that you can use to manage users and their permissions in AWS\. You can use IAM with Proton to specify which Proton actions administrators and developers can perform, such as managing templates, environments or services\. You can use IAM service roles to allow Proton to make calls to other services on your behalf\.
+IAM is an AWS service that you can use to manage users and their permissions in AWS\. You can use IAM with AWS Proton to specify which AWS Proton actions administrators and developers can perform, such as managing templates, environments or services\. You can use IAM service roles to allow AWS Proton to make calls to other services on your behalf\.
 
-For more information on Proton and IAM roles, see [Controlling access with IAM](ag-controlling-access.md)\.
+For more information on AWS Proton and IAM roles, see [Identity and Access Management for AWS Proton](security-iam.md)\.
 
 Implement least privilege access\. For more information, see [Policies and permissions in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) in the *AWS Identity and Access Management User Guide*\.
 
@@ -39,10 +28,10 @@ For more information on defining template parameters, see [https://docs.aws.amaz
 
 ## Use encryption to protect sensitive data<a name="encryption"></a>
 
-Within Proton, all customer data is encrypted by default using a Proton owned key\.
+Within AWS Proton, all customer data is encrypted by default using an AWS Proton owned key\.
 
-As a member of the platform team, you can provide a customer managed key to Proton to encrypt and secure your sensitive data\. Encrypt sensitive data at rest in your S3 bucket\. For more information, see [Data Protection in AWS Proton](data-protection.md)\.
+As a member of the platform team, you can provide a customer managed key to AWS Proton to encrypt and secure your sensitive data\. Encrypt sensitive data at rest in your S3 bucket\. For more information, see [Data protection in AWS Proton](data-protection.md)\.
 
 ## Use AWS CloudTrail to view and log API calls<a name="cloudtrail"></a>
 
-AWS CloudTrail tracks anyone making API calls in your AWS account\. API calls are logged whenever anyone uses the Proton API, the Proton console or Proton AWS CLI commands\. Enable logging and specify an Amazon S3 bucket to store the logs\. That way, if you need to, you can audit who made what Proton call in your account\. For more information, see [Logging and monitoring](security-logging-and-monitoring.md)\.
+AWS CloudTrail tracks anyone making API calls in your AWS account\. API calls are logged whenever anyone uses the AWS Proton API, the AWS Proton console or AWS Proton AWS CLI commands\. Enable logging and specify an Amazon S3 bucket to store the logs\. That way, if you need to, you can audit who made what AWS Proton call in your account\. For more information, see [Logging and monitoring in AWS Proton](security-logging-and-monitoring.md)\.

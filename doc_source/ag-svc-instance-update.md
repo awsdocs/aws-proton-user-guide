@@ -1,64 +1,164 @@
---------
-
-**AWS Proton is governed as a preview program under the [AWS Service Terms](https://aws.amazon.com/service-terms/)\. Report issues and feature requests by connecting with us at [GitHub](https://github.com/aws/aws-proton-public-roadmap) where you can open issues, provide feedback and report bugs\.**
-
-## Additional terms and conditions<a name="preview-banner"></a>
-+ The Preview is intended only for evaluation with development or test workloads\. You should not use it for production workloads\.
-+ AWS may change the functionality of the Preview during and after the term of the Preview at its sole discretion or based on participant feedback\. The functionality, features, and documentation may change during the Preview term and may be different from any generally available version\.
-+ Although the Preview is a free service, you are responsible for fees incurred for other AWS Services that you use in connection with the Preview\. Standard pricing will apply for your use of those AWS Services\.
-
---------
-
 # Update a service instance<a name="ag-svc-instance-update"></a>
 
-There are four modes for updating a service instance as described in the following\. When using the AWS CLI, the `version-update-type` field defines the mode\. When using the console, these modes map to the **Update spec**, **Update to latest minor version** and **Update to latest major version** actions that drop down from **Actions** in the service instance detail page\.
+There are four modes for updating a service instance as described in the following list\. When you use the AWS CLI, the `deployment-type` field defines the mode\. When you use the console, these modes map to the **Update spec**, **Update to latest minor version**, and **Update to latest major version** actions that drop down from **Actions** in the service instance detail page\.
 
   
-`NO_DEPLOY`  
-In this mode, there is no interaction with the underlying resources\. Only the requested metadata parameters are updated\.
+`NONE`  
+In this mode, a deployment *doesn't* occur\. Only the requested metadata parameters are updated\.
 
   
-`UPDATE_SPEC`  
-In this mode, the service instance is updated to use the new specs provided\. Only requested parameters are updated\.
+`CURRENT_VERSION`  
+In this mode, the service instance is deployed and updated with the new spec that you provide\. Only requested parameters are updated\. *Don’t* include minor or major version parameters if you use this `deployment-type`\.
 
   
 `MINOR_VERSION`  
-In this mode, the service instance is updated to use the published, recommended \(latest\) minor version of the current major version in use\.
+In this mode, the service instance is deployed and updated with the published, recommended \(latest\) minor version of the current major version in use by default\. You can also specify a different minor version of the current major version in use\.
 
   
 `MAJOR_VERSION`  
-In this mode, the service instance is updated to use the published, recommended \(latest\) major and minor version of the current template\.
+In this mode, the service instance is deployed and updated with the published, recommended \(latest\) major and minor version of the current template by default\. You can also specify a different major version that is higher than the major version in use and a minor version \(optional\)\.
 
-Update a service instance using the console as described in the following steps\.
+You can attempt to cancel a service instance update deployment if the `deploymentStatus` is `IN_PROGRESS`\. When you do this, AWS Proton attempts to cancel the deployment\. Successful cancellation *isn’t* guaranteed\.
 
-1. From the [Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the left\-hand menu\.
+When you cancel an update deployment, AWS Proton attempts to cancel the deployment as listed in the following steps\.
++ Sets the deployment state to `CANCELLING`\.
++ Stops the deployment in process and deletes any new resources that were created by the deployment when `IN_PROGRESS`\.
++ Sets the deployment state to `CANCELLED`\.
++ Reverts the state of the resource to what it was before the deployment was started\.
 
-1. From the list of service instances, click on the name of the service instance that you want to update\.
+**Update a service instance using the console by following these steps\.**
 
-1. Click on **Actions** and then choose one of the update options, **Update spec**, **Update to latest minor version** or **Update to latest major version**\.
+1. From the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the left\-hand menu\.
 
-1. Fill out each form and select **Next** until you complete the final form and click on **Update**\.
+1. In the list of service instances, choose the name of the service instance that you want to update\.
 
-The following example shows how to use the AWS CLI to update a service instance\.
+1. Choose **Actions** and then choose one of the update options, **Update spec**, **Update to latest minor version**, or **Update to latest major version**\.
+
+1. Fill out each form and choose **Next** until you reach the **Review** page\.
+
+1. Review your edits and choose **Update**\.
+
+**The following example commands and responses show how to use the AWS CLI to update a service instance to a new minor version\.**
+
+Command: to update
 
 ```
-aws proton --region region-id update-service-instance --service-instance-name "instance-one" --service-name "simple-svc" --spec file://service-spec.yaml --template-major-version-id "1" --template-minor-version-id "0" --version-update-type "UPDATE_SPEC"
+aws proton update-service-instance --name "instance-one" --service-name "simple-svc" --spec file://service-spec.yaml --template-major-version "1" --template-minor-version "1" --deployment-type "MINOR_VERSION"
 ```
+
+Response:
 
 ```
 {
     "serviceInstance": {
         "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/service-instance/instance-one",
-        "createdAt": "2020-11-28T22:40:50.512000+00:00",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
         "deploymentStatus": "IN_PROGRESS",
-        "environmentArn": "arn:aws:proton:region-id:123456789012:environment/simple-env",
-        "lastDeploymentAttemptTime": "2020-11-28T22:40:50.512000+00:00",
-        "lastSuccessfulDeploymentTime": "2020-11-28T22:40:50.512000+00:00",
-        "serviceInstanceName": "instance-one",
-        "serviceName": "svc-simple",
-        "serviceTemplateArn": "arn:aws:proton:region-id:123456789012:service-template/svc-simple",
-        "templateMajorVersionId": "1",
-        "templateMinorVersionId": "0"
+        "environmentName": "arn:aws:proton:region-id:123456789012:environment/simple-env",
+        "lastDeploymentAttemptedAt": "2021-04-02T21:38:00.823000+00:00",
+        "lastDeploymentSucceededAt": "2021-04-02T21:29:59.962000+00:00",
+        "name": "instance-one",
+        "serviceName": "simple-svc",
+        "templateMajorVersion": "1",
+        "templateMinorVersion": "0",
+        "templateName": "svc-simple"
+    }
+}
+```
+
+Command: to get and confirm status
+
+```
+aws proton get-service-instance --name "instance-one" --service-name "simple-svc"
+```
+
+Response:
+
+```
+{
+    "serviceInstance": {
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/service-instance/instance-one",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "deploymentStatus": "SUCCEEDED",
+        "environmentName": "simple-env",
+        "lastDeploymentAttemptedAt": "2021-04-02T21:38:00.823000+00:00",
+        "lastDeploymentSucceededAt": "2021-04-02T21:38:00.823000+00:00",
+        "name": "instance-one",
+        "serviceName": "simple-svc",
+        "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"kls-simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
+        "templateMajorVersion": "1",
+        "templateMinorVersion": "1",
+        "templateName": "svc-simple"
+    }
+}
+```
+
+**Use the console to cancel a service instance deployment as shown in the following steps\.**
+
+1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the navigation pane\.
+
+1. In the list of service instances, choose the name of the service instance with the deployment update that you want to cancel\.
+
+1. If your update deployment status is **In progress**, on the service instance detail page, choose **Actions** and then **Cancel deployment**\.
+
+1. A modal asks you to confirm the cancellation\. Choose **Cancel deployment**\.
+
+1. Your update deployment status is set to **Cancelling** and then **Cancelled** to complete the cancellation\.
+
+**Use the AWS Proton AWS CLI to cancel an IN\_PROGRESS service instance update deployment to a new minor version 2 as shown in the following commands and responses\.**
+
+A wait condition is included in the template used for this example so that the cancellation starts before the update deployment succeeds\.
+
+Command: to cancel
+
+```
+aws proton cancel-service-instance-deployment --service-instance-name "instance-one" --service-name "simple-svc"
+```
+
+Response:
+
+```
+{
+    "serviceInstance": {
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/service-instance/instance-one",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "deploymentStatus": "CANCELLING",
+        "environmentName": "simple-env",
+        "lastDeploymentAttemptedAt": "2021-04-02T21:45:15.406000+00:00",
+        "lastDeploymentSucceededAt": "2021-04-02T21:38:00.823000+00:00",
+        "name": "instance-one",
+        "serviceName": "simple-svc",
+        "templateMajorVersion": "1",
+        "templateMinorVersion": "1",
+        "templateName": "svc-simple"   
+    }
+}
+```
+
+Command: to get and confirm status
+
+```
+aws proton get-service-instance --name "instance-one" --service-name "simple-svc"
+```
+
+Response:
+
+```
+{
+    "serviceInstance": {
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/service-instance/instance-one",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "deploymentStatus": "CANCELLED",
+        "deploymentStatusMessage": "User initiated cancellation.",
+        "environmentName": "simple-env",
+        "lastDeploymentAttemptedAt": "2021-04-02T21:45:15.406000+00:00",
+        "lastDeploymentSucceededAt": "2021-04-02T21:38:00.823000+00:00",
+        "name": "instance-one",
+        "serviceName": "simple-svc",
+        "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"kls-simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
+        "templateMajorVersion": "1",
+        "templateMinorVersion": "1",
+        "templateName": "svc-simple"
     }
 }
 ```

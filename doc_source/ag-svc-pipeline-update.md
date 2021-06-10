@@ -1,79 +1,182 @@
---------
-
-**AWS Proton is governed as a preview program under the [AWS Service Terms](https://aws.amazon.com/service-terms/)\. Report issues and feature requests by connecting with us at [GitHub](https://github.com/aws/aws-proton-public-roadmap) where you can open issues, provide feedback and report bugs\.**
-
-## Additional terms and conditions<a name="preview-banner"></a>
-+ The Preview is intended only for evaluation with development or test workloads\. You should not use it for production workloads\.
-+ AWS may change the functionality of the Preview during and after the term of the Preview at its sole discretion or based on participant feedback\. The functionality, features, and documentation may change during the Preview term and may be different from any generally available version\.
-+ Although the Preview is a free service, you are responsible for fees incurred for other AWS Services that you use in connection with the Preview\. Standard pricing will apply for your use of those AWS Services\.
-
---------
-
 # Update a service pipeline<a name="ag-svc-pipeline-update"></a>
 
-There are four modes for updating a service pipeline as described in the following\. When using the AWS CLI, the `version-update-type` field defines the mode\. When using the AWS CLI, the `version-update-type` field defines the mode\. When using the console, these modes map to the **Edit pipeline** and **Update to recommended version**\.
+There are four modes for updating a service pipeline as described in the following\. When you use the AWS CLI, the `deployment-type` field defines the mode\. When using the console, these modes map to the **Edit pipeline** and **Update to recommended version**\.
 
   
-`NO_DEPLOY`  
-In this mode, there is no interaction with the underlying resources\. Only the requested metadata parameters are updated\.
+`NONE`  
+In this mode, a deployment *doesn't* occur\. Only the requested metadata parameters are updated\.
 
   
-`UPDATE_SPEC`  
-In this mode, the service pipeline is updated to use the new specs provided\. Only requested parameters are updated\.
+`CURRENT_VERSION`  
+In this mode, the service pipeline is deployed and updated with the new spec that you provide\. Only requested parameters are updated\. *Don’t* include minor or major version parameters when you use this `deployment-type`\.
 
   
 `MINOR_VERSION`  
-In this mode, the service pipeline is updated to use the published, recommended \(latest\) minor version of the current major version in use\.
+In this mode, the service pipeline is deployed and updated with the published, recommended \(latest\) minor version of the current major version in use by default\. You can also specify a different minor version of the current major version in use\.
 
   
 `MAJOR_VERSION`  
-In this mode, the service pipeline is updated to use the published, recommended \(latest\) major and minor version of the current template\.
+In this mode, the service pipeline is deployed and updated with the published, recommended \(latest\) major and minor version of the current template by default\. You can also specify a different major version that is higher than the major version in use and a minor version \(optional\)\.
 
-Update a service pipeline using the console as described in the following steps\.
+You can attempt to cancel a service pipeline update deployment if the `deploymentStatus` is `IN_PROGRESS`\. AWS Proton attempts to cancel the deployment\. Successful cancellation isn’t guaranteed\.
 
-1. From the [Proton console](https://console.aws.amazon.com/proton/), choose **Services**\.
+When you cancel an update deployment, AWS Proton attempts to cancel the deployment as listed in the following steps\.
++ Sets the deployment state to `CANCELLING`\.
++ Stops the deployment in process and deletes any new resources that were created by the deployment when `IN_PROGRESS`\.
++ Sets the deployment state to `CANCELLED`\.
++ Reverts the state of the resource to what it was before the deployment was started\.
 
-1. From the list of services, click on the name of the service for which you want to update the pipeline\.
+**Update a service pipeline using the console as described in the following steps\.**
 
-1. There are two tabs on the service detail page, **Overview** and **Pipeline**\. Click on **Pipeline**\.
+1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Services**\.
 
-1. If you want to update specs, click on **Edit Pipeline** and fill out each form and select **Next** until you complete the final form and click on **Update**\.
+1. In the list of services, choose the name of the service that you want to update the pipeline for\.
 
-   If you want to update the template version and there's an **information icon** indicating a new version is available at **Pipeline template**, click on the name of the new template version\.
+1. There are two tabs on the service detail page, **Overview** and **Pipeline**\. Choose **Pipeline**\.
 
-   1. Click on **Update to recommended version**\.
+1. To update the spec, choose **Edit Pipeline** and fill out each form and choose **Next** until you complete the final form\. Then choose **Update pipeline**\.
 
-   1. Fill out each form and select **Next** until you complete the final form and click on **Update**\.
+   If there's an **information icon** that shows that a new version is available at **Pipeline template**, choose the name of the new template version to update the template version\.
 
-The following example shows how to use the AWS CLI to update a service pipeline\.
+   1. Choose **Update to recommended version**\.
+
+   1. Fill out each form and choose **Next** until you complete the final form and then choose **Update**\.
+
+**Use the AWS CLI to update a service pipeline to a new minor version as shown in the following example commands and responses\.**
+
+Command: to update
 
 ```
-aws proton --region region-id update-service-pipeline --service-instance-name "instance-one" --service-name --spec file://service-spec.yaml --template-major-version-id "1" --template-minor-version-id "1" --version-update-type "MINOR_VERSION"
+aws proton update-service-pipeline --service-name --spec file://service-spec.yaml --template-major-version "1" --template-minor-version "1" --deployment-type "MINOR_VERSION"
 ```
+
+Response:
+
+```
+{
+    "pipeline": {
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "deploymentStatus": "IN_PROGRESS",
+        "lastDeploymentAttemptedAt": "2021-04-02T21:39:28.991000+00:00",
+        "lastDeploymentSucceededAt": "2021-04-02T21:29:59.962000+00:00",
+        "templateMajorVersion": "1",
+        "templateMinorVersion": "0",
+        "templateName": "svc-simple"
+    }
+}
+```
+
+Command: to get and confirm status
+
+```
+aws proton get-service --name "simple-svc"
+```
+
+Response:
 
 ```
 {
     "service": {
         "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc",
-        "createdAt": "2020-11-28T22:40:50.512000+00:00",
-        "lastModifiedAt": "2020-11-28T22:44:51.207000+00:00",
+        "branchName": "main",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "lastModifiedAt": "2021-04-02T21:30:54.364000+00:00",
+        "name": "simple-svc",
         "pipeline": {
             "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline",
-            "createdAt": "2020-11-28T22:40:50.512000+00:00",
-            "deploymentStatus": "IN_PROGRESS",
-            "lastDeploymentAttemptTime": "2020-11-28T22:40:50.512000+00:00",
-            "lastSuccessfulDeploymentTime": "2020-11-28T22:40:50.512000+00:00",
-            "outputs": "{}",
-            "provisionedStacks": ["AWSProton-simple-svc-cloudformation--HZYQRFWOSFPHCQZ"],
-            "serviceTemplateArn": "arn:aws:proton:region-id:123456789012:service-template/simple-svc",
-            "spec": "proton: ServiceSpec\npipeline:\n  my_sample_pipeline_optional_input: hello world\n  my_sample_pipeline_required_input: pipeline up\ninstances:\n- name: instance-one\n  environment: my-simple-env\n  spec:\n    my_sample_service_instance_optional_input: Ola\n    my_sample_service_instance_required_input: Ciao\n",
-            "templateMajorVersionId": "1",
-            "templateMinorVersionId": "0"
+            "createdAt": "2021-04-02T21:29:59.962000+00:00",
+            "deploymentStatus": "SUCCEEDED",
+            "lastDeploymentAttemptedAt": "2021-04-02T21:39:28.991000+00:00",
+            "lastDeploymentSucceededAt": "2021-04-02T21:39:28.991000+00:00",
+            "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
+            "templateMajorVersion": "1",
+            "templateMinorVersion": "1",
+            "templateName": "svc-simple"            
         },
-        "serviceName": "simple-svc",
-        "serviceTemplateArn": "arn:aws:proton:region-id:123456789012:service-template/simple-svc",
-        "spec": "proton: ServiceSpec\npipeline:\n  my_sample_pipeline_optional_input: hello world\n  my_sample_pipeline_required_input: pipeline up\ninstances:\n- name: instance-one\n  environment: my-simple-env\n  spec:\n    my_sample_service_instance_required_input: hi\n    my_sample_service_instance_optional_input: ho\n",
-        "status": "ACTIVE"
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/b70776d1-b493-401f-bbe8-f1dd6d35393a",
+        "repositoryId": "repo-name/myorg-myapp",
+        "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
+        "status": "ACTIVE",
+        "templateName": "svc-simple"
+    }
+}
+```
+
+**Use the console to cancel a service pipeline deployment as shown in the following steps\.**
+
+1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Services** in the navigation pane\.
+
+1. In the list of services, choose the name of the service that has the pipeline with the deployment update that you want to cancel\.
+
+1. In the service detail page, choose the **Pipeline** tab\.
+
+1. If your update deployment status is **In progress**, in the service pipeline detail page, choose **Cancel deployment**\.
+
+1. A modal asks you to confirm the cancellation\. Choose **Cancel deployment**\.
+
+1. Your update deployment status is set to **Cancelling** and then **Cancelled** to complete the cancellation\.
+
+**Use the AWS Proton AWS CLI to cancel an IN\_PROGRESS service pipeline update deployment to a new minor version 2 as shown in the following example commands and responses\.**
+
+A wait condition is included in the template used for this example so that the cancellation starts before the update deployment succeeds\.
+
+Command: to cancel
+
+```
+aws proton cancel-service-pipeline-deployment --service-name "simple-svc"
+```
+
+Response:
+
+```
+{
+    "pipeline": {
+        "arn": "arn:aws:proton:region-id:471214049554:service/simple-svc/pipeline",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "deploymentStatus": "CANCELLING",
+        "lastDeploymentAttemptedAt": "2021-04-02T22:02:45.095000+00:00",
+        "lastDeploymentSucceededAt": "2021-04-02T21:39:28.991000+00:00",
+        "templateMajorVersion": "1",
+        "templateMinorVersion": "1",
+        "templateName": "svc-simple"
+    }
+}
+```
+
+Command: to get and confirm status
+
+```
+aws proton get-service --name "simple-svc"
+```
+
+Response:
+
+```
+{
+    "service": {
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc",
+        "branchName": "main",
+        "createdAt": "2021-04-02T21:29:59.962000+00:00",
+        "lastModifiedAt": "2021-04-02T21:30:54.364000+00:00",
+        "name": "simple-svc",        
+        "pipeline": {
+            "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline",
+            "createdAt": "2021-04-02T21:29:59.962000+00:00",
+            "deploymentStatus": "CANCELLED",
+            "deploymentStatusMessage": "User initiated cancellation.",
+            "lastDeploymentAttemptedAt": "2021-04-02T22:02:45.095000+00:00",
+            "lastDeploymentSucceededAt": "2021-04-02T21:39:28.991000+00:00",
+            "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
+            "templateMajorVersion": "1",
+            "templateMinorVersion": "1",
+            "templateName": "svc-simple"
+        },
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/b70776d1-b493-401f-bbe8-f1dd6d35393a",
+        "repositoryId": "repo-name/myorg-myapp",
+        "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
+        "status": "ACTIVE",
+        "templateName": "svc-simple"
     }
 }
 ```
