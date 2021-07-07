@@ -21,7 +21,7 @@ Take the next step and use the console to get started\.
 
 1. \(Optional\) Enter a description for the service\.
 
-1. In the **Service repository settings** section, enter the name for the **Branch** and **Repository ID** \(repo\-username/repo\-name\) where you forked the source code\.
+1. In the **Service repository settings** section, enter the name for the **Branch** and **Repository ID** \(repo\-username/repo\-name\) where you forked the [source code](proton-setup.md#setup-repo-connection)\.
 
 1. For **Repository Connection**, choose your repository connection from the list\. Then, either proceed to the next step, or choose **Next**\.
 

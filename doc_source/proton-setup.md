@@ -5,7 +5,7 @@ You need to set up a repository connection to be able to select service template
 ## Setting up a repository connection<a name="setup-repo-connection"></a>
 
 **Set up repository\.**
-+ Fork the example [AWS sample repository](https://github.com/aws-samples/aws-proton-sample-templates/tree/main/loadbalanced-fargate-svc) that you can use as source code to deploy with AWS Proton\.
++ Fork the example [AWS sample repository](https://github.com/aws-samples/aws-proton-sample-fargate-service) that you can use as source code to deploy with AWS Proton\.
 
 **Set up a repository connection\.**
 

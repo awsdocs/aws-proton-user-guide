@@ -49,17 +49,21 @@ Response:
 {
     "serviceTemplateMinorVersion": {
         "arn": "arn:aws:proton:us-west-2:123456789012:service-template/fargate-service:1.0",
-        "compatibleEnvironmentTemplates": [{"majorVersion": "1", "templateName": "simple-env"}],
+        "compatibleEnvironmentTemplates": [
+            {
+                "majorVersion": "1",
+                "templateName": "simple-env"
+            }
+        ],
         "createdAt": 1613087544.189,
         "description": "Version 1",
         "lastModifiedAt": 1613087546.101,
-        "majorVersion": "1",        
+        "majorVersion": "1",
         "minorVersion": "0",
         "schema": "schema:\n  format:\n    openapi: \"3.0.0\"\n  pipeline_input_type: \"MyPipelineInputType\"\n  service_input_type: \"MyServiceInstanceInputType\"\n\n  types:\n    MyPipelineInputType:\n      type: object\n      description: \"Pipeline input properties\"\n      required:\n        - my_sample_pipeline_required_input\n      properties:\n        my_sample_pipeline_optional_input:\n          type: string\n          description: \"This is a sample input\"\n          default: \"hello world\"\n        my_sample_pipeline_required_input:\n          type: string\n          description: \"Another sample input\"\n\n    MyServiceInstanceInputType:\n      type: object\n      description: \"Service instance input properties\"\n      required:\n        - my_sample_service_instance_required_input\n      properties:\n        my_sample_service_instance_optional_input:\n          type: string\n          description: \"This is a sample input\"\n          default: \"hello world\"\n        my_sample_service_instance_required_input:\n          type: string\n          description: \"Another sample input\"",
         "status": "DRAFT",
-        "statusMessage": "",        
+        "statusMessage": "",
         "templateName": "fargate-service"
-        
     }
 }
 ```
