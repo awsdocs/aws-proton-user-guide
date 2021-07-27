@@ -55,11 +55,12 @@ Response:
 ```
 {
     "pipeline": {
-        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline",
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "createdAt": "2021-04-02T21:29:59.962000+00:00",
         "deploymentStatus": "IN_PROGRESS",
         "lastDeploymentAttemptedAt": "2021-04-02T21:39:28.991000+00:00",
         "lastDeploymentSucceededAt": "2021-04-02T21:29:59.962000+00:00",
+        "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"my-instance\"\n    environment: \"MySimpleEnv\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"MySimpleEnv\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
         "templateMajorVersion": "1",
         "templateMinorVersion": "0",
         "templateName": "svc-simple"
@@ -92,9 +93,9 @@ Response:
             "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
             "templateMajorVersion": "1",
             "templateMinorVersion": "1",
-            "templateName": "svc-simple"            
+            "templateName": "svc-simple"
         },
-        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/b70776d1-b493-401f-bbe8-f1dd6d35393a",
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "repositoryId": "repo-name/myorg-myapp",
         "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
         "status": "ACTIVE",
@@ -132,7 +133,7 @@ Response:
 ```
 {
     "pipeline": {
-        "arn": "arn:aws:proton:region-id:471214049554:service/simple-svc/pipeline",
+        "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline",
         "createdAt": "2021-04-02T21:29:59.962000+00:00",
         "deploymentStatus": "CANCELLING",
         "lastDeploymentAttemptedAt": "2021-04-02T22:02:45.095000+00:00",
@@ -159,7 +160,7 @@ Response:
         "branchName": "main",
         "createdAt": "2021-04-02T21:29:59.962000+00:00",
         "lastModifiedAt": "2021-04-02T21:30:54.364000+00:00",
-        "name": "simple-svc",        
+        "name": "simple-svc",
         "pipeline": {
             "arn": "arn:aws:proton:region-id:123456789012:service/simple-svc/pipeline",
             "createdAt": "2021-04-02T21:29:59.962000+00:00",
@@ -172,7 +173,7 @@ Response:
             "templateMinorVersion": "1",
             "templateName": "svc-simple"
         },
-        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/b70776d1-b493-401f-bbe8-f1dd6d35393a",
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "repositoryId": "repo-name/myorg-myapp",
         "spec": "proton: ServiceSpec\n\npipeline:\n  my_sample_pipeline_optional_input: \"abc\"\n  my_sample_pipeline_required_input: \"123\"\n\ninstances:\n  - name: \"instance-one\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_optional_input: \"def\"\n      my_sample_service_instance_required_input: \"456\"\n  - name: \"my-other-instance\"\n    environment: \"simple-env\"\n    spec:\n      my_sample_service_instance_required_input: \"789\"\n",
         "status": "ACTIVE",

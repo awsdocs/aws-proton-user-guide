@@ -55,7 +55,7 @@ Response:
         "description": "Edit by updating description",
         "lastModifiedAt": "2021-03-12T22:44:21.975000+00:00",
         "name": "MySimpleService",
-        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/b70776d1-b493-401f-bbe8-f1dd6d35393a",
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "repositoryId": "my-repository/myorg-myapp",
         "status": "ACTIVE",
         "templateName": "fargate-service"
@@ -217,7 +217,7 @@ The next listing shows the CLI command and response to edit the service\.
 Command:
 
 ```
-aws proton update-service --name "MySimpleService" --description "Edit by adding and deleting a service instance" --spec "file:///spec.yaml"
+aws proton update-service --name "MySimpleService" --description "Edit by adding and deleting a service instance" --spec "file://spec.yaml"
 ```
 
 Response:
@@ -231,8 +231,8 @@ Response:
         "description": "Edit by adding and deleting a service instance",
         "lastModifiedAt": "2021-03-12T22:55:48.169000+00:00",
         "name": "MySimpleService",
-        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/b70776d1-b493-401f-bbe8-f1dd6d35393a",
-        "repositoryId": "my-repository/myorg-myapp",        
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "repositoryId": "my-repository/myorg-myapp",
         "status": "UPDATE_IN_PROGRESS",
         "templateName": "fargate-service"
     }

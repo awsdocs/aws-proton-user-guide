@@ -55,9 +55,9 @@ Response:
                 "templateName": "simple-env"
             }
         ],
-        "createdAt": 1613087544.189,
+        "createdAt": "2020-11-11T23:02:57.912000+00:00",
         "description": "Version 1",
-        "lastModifiedAt": 1613087546.101,
+        "lastModifiedAt": "2020-11-11T23:02:57.912000+00:00",
         "majorVersion": "1",
         "minorVersion": "0",
         "schema": "schema:\n  format:\n    openapi: \"3.0.0\"\n  pipeline_input_type: \"MyPipelineInputType\"\n  service_input_type: \"MyServiceInstanceInputType\"\n\n  types:\n    MyPipelineInputType:\n      type: object\n      description: \"Pipeline input properties\"\n      required:\n        - my_sample_pipeline_required_input\n      properties:\n        my_sample_pipeline_optional_input:\n          type: string\n          description: \"This is a sample input\"\n          default: \"hello world\"\n        my_sample_pipeline_required_input:\n          type: string\n          description: \"Another sample input\"\n\n    MyServiceInstanceInputType:\n      type: object\n      description: \"Service instance input properties\"\n      required:\n        - my_sample_service_instance_required_input\n      properties:\n        my_sample_service_instance_optional_input:\n          type: string\n          description: \"This is a sample input\"\n          default: \"hello world\"\n        my_sample_service_instance_required_input:\n          type: string\n          description: \"Another sample input\"",
@@ -131,7 +131,7 @@ Create a service as defined by a service template by specifying the name, reposi
 Command:
 
 ```
-aws proton create-service --name "simple-svc" --branch-name "mainline" --major-version "1" --template-name "fargate-service" --repository-connection-arn arn:aws:proton:region-id:account-id --repository-id "myorg/myapp" --spec "file://spec.yaml"
+aws proton create-service --name "simple-svc" --branch-name "mainline" --template-major-version "1" --template-name "fargate-service" --repository-connection-arn "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111" --repository-id "myorg/myapp" --spec "file://spec.yaml"
 ```
 
 Response:
@@ -143,6 +143,8 @@ Response:
         "createdAt": "2020-11-18T19:50:27.460000+00:00",
         "lastModifiedAt": "2020-11-18T19:50:27.460000+00:00",
         "name": "MySimpleService",
+        "repositoryConnectionArn": "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "repositoryId": "myorg/myapp",
         "status": "CREATE_IN_PROGRESS",
         "templateName": "fargate-service"
     }
@@ -171,7 +173,7 @@ To create a service *without* an AWS Proton service pipeline, you provide the pa
 Command:
 
 ```
-aws proton create-service --name "MySimpleServiceNoPipeline" --major-version "1" --template-name "fargate-service" --spec "file://spec-no-pipeline.yaml"
+aws proton create-service --name "MySimpleServiceNoPipeline" --template-major-version "1" --template-name "fargate-service" --spec "file://spec-no-pipeline.yaml"
 ```
 
 Response:

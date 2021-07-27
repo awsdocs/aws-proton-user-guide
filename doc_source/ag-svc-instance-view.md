@@ -59,10 +59,10 @@ Response:
         "lastDeploymentSucceededAt": "2020-11-28T22:40:50.512000+00:00",
         "name": "instance-one",
         "serviceName": "simple-svc",
-        "templateName": "svc-simple",
         "spec": "proton: ServiceSpec\npipeline:\n  my_sample_pipeline_optional_input: hello world\n  my_sample_pipeline_required_input: pipeline up\ninstances:\n- name: instance-one\n  environment: my-simple-env\n  spec:\n    my_sample_service_instance_optional_input: Ola\n    my_sample_service_instance_required_input: Ciao\n",
         "templateMajorVersion": "1",
-        "templateMinorVersion": "0"
+        "templateMinorVersion": "0",
+        "templateName": "svc-simple"
     }
 }
 ```

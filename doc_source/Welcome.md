@@ -5,7 +5,7 @@
 
   The AWS Proton service is a two\-pronged automation framework\. Administrators create versioned service templates that define standardized infrastructure and deployment tooling for serverless and container\-based applications\. Then, you or other developers, in turn, can select from the available service templates to automate application or service deployments\.
 
-  AWS Proton identifies identifies all existing service instances that are using an outdated template version for you\. As a developer, you can request AWS Proton to update a service instance to the latest version of the service template\.
+  AWS Proton identifies all existing service instances that are using an outdated template version for you\. As a developer, you can request AWS Proton to update a service instance to the latest version of the service template\.
 + **Standardized infrastructure**
 
   Platform teams can use AWS Proton and versioned infrastructure\-as\-code templates to define and manage standard application stacks that contain the architecture, infrastructure resources and the CI/CD software deployment pipeline\.
