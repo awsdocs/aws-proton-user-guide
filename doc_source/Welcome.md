@@ -1,21 +1,21 @@
-# What is AWS Proton<a name="Welcome"></a>
+# What is AWS Proton?<a name="Welcome"></a>
 
-**AWS Proton is**
+**AWS Proton is:**
 + **Automated infrastructure provisioning and deployment of serverless and container\-based applications**
 
-  The AWS Proton service is a two\-pronged automation framework\. Administrators create versioned service templates that define standardized infrastructure and deployment tooling for serverless and container\-based applications\. Then, you or other developers, in turn, can select from the available service templates to automate application or service deployments\.
+  The AWS Proton service is a two\-pronged automation framework\. Administrators create versioned *service templates* that define standardized infrastructure and deployment tooling for serverless and container\-based applications\. Then, you can select from the available *service templates* to automate your application or service deployments\.
 
-  AWS Proton identifies all existing service instances that are using an outdated template version for you\. As a developer, you can request AWS Proton to update a service instance to the latest version of the service template\.
+  AWS Proton identifies all existing *service instances* that are using an outdated *template* version for you\. As a developer, you can request AWS Proton to update a *service instance* to the latest version of the *service template*\.
 + **Standardized infrastructure**
 
   Platform teams can use AWS Proton and versioned infrastructure\-as\-code templates to define and manage standard application stacks that contain the architecture, infrastructure resources and the CI/CD software deployment pipeline\.
 + **Deployments integrated with CI/CD**
 
-  When developers use the AWS Proton self\-service interface to select a service template, they're selecting a standardized application stack definition for their code deployments\. AWS Proton automatically provisions the resources, configures the CI/CD pipeline and deploys the code into the defined infrastructure\.
+  When developers use the AWS Proton self\-service interface to select a *service template*, they're selecting a standardized application stack definition for their code deployments\. AWS Proton automatically provisions the resources, configures the CI/CD pipeline and deploys the code into the defined infrastructure\.
 
 ## AWS Proton for developers<a name="ug-dev"></a>
 
-As a developer, you select a standardized service template that AWS Proton uses to build a service that deploys and manages your application as an AWS Proton service\. An AWS Proton service is an instantiation of a service template\.
+As a developer, you select a standardized *service template* that AWS Proton uses to create a *service* that deploys and manages your application in a *service instance*\. An AWS Proton *service* is an instantiation of a *service template*, which normally includes several *service instances* and a *pipeline*\.
 
 The following diagram is a visualization of the main AWS Proton concepts discussed in the preceding paragraph\. It also offers a high\-level overview of a simple AWS Proton workflow\.
 

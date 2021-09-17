@@ -22,7 +22,7 @@ All service to service communication is encrypted in transit using SSL/TLS\.
 
 ## AWS Proton encryption key management<a name="encryption-key-management"></a>
 
-Within AWS Proton, all customer data is encrypted by default using an AWS Proton owned key\. If you supply a customer owned and managed KMS key, all customer data is encrypted using the customer provided key as described in the following paragraphs\.
+Within AWS Proton, all customer data is encrypted by default using an AWS Proton owned key\. If you supply a customer owned and managed AWS KMS key, all customer data is encrypted using the customer provided key as described in the following paragraphs\.
 
 When you create an AWS Proton template, you specify your key and AWS Proton uses your credentials to create a grant which allows AWS Proton to use your key\.
 
@@ -34,7 +34,7 @@ AWS Proton supports encryption context headers\. An encryption context is an opt
 
 An encryption context is a set of key–value pairs that contain arbitrary non\-secret data\. When including an encryption context in a request to encrypt data, AWS KMS cryptographically binds the encryption context to the encrypted data\. To decrypt the data, you must pass in the same encryption context\.
 
- Customers can use the encryption context to identify use of their CMK in audit records and logs\. It also appears in plaintext in logs, such as AWS CloudTrail and Amazon CloudWatch Logs\.
+ Customers can use the encryption context to identify use of their customer managed key in audit records and logs\. It also appears in plaintext in logs, such as AWS CloudTrail and Amazon CloudWatch Logs\.
 
 AWS Proton does not take in any customer\-specified or externally\-specified encryption context\.
 
@@ -47,7 +47,7 @@ AWS Proton adds the following encryption context\.
 }
 ```
 
-The first encryption context identifies the AWS Proton template that the resource is associated with and also serves as a constraint for CMK permissions and grants\.
+The first encryption context identifies the AWS Proton template that the resource is associated with and also serves as a constraint for customer managed key permissions and grants\.
 
 The second encryption context identifies the AWS Proton resource that is encrypted\.
 

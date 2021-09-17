@@ -1,7 +1,7 @@
 # AWS Proton User Guide
 
 -----
-*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -14,7 +14,7 @@ Amazon's trademarks and trade dress may not be used in
 
 -----
 ## Contents
-+ [What is AWS Proton](Welcome.md)
++ [What is AWS Proton?](Welcome.md)
 + [Setting up](ug-setting-up.md)
    + [Setting up with IAM](getting-setup-iam.md)
    + [Setting up with AWS Proton](proton-setup.md)
@@ -31,6 +31,8 @@ Amazon's trademarks and trade dress may not be used in
    + [Update a service instance](ag-svc-instance-update.md)
    + [Update a service pipeline](ag-svc-pipeline-update.md)
 + [Monitoring AWS Proton](monitoring.md)
+   + [Automate AWS Proton with EventBridge](event-bridge.md)
+   + [EventBridgeTutorial: Send Amazon Simple Notification Service alerts for AWS Proton service status changes](event-tutorial-sns.md)
 + [Security in AWS Proton](ug-security.md)
    + [Identity and Access Management for AWS Proton](security-iam.md)
       + [How AWS Proton works with IAM](security_iam_service-with-iam.md)

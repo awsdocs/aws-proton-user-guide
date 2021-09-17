@@ -1,11 +1,14 @@
 # Setting up with AWS Proton<a name="proton-setup"></a>
 
-You need to set up a repository connection to be able to select service templates that include a service pipeline\. Verify that you have installed the AWS CLI if you plan to run AWS Proton commands using it\.
+You need to set up a repository connection to create services with service templates that include a service pipeline\.
+
+Verify that you have installed the AWS CLI if you plan to use it to make AWS Proton API calls\.
 
 ## Setting up a repository connection<a name="setup-repo-connection"></a>
 
-**Set up repository\.**
-+ Fork the example [AWS sample repository](https://github.com/aws-samples/aws-proton-sample-fargate-service) that you can use as source code to deploy with AWS Proton\.
+To create a service, you start by selecting a service template that defines your service infrastructure\. In the console, you provide inputs to the template as you create a service from a service template\. If you select a service template that includes a standard AWS Proton service pipeline, you must provide your code repository name and branch, along with a repository connection ARN\. AWS Proton uses the repository connection to signal the service and pipeline in response to your source code commits\.
+
+This is one of the [Prerequisites](getting-started-prerequisites.md) for following the steps in [Getting started with the AWS Management Console](ug-get-started-console.md)\.
 
 **Set up a repository connection\.**
 

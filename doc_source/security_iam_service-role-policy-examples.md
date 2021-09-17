@@ -1,6 +1,6 @@
 # AWS Proton IAM service role policy examples<a name="security_iam_service-role-policy-examples"></a>
 
-Administrators own and manage the resources that AWS Proton creates as defined by the environment and service templates\. They attach IAM service roles to their account that permit AWS Proton to create resources on their behalf\. Administrators supply the IAM roles and AWS KMS keys for resources that are later owned and managed by developers when AWS Proton deploys their application as an AWS Proton service in an AWS Proton environment\. For more information about KMS and data encryption, see [Data protection in AWS Proton](data-protection.md)\.
+Administrators own and manage the resources that AWS Proton creates as defined by the environment and service templates\. They attach IAM service roles to their account that permit AWS Proton to create resources on their behalf\. Administrators supply the IAM roles and AWS Key Management Service keys for resources that are later owned and managed by developers when AWS Proton deploys their application as an AWS Proton service in an AWS Proton environment\. For more information about AWS KMS and data encryption, see [Data protection in AWS Proton](data-protection.md)\.
 
 A service role is an Amazon Web Services \(IAM\) role that allows AWS Proton to make calls to resources on your behalf\. If you specify a service role, AWS Proton uses that role's credentials\. Use a service role to explicitly specify the actions that AWS Proton can perform\.
 

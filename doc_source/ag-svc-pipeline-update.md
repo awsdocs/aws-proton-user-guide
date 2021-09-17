@@ -26,6 +26,8 @@ When you cancel an update deployment, AWS Proton attempts to cancel the deployme
 + Sets the deployment state to `CANCELLED`\.
 + Reverts the state of the resource to what it was before the deployment was started\.
 
+For more information on cancelling a service pipeline deployment, see [CancelServicePipelineDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelServicePipelineDeployment.html) in the *AWS Proton API Reference*\.
+
 **Update a service pipeline using the console as described in the following steps\.**
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Services**\.

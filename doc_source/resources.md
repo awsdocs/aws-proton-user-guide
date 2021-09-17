@@ -94,13 +94,13 @@ You can view, create, remove and edit tags using the AWS Proton AWS CLI\.
 You can create or edit a tag for a resource as shown in the following example\.
 
 ```
-aws proton tag-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" --tags "key=mykey, value=myval"
+aws proton tag-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" --tags '[{"key":"mykey1","value":"myval1"},{"key":"mykey2","value":"myval2"}]'
 ```
 
 You can remove a tag for a resource as shown in the next example\.
 
 ```
-aws proton untag-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" --tag-keys "mykey1, mykey2"--tags "key=mykey, value=myval"
+aws proton untag-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" --tag-keys '["mykey1","mykey2"]'
 ```
 
 You can list tags for a resource as shown in the final example\.

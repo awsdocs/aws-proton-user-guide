@@ -1,11 +1,20 @@
 # Getting started with the AWS Management Console<a name="ug-get-started-console"></a>
 
-Take the next step and use the console to get started\.
+**Get started with AWS Proton**
++ Create and view a service\.
++ Deploy a service\.
++ Delete a service\.
 
-## Step 1: Open the AWS Proton console<a name="getting-started-step1"></a>
-+ Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
+## Step 1: Set up an example source repository<a name="getting-started-step1"></a>
+
+**Set up repository\.**
+
+In *Getting started*, you create a service from a service template that includes a service pipeline\. You provide a path to your forked sample source code repository and your repository connection Amazon Resource Name \(ARN\) as inputs when you create your service\. Your repository connection signals AWS Proton on new source code commits\. 
++ Fork the example [AWS sample repository](https://github.com/aws-samples/aws-proton-sample-fargate-service) that you use as source code to deploy with AWS Proton in *Getting started*\.
 
 ## Step 2: Create a service<a name="getting-started-step2"></a>
+
+1. Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
 
 1. In the navigation pane, choose **Services**\.
 

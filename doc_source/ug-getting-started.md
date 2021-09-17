@@ -1,9 +1,6 @@
 # Getting started with AWS Proton<a name="ug-getting-started"></a>
 
-**Get started with AWS Proton**
-+ Create and view a service\.
-+ Deploy a service\.
-+ Delete a service\.
+Get started with AWS Proton in the console or by using the AWS CLI\.
 
 **Topics**
 + [Prerequisites](getting-started-prerequisites.md)
