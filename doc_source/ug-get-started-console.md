@@ -9,7 +9,7 @@
 
 **Set up repository\.**
 
-In *Getting started*, you create a service from a service template that includes a service pipeline\. You provide a path to your forked sample source code repository and your repository connection Amazon Resource Name \(ARN\) as inputs when you create your service\. Your repository connection signals AWS Proton on new source code commits\. 
+In *Getting started*, you create a service from a service template that includes a service pipeline\. You provide a path to your forked sample source code repository and your AWS CodeStar connection Amazon Resource Name \(ARN\) as inputs when you create your service\. Your connection activates the AWS Proton pipeline on new source code commits\. 
 + Fork the example [AWS sample repository](https://github.com/aws-samples/aws-proton-sample-fargate-service) that you use as source code to deploy with AWS Proton in *Getting started*\.
 
 ## Step 2: Create a service<a name="getting-started-step2"></a>
@@ -30,9 +30,15 @@ In *Getting started*, you create a service from a service template that includes
 
 1. \(Optional\) Enter a description for the service\.
 
-1. In the **Service repository settings** section, enter the name for the **Branch** and **Repository ID** \(repo\-username/repo\-name\) where you forked the [source code](proton-setup.md#setup-repo-connection)\.
+1. 
 
-1. For **Repository Connection**, choose your repository connection from the list\. Then, either proceed to the next step, or choose **Next**\.
+**In the **Service repository settings** section:**
+
+   1. For **CodeStar connection**, choose your connection from the list\.
+
+   1. For **Repository name**, choose the name of your source code repository from the list\.
+
+   1. For **Branch name**, choose the name of your source code repository branch from the list\.
 
 1. \(Optional\) In the **Tags** section, choose **Add new tag** and enter a key and value to create a customer managed tag\. Then choose **Next**\.
 

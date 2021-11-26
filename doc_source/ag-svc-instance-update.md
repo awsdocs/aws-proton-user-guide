@@ -1,5 +1,9 @@
 # Update a service instance<a name="ag-svc-instance-update"></a>
 
+Learn to update a service instance and cancel the update\.
+
+A service instance belongs to a service\. You can only create or delete an instance within the context of service [edit](ug-svc-update.md), [create](ug-svc-create.md) and [delete](ug-svc-delete.md) actions\. To learn how to add and remove instances from a service, see [Edit a service](ug-svc-update.md)\.
+
 There are four modes for updating a service instance as described in the following list\. When you use the AWS CLI, the `deployment-type` field defines the mode\. When you use the console, these modes map to the **Update spec**, **Update to latest minor version**, and **Update to latest major version** actions that drop down from **Actions** in the service instance detail page\.
 
   
@@ -28,6 +32,11 @@ When you cancel an update deployment, AWS Proton attempts to cancel the deployme
 
 For more information on cancelling a service instance deployment, see [CancelServiceInstanceDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelServiceInstanceDeployment.html) in the *AWS Proton API Reference*\.
 
+**Use the console or AWS CLI to make updates or cancel update deployments\.**
+
+------
+#### [ AWS Management Console ]
+
 **Update a service instance using the console by following these steps\.**
 
 1. From the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the left\-hand menu\.
@@ -40,12 +49,46 @@ For more information on cancelling a service instance deployment, see [CancelSer
 
 1. Review your edits and choose **Update**\.
 
-**The following example commands and responses show how to use the AWS CLI to update a service instance to a new minor version\.**
+------
+#### [ AWS CLI ]
+
+**Update a service instance to a new minor version as shown in the CLI example commands and responses\.**
+
+When you update your service instance with a modified `spec`, you can use `"${Proton::CURRENT_VAL}"` to indicate which parameter values to preserve from the original `spec`, if the values exist in the `spec`\. Use `get-service` to view the original `spec` for a service instance, as described in [View service data](ug-svc-view.md)\.
+
+The following example shows how you can use `"${Proton::CURRENT_VAL}"` in a `spec`\.
+
+Spec:
+
+```
+proton: ServiceSpec
+
+pipeline:
+  my_sample_pipeline_optional_input: "${Proton::CURRENT_VAL}"
+  my_sample_pipeline_required_input: "${Proton::CURRENT_VAL}"
+
+instances:
+  - name: "my-instance"
+    environment: "simple-env"
+    spec:
+      my_sample_service_instance_optional_input: "${Proton::CURRENT_VAL}"
+      my_sample_service_instance_required_input: "${Proton::CURRENT_VAL}"
+  - name: "my-other-instance"
+    environment: "simple-env"
+    spec:
+      my_sample_service_instance_required_input: "789"
+```
 
 Command: to update
 
 ```
-aws proton update-service-instance --name "instance-one" --service-name "simple-svc" --spec "file://service-spec.yaml" --template-major-version "1" --template-minor-version "1" --deployment-type "MINOR_VERSION"
+aws proton update-service-instance \
+    --name "instance-one" \
+    --service-name "simple-svc" \
+    --spec "file://service-spec.yaml" \
+    --template-major-version "1" \
+    --template-minor-version "1" \
+    --deployment-type "MINOR_VERSION"
 ```
 
 Response:
@@ -71,7 +114,9 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service-instance --name "instance-one" --service-name "simple-svc"
+aws proton get-service-instance \
+    --name "instance-one" \
+    --service-name "simple-svc"
 ```
 
 Response:
@@ -95,7 +140,12 @@ Response:
 }
 ```
 
-**Use the console to cancel a service instance deployment as shown in the following steps\.**
+------
+
+------
+#### [ AWS Management Console ]
+
+**Cancel a service instance deployment using the console as shown in the following steps\.**
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the navigation pane\.
 
@@ -107,14 +157,19 @@ Response:
 
 1. Your update deployment status is set to **Cancelling** and then **Cancelled** to complete the cancellation\.
 
-**Use the AWS Proton AWS CLI to cancel an IN\_PROGRESS service instance update deployment to a new minor version 2 as shown in the following commands and responses\.**
+------
+#### [ AWS CLI ]
+
+**Cancel an IN\_PROGRESS service instance deployment update to new minor version 2 as shown in the following CLI example commands and responses\.**
 
 A wait condition is included in the template used for this example so that the cancellation starts before the update deployment succeeds\.
 
 Command: to cancel
 
 ```
-aws proton cancel-service-instance-deployment --service-instance-name "instance-one" --service-name "simple-svc"
+aws proton cancel-service-instance-deployment \
+    --service-instance-name "instance-one" \
+    --service-name "simple-svc"
 ```
 
 Response:
@@ -141,7 +196,9 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service-instance --name "instance-one" --service-name "simple-svc"
+aws proton get-service-instance \
+    --name "instance-one" \
+    --service-name "simple-svc"
 ```
 
 Response:
@@ -165,3 +222,5 @@ Response:
     }
 }
 ```
+
+------

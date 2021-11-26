@@ -1,7 +1,7 @@
 # AWS Proton User Guide
 
 -----
-*****Copyright &copy; 2021 Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
+*****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
 Amazon's trademarks and trade dress may not be used in 
@@ -41,6 +41,7 @@ Amazon's trademarks and trade dress may not be used in
          + [Condition-key based policy examples for AWS Proton](security_iam_condition-key-based-policy-examples.md)
          + [AWS Proton IAM service role policy examples](security_iam_service-role-policy-examples.md)
       + [AWS managed policies for AWS Proton](security-iam-awsmanpol.md)
+      + [Using service-linked roles for AWS Proton](using-service-linked-roles.md)
       + [Troubleshooting AWS Proton identity and access](security_iam_troubleshoot.md)
    + [Configuration and vulnerability analysis in AWS Proton](vulnerability-analysis-and-management.md)
    + [Data protection in AWS Proton](data-protection.md)

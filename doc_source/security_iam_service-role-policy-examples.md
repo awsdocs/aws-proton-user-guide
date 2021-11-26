@@ -17,61 +17,61 @@ Be aware that the policies shown in the following examples grant administrator p
 
 **IAM AWS Proton service role policy**
 
-Replace `account_id` with your AWS account ID\.
+Replace `123456789012` with your AWS account ID\.
 
 ```
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "cloudformation:CancelUpdateStack",
-        "cloudformation:ContinueUpdateRollback",
-        "cloudformation:CreateChangeSet",
-        "cloudformation:CreateStack",
-        "cloudformation:DeleteChangeSet",
-        "cloudformation:DeleteStack",
-        "cloudformation:DescribeChangeSet",
-        "cloudformation:DescribeStackDriftDetectionStatus",
-        "cloudformation:DescribeStackEvents",
-        "cloudformation:DescribeStackResourceDrifts",
-        "cloudformation:DescribeStacks",
-        "cloudformation:DetectStackResourceDrift",
-        "cloudformation:ExecuteChangeSet",
-        "cloudformation:ListChangeSets",
-        "cloudformation:ListStackResources",
-        "cloudformation:UpdateStack"
-      ],
-      "Resource": "arn:aws:cloudformation:*:{{account_id}}:stack/AWSProton-*"
-    },
-    {
-      "Effect": "Allow",
-      "NotAction": [
-        "organizations:*",
-        "account:*"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "ForAnyValue:StringEquals": {
-          "aws:CalledVia": ["cloudformation.amazonaws.com"]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CancelUpdateStack",
+                "cloudformation:ContinueUpdateRollback",
+                "cloudformation:CreateChangeSet",
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteChangeSet",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeChangeSet",
+                "cloudformation:DescribeStackDriftDetectionStatus",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeStackResourceDrifts",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DetectStackResourceDrift",
+                "cloudformation:ExecuteChangeSet",
+                "cloudformation:ListChangeSets",
+                "cloudformation:ListStackResources",
+                "cloudformation:UpdateStack"
+            ],
+            "Resource": "arn:aws:cloudformation:*:123456789012:stack/AWSProton-*"
+        },
+        {
+            "Effect": "Allow",
+            "NotAction": [
+                "organizations:*",
+                "account:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "aws:CalledVia": ["cloudformation.amazonaws.com"]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "organizations:DescribeOrganization",
+                "account:ListRegions"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "aws:CalledVia": ["cloudformation.amazonaws.com"]
+                }
+            }
         }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "organizations:DescribeOrganization",
-        "account:ListRegions"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "ForAnyValue:StringEquals": {
-          "aws:CalledVia": ["cloudformation.amazonaws.com"]
-        }
-      }
-    }
-  ]
+    ]
 }
 ```
 
@@ -92,43 +92,41 @@ The following is an example of a scoped down AWS Proton service role policy that
 
 ```
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "cloudformation:CancelUpdateStack",
-        "cloudformation:ContinueUpdateRollback",
-        "cloudformation:CreateChangeSet",
-        "cloudformation:CreateStack",
-        "cloudformation:DeleteChangeSet",
-        "cloudformation:DeleteStack",
-        "cloudformation:DescribeChangeSet",
-        "cloudformation:DescribeStackDriftDetectionStatus",
-        "cloudformation:DescribeStackEvents",
-        "cloudformation:DescribeStackResourceDrifts",
-        "cloudformation:DescribeStacks",
-        "cloudformation:DetectStackResourceDrift",
-        "cloudformation:ExecuteChangeSet",
-        "cloudformation:ListChangeSets",
-        "cloudformation:ListStackResources",
-        "cloudformation:UpdateStack"
-      ],
-      "Resource": "arn:aws:cloudformation:*:{{account_id}}:stack/AWSProton-*"
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:*"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "ForAnyValue:StringEquals": {
-          "aws:CalledVia": ["cloudformation.amazonaws.com"]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CancelUpdateStack",
+                "cloudformation:ContinueUpdateRollback",
+                "cloudformation:CreateChangeSet",
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteChangeSet",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeChangeSet",
+                "cloudformation:DescribeStackDriftDetectionStatus",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeStackResourceDrifts",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DetectStackResourceDrift",
+                "cloudformation:ExecuteChangeSet",
+                "cloudformation:ListChangeSets",
+                "cloudformation:ListStackResources",
+                "cloudformation:UpdateStack"
+            ],
+            "Resource": "arn:aws:cloudformation:*:123456789012:stack/AWSProton-*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": ["s3:*"],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "aws:CalledVia": ["cloudformation.amazonaws.com"]
+                }
+            }
         }
-      }
-    }
-  ]
+    ]
 }
 ```
 
@@ -143,61 +141,61 @@ Be aware that the policies shown in the following examples grant administrator p
 
 **IAM AWS Proton pipeline service role policy**
 
-Replace `account_id` with your AWS account ID\.
+Replace `123456789012` with your AWS account ID\.
 
 ```
 {
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "cloudformation:CancelUpdateStack",
-        "cloudformation:ContinueUpdateRollback",
-        "cloudformation:CreateChangeSet",
-        "cloudformation:CreateStack",
-        "cloudformation:DeleteChangeSet",
-        "cloudformation:DeleteStack",
-        "cloudformation:DescribeChangeSet",
-        "cloudformation:DescribeStackDriftDetectionStatus",
-        "cloudformation:DescribeStackEvents",
-        "cloudformation:DescribeStackResourceDrifts",
-        "cloudformation:DescribeStacks",
-        "cloudformation:DetectStackResourceDrift",
-        "cloudformation:ExecuteChangeSet",
-        "cloudformation:ListChangeSets",
-        "cloudformation:ListStackResources",
-        "cloudformation:UpdateStack"
-      ],
-      "Resource": "arn:aws:cloudformation:*:{{account_id}}:stack/AWSProton-*"
-    },
-    {
-      "Effect": "Allow",
-      "NotAction": [
-        "organizations:*",
-        "account:*"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "ForAnyValue:StringEquals": {
-          "aws:CalledVia": ["cloudformation.amazonaws.com"]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:CancelUpdateStack",
+                "cloudformation:ContinueUpdateRollback",
+                "cloudformation:CreateChangeSet",
+                "cloudformation:CreateStack",
+                "cloudformation:DeleteChangeSet",
+                "cloudformation:DeleteStack",
+                "cloudformation:DescribeChangeSet",
+                "cloudformation:DescribeStackDriftDetectionStatus",
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeStackResourceDrifts",
+                "cloudformation:DescribeStacks",
+                "cloudformation:DetectStackResourceDrift",
+                "cloudformation:ExecuteChangeSet",
+                "cloudformation:ListChangeSets",
+                "cloudformation:ListStackResources",
+                "cloudformation:UpdateStack"
+            ],
+            "Resource": "arn:aws:cloudformation:*:123456789012:stack/AWSProton-*"
+        },
+        {
+            "Effect": "Allow",
+            "NotAction": [
+                "organizations:*",
+                "account:*"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "aws:CalledVia": ["cloudformation.amazonaws.com"]
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "organizations:DescribeOrganization",
+                "account:ListRegions"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "ForAnyValue:StringEquals": {
+                    "aws:CalledVia": ["cloudformation.amazonaws.com"]
+                }
+            }
         }
-      }
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "organizations:DescribeOrganization",
-        "account:ListRegions"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "ForAnyValue:StringEquals": {
-          "aws:CalledVia": ["cloudformation.amazonaws.com"]
-        }
-      }
-    }
-  ]
+    ]
 }
 ```
 

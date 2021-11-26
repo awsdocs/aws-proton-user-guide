@@ -5,6 +5,7 @@ The following table describes the important changes to the documentation related
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Terraform preview](#doc-history) | Added [pull request provisioning with Terraform](../adminguide/ag-infrastructure-tmp-files.html) in preview\. | November 24, 2021 | 
 | [Documentation update](#doc-history) | Added [EventBridge](event-tutorial-sns.html) tutorial\. | September 17, 2021 | 
 | [AWS Proton console help panels release](#doc-history) | Help panels added to the console\. | September 8, 2021 | 
 | [AWS Proton General availability \(GA\) release](#doc-history) | Adds [cross account environments](../adminguide/ag-env-account-connections.html), [EventBridge monitoring](monitoring.html), [IAM condition keys](security_iam_service-with-iam.html), idempotency support, and [increased quotas](ag-limits.html)\. | June 9, 2021 | 

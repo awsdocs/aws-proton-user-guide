@@ -1,6 +1,8 @@
 # AWS Proton services<a name="ug-service"></a>
 
-An AWS Proton service is an instantiation of a service template, normally including several service instances and a pipeline\. An AWS Proton service instance is an instantiation of a service template in a specific environment\. A service template is a complete definition of the infrastructure and optional service pipeline for an AWS Proton service\. Environments represent the set of shared resources and policies that AWS Proton services are deployed into\. They can contain any resources that are expected to be shared across AWS Proton service instances, such as VPCs, clusters, and shared load balancers or API Gateways\.
+An AWS Proton service is an instantiation of a service template, normally including several service instances and a pipeline\. An AWS Proton service instance is an instantiation of a service template in a specific environment\. A service template is a complete definition of the infrastructure and optional service pipeline for an AWS Proton service\.
+
+Environments represent the set of shared resources and policies that AWS Proton services are deployed into\. They can contain any resources that are expected to be shared across AWS Proton service instances, such as VPCs, clusters, and shared load balancers or API Gateways\.
 
 After your service instances are deployed, they can be updated by source code pushes that prompt the CI/CD pipeline or by the adoption of new versions of its service template\. AWS Proton prompts you when new versions of its service template become available so you can update your services to a new version\. When your service is updated, AWS Proton re\-deploys the service and service instances\.
 

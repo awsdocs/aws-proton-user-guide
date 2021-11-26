@@ -6,7 +6,7 @@ AWS services maintain and update AWS managed policies\. You can't change the per
 
 Additionally, AWS supports managed policies for job functions that span multiple services\. For example, the **ReadOnlyAccess** AWS managed policy provides read\-only access to all AWS services and resources\. When a service launches a new feature, AWS adds read\-only permissions for new operations and resources\. For a list and descriptions of job function policies, see [AWS managed policies for job functions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html) in the *IAM User Guide*\.
 
-Proton provides managed IAM policies and trust relationships that you can attach to IAM users, groups, or roles that allow differing levels of control over resources and API operations\. You can apply these policies directly, or you can use them as starting points for creating your own policies\.
+AWS Proton provides managed IAM policies and trust relationships that you can attach to IAM users, groups, or roles that allow differing levels of control over resources and API operations\. You can apply these policies directly, or you can use them as starting points for creating your own policies\.
 
 The following trust relationship is used for each of the AWS Proton managed policies\.
 
@@ -31,7 +31,7 @@ This policy grants administrative permissions that allow full access to AWS Prot
 
 This policy includes the following permissions\.
 
-This managed policy provides administrative access to the Proton APIs and AWS Management Console\.
+This managed policy provides administrative access to the AWS Proton APIs and AWS Management Console\.
 
 ```
 {
@@ -101,7 +101,7 @@ This policy grants read\-only permissions that allow read only access to AWS Pro
 
 This policy includes the following permissions\.
 
-This managed policy provides read only access to the Proton APIs and AWS Management Console\.
+This managed policy provides read only access to the AWS Proton APIs and AWS Management Console\.
 
 ```
 {
@@ -118,6 +118,59 @@ This managed policy provides read only access to the Proton APIs and AWS Managem
 ```
 + `proton` – Allows contributors read\-only access to AWS Proton APIs\.
 
+## AWS managed policy: AWSProtonSyncServiceRolePolicy<a name="security-iam-awsmanpol-AWSProtonSyncServiceRolePolicy"></a>
+
+AWS Proton attaches this policy to a service linked role that allows AWS Proton sync to perform actions on your behalf\.
+
+This policy grants permissions that allow limited access to AWS Proton and AWS CodeStar connections APIs\.
+
+**Permissions details**
+
+This policy includes the following permissions\.
+
+This managed policy provides limited access to the AWS Proton APIs and AWS Management Console\.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "SyncToProton",
+            "Effect": "Allow",
+            "Action": [
+                "proton:UpdateServiceTemplateVersion",
+                "proton:UpdateServiceTemplate",
+                "proton:UpdateEnvironmentTemplateVersion",
+                "proton:UpdateEnvironmentTemplate",
+                "proton:GetServiceTemplateVersion",
+                "proton:GetServiceTemplate",
+                "proton:GetEnvironmentTemplateVersion",
+                "proton:GetEnvironmentTemplate",
+                "proton:DeleteServiceTemplateVersion",
+                "proton:DeleteEnvironmentTemplateVersion",
+                "proton:CreateServiceTemplateVersion",
+                "proton:CreateServiceTemplate",
+                "proton:CreateEnvironmentTemplateVersion",
+                "proton:CreateEnvironmentTemplate",
+                "proton:ListEnvironmentTemplateVersions",
+                "proton:ListServiceTemplateVersions",
+                "proton:CreateEnvironmentTemplateMajorVersion",
+                "proton:CreateServiceTemplateMajorVersion"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AccessGitRepos",
+            "Effect": "Allow",
+            "Action": ["codestar-connections:UseConnection"],
+            "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+        }
+    ]
+}
+```
++ `proton` – Allows AWS Proton sync limited access to AWS Proton APIs\.
++ `proton` – Allows AWS Proton sync limited access to AWS CodeStar connections APIs\.
+
 ## AWS Proton updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 
 
@@ -129,6 +182,7 @@ View details about updates to AWS managed policies for AWS Proton since this ser
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-|  [AWSProtonFullAccess](#security-iam-awsmanpol-AWSProtonFullAccess) – provides administrative access to the Proton APIs and AWS Management Console\.  |  AWS Proton added a new policy to provide administrative access to the Proton APIs and AWS Management Console\.   | JUNE 09, 2021 | 
+|  [AWSProtonSyncServiceRolePolicy](#security-iam-awsmanpol-AWSProtonSyncServiceRolePolicy) – provides limited access to AWS Proton APIs and AWS Management Console\.  |  AWS Proton added a new policy to provide limited access to the AWS Proton APIs and AWS Management Console\.   | NOVEMBER 23, 2021 | 
+|  [AWSProtonFullAccess](#security-iam-awsmanpol-AWSProtonFullAccess) – provides administrative access to the AWS Proton APIs and AWS Management Console\.  |  AWS Proton added a new policy to provide administrative access to the AWS Proton APIs and AWS Management Console\.   | JUNE 09, 2021 | 
 |  [AWSProtonReadOnlyAccess](#security-iam-awsmanpol-AWSProtonReadOnlyAccess) – added a new policy\.  |  AWS Proton added a new policy to allow read\-only access to AWS Proton APIs\.   | JUNE 09, 2021 | 
 |  AWS Proton started tracking changes\.  |  AWS Proton started tracking changes for its AWS managed policies\.  | JUNE 09, 2021 | 

@@ -61,7 +61,7 @@ The following is an example of a customer managed tag applied to a provisioned r
 
 Each AWS Proton resource has a maximum quota of 50 customer managed tags\. Customer managed tags propagate to child AWS Proton resources in the same way that AWS managed tags do, except they don't propagate to existing AWS Proton resources or to provisioned resources\. If you apply a new tag to an AWS Proton resource with existing child resources and you want the existing child resources to be tagged with the new tag, you need to tag each existing child resource manually, using the console or AWS CLI\.
 
-### Create tags using the console<a name="console-tags"></a>
+### Create tags using the console and CLI<a name="console-tags"></a>
 
 When you create an AWS Proton resource using the console, you're given the opportunity to create customer managed tags either on the first or second page of the create procedure as shown in the following console snapshot\. choose **Add new tag**, enter the key and value and proceed\.
 
@@ -94,17 +94,22 @@ You can view, create, remove and edit tags using the AWS Proton AWS CLI\.
 You can create or edit a tag for a resource as shown in the following example\.
 
 ```
-aws proton tag-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" --tags '[{"key":"mykey1","value":"myval1"},{"key":"mykey2","value":"myval2"}]'
+aws proton tag-resource \
+    --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" \
+    --tags '[{"key":"mykey1","value":"myval1"},{"key":"mykey2","value":"myval2"}]'
 ```
 
 You can remove a tag for a resource as shown in the next example\.
 
 ```
-aws proton untag-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" --tag-keys '["mykey1","mykey2"]'
+aws proton untag-resource \
+    --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" \
+    --tag-keys '["mykey1","mykey2"]'
 ```
 
 You can list tags for a resource as shown in the final example\.
 
 ```
-aws proton list-tags-for-resource --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice"
+aws proton list-tags-for-resource \
+    --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice"
 ```

@@ -9,7 +9,7 @@ Use EventBridge to be notified of state changes in the AWS Proton provisioning w
 Events are composed of rules that include an event pattern and targets\. You configure a rule by choosing event pattern and target objects:
 
 Event pattern  
-Each rule is expressed as an event pattern with the source and type of events to monitor and the event targets\. To monitor events, you create a rule with the service that you're monitoring as the event source\. For example, you can create a rule with an event pattern that that uses AWS Proton as an event source to trigger a rule when there are changes in a deployment state\.
+Each rule is expressed as an event pattern with the source and type of events to monitor and the event targets\. To monitor events, you create a rule with the service that you're monitoring as the event source\. For example, you can create a rule with an event pattern that uses AWS Proton as an event source to trigger a rule when there are changes in a deployment state\.
 
 Targets  
 The rule receives a selected service as the event target\. You can set up a target service to send notifications, capture state information, take corrective action, initiate events, or take other actions\.

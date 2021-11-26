@@ -1,5 +1,9 @@
 # Update a service pipeline<a name="ag-svc-pipeline-update"></a>
 
+Learn to update a service pipeline and cancel the update\.
+
+A service pipeline belongs to a service\. You can only create or delete a pipeline within the context of service [create](ug-svc-create.md) and [delete](ug-svc-delete.md) actions\.
+
 There are four modes for updating a service pipeline as described in the following\. When you use the AWS CLI, the `deployment-type` field defines the mode\. When using the console, these modes map to the **Edit pipeline** and **Update to recommended version**\.
 
   
@@ -28,6 +32,11 @@ When you cancel an update deployment, AWS Proton attempts to cancel the deployme
 
 For more information on cancelling a service pipeline deployment, see [CancelServicePipelineDeployment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CancelServicePipelineDeployment.html) in the *AWS Proton API Reference*\.
 
+**Use the console or AWS CLI to make updates or cancel update deployments\.**
+
+------
+#### [ AWS Management Console ]
+
 **Update a service pipeline using the console as described in the following steps\.**
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Services**\.
@@ -44,12 +53,44 @@ For more information on cancelling a service pipeline deployment, see [CancelSer
 
    1. Fill out each form and choose **Next** until you complete the final form and then choose **Update**\.
 
-**Use the AWS CLI to update a service pipeline to a new minor version as shown in the following example commands and responses\.**
+------
+#### [ AWS CLI ]
+
+**Update a service pipeline to a new minor version as shown in the following CLI example commands and responses\.**
+
+When you update your service pipeline with a modified `spec`, you can use `"${Proton::CURRENT_VAL}"` to indicate which parameter values to preserve from the original `spec`, if the values exist in the `spec`\. Use `get-service` to view the original `spec` for a pipeline, as described in [View service data](ug-svc-view.md)\.
+
+The following example shows how you can use `"${Proton::CURRENT_VAL}"` in a `spec`\.
+
+Spec:
+
+```
+proton: ServiceSpec
+
+pipeline:
+  my_sample_pipeline_optional_input: "${Proton::CURRENT_VAL}"
+  my_sample_pipeline_required_input: "${Proton::CURRENT_VAL}"
+
+instances:
+  - name: "my-instance"
+    environment: "simple-env"
+    spec:
+      my_sample_service_instance_optional_input: "${Proton::CURRENT_VAL}"
+      my_sample_service_instance_required_input: "${Proton::CURRENT_VAL}"
+  - name: "my-other-instance"
+    environment: "simple-env"
+    spec:
+      my_sample_service_instance_required_input: "789"
+```
 
 Command: to update
 
 ```
-aws proton update-service-pipeline --service-name --spec file://service-spec.yaml --template-major-version "1" --template-minor-version "1" --deployment-type "MINOR_VERSION"
+aws proton update-service-pipeline \
+    --service-name --spec file://service-spec.yaml \
+    --template-major-version "1" \
+    --template-minor-version "1" \
+    --deployment-type "MINOR_VERSION"
 ```
 
 Response:
@@ -73,7 +114,8 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service --name "simple-svc"
+aws proton get-service \
+    --name "simple-svc"
 ```
 
 Response:
@@ -106,7 +148,12 @@ Response:
 }
 ```
 
-**Use the console to cancel a service pipeline deployment as shown in the following steps\.**
+------
+
+------
+#### [ AWS Management Console ]
+
+**Cancel a service pipeline deployment using the console as shown in the following steps\.**
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Services** in the navigation pane\.
 
@@ -120,14 +167,18 @@ Response:
 
 1. Your update deployment status is set to **Cancelling** and then **Cancelled** to complete the cancellation\.
 
-**Use the AWS Proton AWS CLI to cancel an IN\_PROGRESS service pipeline update deployment to a new minor version 2 as shown in the following example commands and responses\.**
+------
+#### [ AWS CLI ]
+
+**Cancel an IN\_PROGRESS service pipeline deployment update to minor version 2 as shown in the following CLI example commands and responses\.**
 
 A wait condition is included in the template used for this example so that the cancellation starts before the update deployment succeeds\.
 
 Command: to cancel
 
 ```
-aws proton cancel-service-pipeline-deployment --service-name "simple-svc"
+aws proton cancel-service-pipeline-deployment \
+    --service-name "simple-svc"
 ```
 
 Response:
@@ -150,7 +201,8 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service --name "simple-svc"
+aws proton get-service \
+    --name "simple-svc"
 ```
 
 Response:
@@ -183,3 +235,5 @@ Response:
     }
 }
 ```
+
+------
