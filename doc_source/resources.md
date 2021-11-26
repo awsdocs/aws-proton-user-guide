@@ -30,6 +30,9 @@ With AWS Proton, you can use both the tags that you create as well as the tags t
 
 When you create an AWS Proton resource, AWS Proton automatically generates AWS managed tags for your new resource as shown in the following diagram\. AWS managed tags propagate to the AWS Proton resources that your new resource creates or deploys\.
 
+**Note**  
+AWS managed tags *aren’t* generated for environment account connections\. For more information, see [Environment account connections](https://docs.aws.amazon.com/proton/latest/adminguide/ag-env-account-connections.html)\.
+
 ![\[A diagram that describes the AWS managed tag propagation.\]](http://docs.aws.amazon.com/proton/latest/userguide/images/tag-diag.png)
 
 If provisioned resources, such as those defined in service and environment templates, support AWS tagging, the AWS managed tags propagate as customer managed tags to provisioned resources\. These tags won't propagate to a provisioned resource that doesn't support AWS tagging\.
@@ -63,7 +66,7 @@ Each AWS Proton resource has a maximum quota of 50 customer managed tags\. Custo
 
 ### Create tags using the console and CLI<a name="console-tags"></a>
 
-When you create an AWS Proton resource using the console, you're given the opportunity to create customer managed tags either on the first or second page of the create procedure as shown in the following console snapshot\. choose **Add new tag**, enter the key and value and proceed\.
+When you create an AWS Proton resource using the console, you're given the opportunity to create customer managed tags either on the first or second page of the create procedure as shown in the following console snapshot\. Choose **Add new tag**, enter the key and value and proceed\.
 
 ![\[A snapshot of the console create tag interface.\]](http://docs.aws.amazon.com/proton/latest/userguide/images/tag-create.PNG)
 
