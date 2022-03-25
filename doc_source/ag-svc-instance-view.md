@@ -23,7 +23,7 @@ A service instance belongs to a service\. You can only create or delete an insta
 Command:
 
 ```
-aws proton list-service-instances
+$ aws proton list-service-instances
 ```
 
 Response:
@@ -51,7 +51,7 @@ Response:
 Command:
 
 ```
-aws proton get-service-instance \
+$ aws proton get-service-instance \
     --name "instance-one" \
     --service-name "simple-svc"
 ```

@@ -16,7 +16,7 @@ Connect AWS Proton to your code repository with AWS CodeStar connections to prom
 
 1. Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
 
-1. In the navigation pane, select **Settings** and then **Source connections** to take you to the **Connections** page of **Developer Tools** **Settings**\. The page displays a list of connections\.
+1. In the navigation pane, select **Settings** and then **Repository connections** to take you to the **Connections** page of **Developer Tools** **Settings**\. The page displays a list of connections\.
 
 1. Choose **Create connection** and follow the instructions\.
 

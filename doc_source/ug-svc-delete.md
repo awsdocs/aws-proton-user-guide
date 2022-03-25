@@ -27,7 +27,7 @@ You can delete a service, with its instances and pipeline, by using the console 
 Command:
 
 ```
-aws proton delete-service \
+$ aws proton delete-service \
     --name "simple-svc"
 ```
 

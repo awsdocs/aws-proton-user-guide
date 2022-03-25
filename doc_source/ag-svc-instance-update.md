@@ -82,7 +82,7 @@ instances:
 Command: to update
 
 ```
-aws proton update-service-instance \
+$ aws proton update-service-instance \
     --name "instance-one" \
     --service-name "simple-svc" \
     --spec "file://service-spec.yaml" \
@@ -114,7 +114,7 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service-instance \
+$ aws proton get-service-instance \
     --name "instance-one" \
     --service-name "simple-svc"
 ```
@@ -167,7 +167,7 @@ A wait condition is included in the template used for this example so that the c
 Command: to cancel
 
 ```
-aws proton cancel-service-instance-deployment \
+$ aws proton cancel-service-instance-deployment \
     --service-instance-name "instance-one" \
     --service-name "simple-svc"
 ```
@@ -196,7 +196,7 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service-instance \
+$ aws proton get-service-instance \
     --name "instance-one" \
     --service-name "simple-svc"
 ```

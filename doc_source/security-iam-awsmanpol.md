@@ -12,12 +12,23 @@ The following trust relationship is used for each of the AWS Proton managed poli
 
 ```
 {
-    "Version": "2012-10-17",
-    "Statement": {
-        "Effect": "Allow",
-        "Principal": {"Service": "proton.amazonaws.com"},
-        "Action": "sts:AssumeRole"
+  "Version": "2012-10-17",
+  "Statement": {
+    "Sid": "ExampleTrustRelationshipWithProtonConfusedDeputyPrevention",
+    "Effect": "Allow",
+    "Principal": {
+      "Service": "proton.amazonaws.com"
+    },
+    "Action": "sts:AssumeRole",
+    "Condition": {
+      "StringEquals": {
+        "aws:SourceAccount": "123456789012"
+      },
+      "ArnLike": {
+        "aws:SourceArn": "arn:aws::proton:*:123456789012:environment/*"
+      }
     }
+  }
 }
 ```
 
@@ -35,55 +46,55 @@ This managed policy provides administrative access to the AWS Proton APIs and AW
 
 ```
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "proton:*",
-                "codestar-connections:ListConnections",
-                "kms:ListAliases",
-                "kms:DescribeKey"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "kms:CreateGrant"
-            ],
-            "Resource": "*",
-            "Condition": {
-                "StringLike": {
-                    "kms:ViaService": "proton.*.amazonaws.com"
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "iam:PassRole"
-            ],
-            "Resource": "*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": "proton.amazonaws.com"
-                }
-            }
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "codestar-connections:PassConnection"
-            ],
-            "Resource": "arn:aws:codestar-connections:*:*:connection/*",
-            "Condition": {
-                "StringEquals": {
-                    "codestar-connections:PassedToService": "proton.amazonaws.com"
-                }
-            }
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "proton:*",
+        "codestar-connections:ListConnections",
+        "kms:ListAliases",
+        "kms:DescribeKey"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kms:CreateGrant"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "kms:ViaService": "proton.*.amazonaws.com"
         }
-    ]
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "proton.amazonaws.com"
+        }
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codestar-connections:PassConnection"
+      ],
+      "Resource": "arn:aws:codestar-connections:*:*:connection/*",
+      "Condition": {
+        "StringEquals": {
+          "codestar-connections:PassedToService": "proton.amazonaws.com"
+        }
+      }
+    }
+  ]
 }
 ```
 + `proton` – Allows administrators full access to AWS Proton APIs\.
@@ -105,15 +116,15 @@ This managed policy provides read only access to the AWS Proton APIs and AWS Man
 
 ```
 {
-    "Version": "2012-10-17",
-    "Statement": {
-        "Effect": "Allow",
-        "Action": [
-            "proton:List*",
-            "proton:Get*"
-        ],
-        "Resource": "*"
-    }
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": [
+      "proton:List*",
+      "proton:Get*"
+    ],
+    "Resource": "*"
+  }
 }
 ```
 + `proton` – Allows contributors read\-only access to AWS Proton APIs\.
@@ -132,40 +143,42 @@ This managed policy provides limited access to the AWS Proton APIs and AWS Manag
 
 ```
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "SyncToProton",
-            "Effect": "Allow",
-            "Action": [
-                "proton:UpdateServiceTemplateVersion",
-                "proton:UpdateServiceTemplate",
-                "proton:UpdateEnvironmentTemplateVersion",
-                "proton:UpdateEnvironmentTemplate",
-                "proton:GetServiceTemplateVersion",
-                "proton:GetServiceTemplate",
-                "proton:GetEnvironmentTemplateVersion",
-                "proton:GetEnvironmentTemplate",
-                "proton:DeleteServiceTemplateVersion",
-                "proton:DeleteEnvironmentTemplateVersion",
-                "proton:CreateServiceTemplateVersion",
-                "proton:CreateServiceTemplate",
-                "proton:CreateEnvironmentTemplateVersion",
-                "proton:CreateEnvironmentTemplate",
-                "proton:ListEnvironmentTemplateVersions",
-                "proton:ListServiceTemplateVersions",
-                "proton:CreateEnvironmentTemplateMajorVersion",
-                "proton:CreateServiceTemplateMajorVersion"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Sid": "AccessGitRepos",
-            "Effect": "Allow",
-            "Action": ["codestar-connections:UseConnection"],
-            "Resource": "arn:aws:codestar-connections:*:*:connection/*"
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SyncToProton",
+      "Effect": "Allow",
+      "Action": [
+        "proton:UpdateServiceTemplateVersion",
+        "proton:UpdateServiceTemplate",
+        "proton:UpdateEnvironmentTemplateVersion",
+        "proton:UpdateEnvironmentTemplate",
+        "proton:GetServiceTemplateVersion",
+        "proton:GetServiceTemplate",
+        "proton:GetEnvironmentTemplateVersion",
+        "proton:GetEnvironmentTemplate",
+        "proton:DeleteServiceTemplateVersion",
+        "proton:DeleteEnvironmentTemplateVersion",
+        "proton:CreateServiceTemplateVersion",
+        "proton:CreateServiceTemplate",
+        "proton:CreateEnvironmentTemplateVersion",
+        "proton:CreateEnvironmentTemplate",
+        "proton:ListEnvironmentTemplateVersions",
+        "proton:ListServiceTemplateVersions",
+        "proton:CreateEnvironmentTemplateMajorVersion",
+        "proton:CreateServiceTemplateMajorVersion"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "AccessGitRepos",
+      "Effect": "Allow",
+      "Action": [
+        "codestar-connections:UseConnection"
+      ],
+      "Resource": "arn:aws:codestar-connections:*:*:connection/*"
+    }
+  ]
 }
 ```
 + `proton` – Allows AWS Proton sync limited access to AWS Proton APIs\.
@@ -173,16 +186,12 @@ This managed policy provides limited access to the AWS Proton APIs and AWS Manag
 
 ## AWS Proton updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 
-
-
 View details about updates to AWS managed policies for AWS Proton since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the AWS Proton Document history page\.
-
-
 
 
 | Change | Description | Date | 
 | --- | --- | --- | 
-|  [AWSProtonSyncServiceRolePolicy](#security-iam-awsmanpol-AWSProtonSyncServiceRolePolicy) – provides limited access to AWS Proton APIs and AWS Management Console\.  |  AWS Proton added a new policy to provide limited access to the AWS Proton APIs and AWS Management Console\.   | NOVEMBER 23, 2021 | 
-|  [AWSProtonFullAccess](#security-iam-awsmanpol-AWSProtonFullAccess) – provides administrative access to the AWS Proton APIs and AWS Management Console\.  |  AWS Proton added a new policy to provide administrative access to the AWS Proton APIs and AWS Management Console\.   | JUNE 09, 2021 | 
-|  [AWSProtonReadOnlyAccess](#security-iam-awsmanpol-AWSProtonReadOnlyAccess) – added a new policy\.  |  AWS Proton added a new policy to allow read\-only access to AWS Proton APIs\.   | JUNE 09, 2021 | 
+|  [AWSProtonSyncServiceRolePolicy](#security-iam-awsmanpol-AWSProtonSyncServiceRolePolicy) – provides limited access to AWS Proton API operations and AWS Management Console\.  |  AWS Proton added a new policy to provide limited access to the AWS Proton API operations and AWS Management Console\.  | NOVEMBER 23, 2021 | 
+|  [AWSProtonFullAccess](#security-iam-awsmanpol-AWSProtonFullAccess) – provides administrative access to the AWS Proton API operationsAPI operations and AWS Management Console\.  |  AWS Proton added a new policy to provide administrative access to the AWS Proton API operations and AWS Management Console\.  | JUNE 09, 2021 | 
+|  [AWSProtonReadOnlyAccess](#security-iam-awsmanpol-AWSProtonReadOnlyAccess) – added a new policy\.  |  AWS Proton added a new policy to allow read\-only access to AWS Proton API operations\.  | JUNE 09, 2021 | 
 |  AWS Proton started tracking changes\.  |  AWS Proton started tracking changes for its AWS managed policies\.  | JUNE 09, 2021 | 

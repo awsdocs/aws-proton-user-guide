@@ -86,7 +86,7 @@ instances:
 Command: to update
 
 ```
-aws proton update-service-pipeline \
+$ aws proton update-service-pipeline \
     --service-name --spec file://service-spec.yaml \
     --template-major-version "1" \
     --template-minor-version "1" \
@@ -114,7 +114,7 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service \
+$ aws proton get-service \
     --name "simple-svc"
 ```
 
@@ -177,7 +177,7 @@ A wait condition is included in the template used for this example so that the c
 Command: to cancel
 
 ```
-aws proton cancel-service-pipeline-deployment \
+$ aws proton cancel-service-pipeline-deployment \
     --service-name "simple-svc"
 ```
 
@@ -201,7 +201,7 @@ Response:
 Command: to get and confirm status
 
 ```
-aws proton get-service \
+$ aws proton get-service \
     --name "simple-svc"
 ```
 

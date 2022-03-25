@@ -16,3 +16,4 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Logging and monitoring in AWS Proton](security-logging-and-monitoring.md)
 + [Resilience in AWS Proton](disaster-recovery-resiliency.md)
 + [Security best practices for AWS Proton](security-best-practices.md)
++ [Cross\-service confused deputy prevention](cross-service-confused-deputy-prevention.md)

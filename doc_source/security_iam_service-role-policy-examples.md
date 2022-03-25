@@ -81,9 +81,18 @@ Replace `123456789012` with your AWS account ID\.
 {
     "Version": "2012-10-17",
     "Statement": {
+        "Sid": "ServiceTrustRelationshipWithConfusedDeputyPrevention",
         "Effect": "Allow",
         "Principal": {"Service": "proton.amazonaws.com"},
-        "Action": "sts:AssumeRole"
+        "Action": "sts:AssumeRole",
+        "Condition": {
+            "StringEquals": {
+                "aws:SourceAccount": "123456789012"
+            },
+            "ArnLike": {
+                "aws:SourceArn": "arn:aws::proton:*:123456789012:environment/*"
+            }
+        }
     }
 }
 ```
@@ -205,9 +214,18 @@ Replace `123456789012` with your AWS account ID\.
 {
     "Version": "2012-10-17",
     "Statement": {
+        "Sid": "PipelineTrustRelationshipWithConfusedDeputyPrevention",
         "Effect": "Allow",
         "Principal": {"Service": "proton.amazonaws.com"},
-        "Action": "sts:AssumeRole"
+        "Action": "sts:AssumeRole",
+        "Condition": {
+            "StringEquals": {
+                "aws:SourceAccount": "123456789012"
+            },
+            "ArnLike": {
+                "aws:SourceArn": "arn:aws::proton:*:123456789012:environment/*"
+            }
+        }
     }
 }
 ```

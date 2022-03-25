@@ -21,7 +21,7 @@ You can view service detail data with the console or the AWS CLI\.
 Command:
 
 ```
-aws proton get-service \
+$ aws proton get-service \
     --name "simple-svc"
 ```
 
@@ -60,7 +60,7 @@ Response:
 Command:
 
 ```
-aws proton get-service \
+$ aws proton get-service \
     --name "simple-svc-without-pipeline"
 ```
 

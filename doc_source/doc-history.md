@@ -5,6 +5,8 @@ The following table describes the important changes to the documentation related
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [Terraform General availability \(GA\)](#doc-history) | Renames *pull request provisioning* to *self\-managed provisioning*\. | March 23, 2022 | 
+| [Repository tagging](#doc-history) | Adds support for tagging Repository resources\. See [AWS Proton resources and tagging](resources.html) topic\. | March 23, 2022 | 
 | [Terraform preview](#doc-history) | Adds [pull request provisioning with Terraform](../adminguide/ag-infrastructure-tmp-files.html) in preview\. | November 24, 2021 | 
 | [Documentation update](#doc-history) | Adds [EventBridge](event-tutorial-sns.html) tutorial\. | September 17, 2021 | 
 | [AWS Proton console help panels release](#doc-history) | Help panels added to the console\. | September 8, 2021 | 

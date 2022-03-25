@@ -1,6 +1,6 @@
 # AWS Proton resources and tagging<a name="resources"></a>
 
-AWS Proton resources that are assigned an Amazon Resource Name \(ARN\) include environment templates and their major and minor versions, service templates and their major and minor versions, environments, services and service instances\. You can tag these resources to help you organize and identify them\. You can use tags to categorize resources by purpose, owner, environment, or other criteria\. For more information, see [ Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\. To track and manage your AWS Proton resources, you can use the tagging features of as described in the following sections\. 
+AWS Proton resources that are assigned an Amazon Resource Name \(ARN\) include environment templates and their major and minor versions, service templates and their major and minor versions, environments, services, service instances, and repositories\. You can tag these resources to help you organize and identify them\. You can use tags to categorize resources by purpose, owner, environment, or other criteria\. For more information, see [ Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\. To track and manage your AWS Proton resources, you can use the tagging features described in the following sections\.
 
 ## AWS tagging<a name="aws-tags"></a>
 
@@ -26,9 +26,9 @@ System created tags that begin with the `aws:` prefix are reserved for AWS use, 
 
 With AWS Proton, you can use both the tags that you create as well as the tags that AWS Proton automatically generates for you\.
 
-### AWS Proton AWS managed tags<a name="auto-tags"></a>
+### AWS Proton​ AWS managed tags<a name="auto-tags"></a>
 
-When you create an AWS Proton resource, AWS Proton automatically generates AWS managed tags for your new resource as shown in the following diagram\. AWS managed tags propagate to the AWS Proton resources that your new resource creates or deploys\.
+When you create an AWS Proton resource, AWS Proton automatically generates AWS managed tags for your new resource as shown in the following diagram\. AWS managed tags later propagate to other AWS Proton resources that are based on your new resource\. For example, managed tags from an environment template propagate to its versions, and managed tags from a service propagate to its service instances\.
 
 **Note**  
 AWS managed tags *aren’t* generated for environment account connections\. For more information, see [Environment account connections](https://docs.aws.amazon.com/proton/latest/adminguide/ag-env-account-connections.html)\.
@@ -36,6 +36,9 @@ AWS managed tags *aren’t* generated for environment account connections\. For 
 ![\[A diagram that describes the AWS managed tag propagation.\]](http://docs.aws.amazon.com/proton/latest/userguide/images/tag-diag.png)
 
 If provisioned resources, such as those defined in service and environment templates, support AWS tagging, the AWS managed tags propagate as customer managed tags to provisioned resources\. These tags won't propagate to a provisioned resource that doesn't support AWS tagging\.
+
+**Note**  
+Tag propagation to provisioned resources doesn't happen for environments that use self\-managed provisioning\. For more information, see [Provisioning methods](https://docs.aws.amazon.com/proton/latest/adminguide/ag-works-prov-methods.html#ag-works-prov-methods-self)\.
 
 AWS Proton applies tags to your resources by AWS Proton accounts, registered templates and deployed environments, as well as services and service instances as described in the following table\. You can use AWS managed tags to view and manage your AWS Proton resources, but you can't modify them\.
 
@@ -90,14 +93,14 @@ After you create a new resource using the AWS Proton console, you can view its l
 
 1. When you have completed your changes, choose **Save changes**\.
 
-### Create tags using the AWS Proton AWS CLI<a name="cli-tags"></a>
+### Create tags using the AWS Proton​ AWS CLI<a name="cli-tags"></a>
 
 You can view, create, remove and edit tags using the AWS Proton AWS CLI\.
 
 You can create or edit a tag for a resource as shown in the following example\.
 
 ```
-aws proton tag-resource \
+$ aws proton tag-resource \
     --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" \
     --tags '[{"key":"mykey1","value":"myval1"},{"key":"mykey2","value":"myval2"}]'
 ```
@@ -105,7 +108,7 @@ aws proton tag-resource \
 You can remove a tag for a resource as shown in the next example\.
 
 ```
-aws proton untag-resource \
+$ aws proton untag-resource \
     --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice" \
     --tag-keys '["mykey1","mykey2"]'
 ```
@@ -113,6 +116,6 @@ aws proton untag-resource \
 You can list tags for a resource as shown in the final example\.
 
 ```
-aws proton list-tags-for-resource \
+$ aws proton list-tags-for-resource \
     --resource-arn "arn:aws:proton:region-id:account-id:service-template/webservice"
 ```

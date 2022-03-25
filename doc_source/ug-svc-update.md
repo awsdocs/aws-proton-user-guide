@@ -4,7 +4,7 @@ You can make the following edits to a service\.
 + Edit the service description\.
 + Edit a service by adding and removing service instances\.
 
-## Edit service description<a name="svc-update-metada"></a>
+## Edit service description<a name="ug-svc-update-metadata"></a>
 
 You can use the console or the AWS CLI to edit a service description\.
 
@@ -49,7 +49,7 @@ You can use the console or the AWS CLI to edit a service description\.
 Command:
 
 ```
-aws proton update-service \
+$ aws proton update-service \
     --name "MySimpleService" 
     --description "Edit by updating description"
 ```
@@ -171,7 +171,7 @@ The following example `list-service-instances` command and response shows the ac
 Command:
 
 ```
-aws proton list-service-instances \
+$ aws proton list-service-instances \
     --service-name "MySimpleService"
 ```
 
@@ -262,7 +262,7 @@ The next listing shows the CLI command and response to edit the service\.
 Command:
 
 ```
-aws proton update-service \
+$ aws proton update-service \
     --name "MySimpleService" \
     --description "Edit by adding and deleting a service instance" \
     --spec "file://spec.yaml"
@@ -292,7 +292,7 @@ The following `list-service-instances` command and response confirms that the ex
 Command:
 
 ```
-aws proton list-service-instances \
+$ aws proton list-service-instances \
     --service-name "MySimpleService"
 ```
 

@@ -92,7 +92,7 @@ The following CLI example command and response shows how to view the schema `req
 Command:
 
 ```
-aws proton get-service-template-version \
+$ aws proton get-service-template-version \
     --template-name "fargate-service" \
     --major-version "1" \
     --minor-version "0"
@@ -186,7 +186,7 @@ instances:
 Command:
 
 ```
-aws proton create-service \
+$ aws proton create-service \
     --name "simple-svc" \
     --branch-name "mainline" \
     --template-major-version "1" \
@@ -235,7 +235,7 @@ To create a service *without* an AWS Proton service pipeline, you *don't* includ
 Command:
 
 ```
-aws proton create-service \
+$ aws proton create-service \
     --name "MySimpleServiceNoPipeline" \
     --template-major-version "1" \
     --template-name "fargate-service" \
@@ -251,8 +251,8 @@ Response:
         "createdAt": "2020-11-18T19:50:27.460000+00:00",
         "lastModifiedAt": "2020-11-18T19:50:27.460000+00:00",
         "name": "MySimpleServiceNoPipeline",
-        "templateName": "fargate-service-no-pipeline",
-        "status": "CREATE_IN_PROGRESS"
+        "status": "CREATE_IN_PROGRESS",
+        "templateName": "fargate-service-no-pipeline"
     }
 }
 ```
