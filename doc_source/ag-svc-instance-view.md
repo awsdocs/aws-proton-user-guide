@@ -1,19 +1,19 @@
 # View service instance data<a name="ag-svc-instance-view"></a>
 
-Learn to view service instance detail data\. You can use the console or the AWS CLI\.
+Learn to view AWS Proton service instance detail data\. You can use the console or the AWS CLI\.
 
-A service instance belongs to a service\. You can only create or delete an instance within the context of service [edit](ug-svc-update.md), [create](ug-svc-create.md) and [delete](ug-svc-delete.md) actions\. To learn how to add and remove instances from a service, see [Edit a service](ug-svc-update.md)\.
+A service instance belongs to a service\. You can only create or delete an instance within the context of service [edit](ag-svc-update.md), [create](ag-create-svc.md) and [delete](ag-svc-delete.md) actions\. To learn how to add and remove instances from a service, see [Edit a service](ag-svc-update.md)\.
 
 ------
 #### [ AWS Management Console ]
 
 **List and view service instance details using the [AWS Proton console](https://console.aws.amazon.com/proton/) as shown in the following steps\.**
 
-1. To view a list of the service instances, choose **Services instances** in the navigation pane\.
+1. To view a list of your service instances, choose **Services instances** in the navigation pane\.
 
 1. To view detail data, choose the name of a service instance\.
 
-   View the detail data of your service instance\.
+   View your service instance detail data\.
 
 ------
 #### [ AWS CLI ]

@@ -1,10 +1,10 @@
 # Update a service pipeline<a name="ag-svc-pipeline-update"></a>
 
-Learn to update a service pipeline and cancel the update\.
+Learn to update an AWS Proton service pipeline and cancel the update\.
 
-A service pipeline belongs to a service\. You can only create or delete a pipeline within the context of service [create](ug-svc-create.md) and [delete](ug-svc-delete.md) actions\.
+A service pipeline belongs to a service\. You can only create or delete a pipeline within the context of service [create](ag-create-svc.md) and [delete](ag-svc-delete.md) actions\.
 
-There are four modes for updating a service pipeline as described in the following\. When you use the AWS CLI, the `deployment-type` field defines the mode\. When using the console, these modes map to the **Edit pipeline** and **Update to recommended version**\.
+There are four modes for updating a service pipeline as described in the following list\. When using the AWS CLI, the `deployment-type` field defines the mode\. When you use the console, these modes map to the **Edit pipeline** and **Update to recommended version**\.
 
   
 `NONE`  
@@ -45,20 +45,20 @@ For more information on cancelling a service pipeline deployment, see [CancelSer
 
 1. There are two tabs on the service detail page, **Overview** and **Pipeline**\. Choose **Pipeline**\.
 
-1. To update the spec, choose **Edit Pipeline** and fill out each form and choose **Next** until you complete the final form\. Then choose **Update pipeline**\.
+1. If you want to update specs, choose **Edit Pipeline** and fill out each form and choose **Next** until you complete the final form and then choose **Update pipeline**\.
 
-   If there's an **information icon** that shows that a new version is available at **Pipeline template**, choose the name of the new template version to update the template version\.
+   If you want to update to a new version and there's an **information icon** that indicates a new version is available at **Pipeline template**, choose the name of the new template version\.
 
    1. Choose **Update to recommended version**\.
 
-   1. Fill out each form and choose **Next** until you complete the final form and then choose **Update**\.
+   1. Fill out each form and choose **Next** until you complete the final form and choose **Update**\.
 
 ------
 #### [ AWS CLI ]
 
 **Update a service pipeline to a new minor version as shown in the following CLI example commands and responses\.**
 
-When you update your service pipeline with a modified `spec`, you can use `"${Proton::CURRENT_VAL}"` to indicate which parameter values to preserve from the original `spec`, if the values exist in the `spec`\. Use `get-service` to view the original `spec` for a pipeline, as described in [View service data](ug-svc-view.md)\.
+When you update your service pipeline with a modified `spec`, you can use `"${Proton::CURRENT_VAL}"` to indicate which parameter values to preserve from the original `spec`, if the values exist in the `spec`\. Use `get-service` to view the original `spec` for a service pipeline, as described in [View service data](ag-svc-view.md)\.
 
 The following example shows how you can use `"${Proton::CURRENT_VAL}"` in a `spec`\.
 
@@ -87,7 +87,8 @@ Command: to update
 
 ```
 $ aws proton update-service-pipeline \
-    --service-name --spec file://service-spec.yaml \
+    --service-name "simple-svc" \
+    --spec "file://service-spec.yaml" \
     --template-major-version "1" \
     --template-minor-version "1" \
     --deployment-type "MINOR_VERSION"

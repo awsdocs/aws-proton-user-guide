@@ -1,10 +1,10 @@
 # Update a service instance<a name="ag-svc-instance-update"></a>
 
-Learn to update a service instance and cancel the update\.
+Learn to update an AWS Proton service instance and cancel the update\.
 
-A service instance belongs to a service\. You can only create or delete an instance within the context of service [edit](ug-svc-update.md), [create](ug-svc-create.md) and [delete](ug-svc-delete.md) actions\. To learn how to add and remove instances from a service, see [Edit a service](ug-svc-update.md)\.
+A service instance belongs to a service\. You can only create or delete an instance within the context of service [edit](ag-svc-update.md), [create](ag-create-svc.md) and [delete](ag-svc-delete.md) actions\. To learn how to add and remove instances from a service, see [Edit a service](ag-svc-update.md)\.
 
-There are four modes for updating a service instance as described in the following list\. When you use the AWS CLI, the `deployment-type` field defines the mode\. When you use the console, these modes map to the **Update spec**, **Update to latest minor version**, and **Update to latest major version** actions that drop down from **Actions** in the service instance detail page\.
+There are four modes for updating a service instance as described in the following list\. When using the AWS CLI, the `deployment-type` field defines the mode\. When using the console, these modes map to the **Edit** and the **Update to latest minor version** and **Update to latest major version** actions that drop down from **Actions** in the service instance detail page\.
 
   
 `NONE`  
@@ -12,7 +12,7 @@ In this mode, a deployment *doesn't* occur\. Only the requested metadata paramet
 
   
 `CURRENT_VERSION`  
-In this mode, the service instance is deployed and updated with the new spec that you provide\. Only requested parameters are updated\. *Don’t* include minor or major version parameters if you use this `deployment-type`\.
+In this mode, the service instance is deployed and updated with the new spec that you provide\. Only requested parameters are updated\. *Don’t* include minor or major version parameters when you use this `deployment-type`\.
 
   
 `MINOR_VERSION`  
@@ -22,7 +22,7 @@ In this mode, the service instance is deployed and updated with the published, r
 `MAJOR_VERSION`  
 In this mode, the service instance is deployed and updated with the published, recommended \(latest\) major and minor version of the current template by default\. You can also specify a different major version that is higher than the major version in use and a minor version \(optional\)\.
 
-You can attempt to cancel a service instance update deployment if the `deploymentStatus` is `IN_PROGRESS`\. When you do this, AWS Proton attempts to cancel the deployment\. Successful cancellation *isn’t* guaranteed\.
+You can attempt to cancel a service instance update deployment if the `deploymentStatus` is `IN_PROGRESS`\. AWS Proton attempts to cancel the deployment\. Successful cancellation *isn’t* guaranteed\.
 
 When you cancel an update deployment, AWS Proton attempts to cancel the deployment as listed in the following steps\.
 + Sets the deployment state to `CANCELLING`\.
@@ -39,11 +39,11 @@ For more information on cancelling a service instance deployment, see [CancelSer
 
 **Update a service instance using the console by following these steps\.**
 
-1. From the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the left\-hand menu\.
+1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Service instances** in the navigation pane\.
 
 1. In the list of service instances, choose the name of the service instance that you want to update\.
 
-1. Choose **Actions** and then choose one of the update options, **Update spec**, **Update to latest minor version**, or **Update to latest major version**\.
+1. Choose **Actions** and then choose one of the update options, **Edit** to update spec or **Actions** and then **Update to latest minor version**, or **Update to latest major version**\.
 
 1. Fill out each form and choose **Next** until you reach the **Review** page\.
 
@@ -54,7 +54,7 @@ For more information on cancelling a service instance deployment, see [CancelSer
 
 **Update a service instance to a new minor version as shown in the CLI example commands and responses\.**
 
-When you update your service instance with a modified `spec`, you can use `"${Proton::CURRENT_VAL}"` to indicate which parameter values to preserve from the original `spec`, if the values exist in the `spec`\. Use `get-service` to view the original `spec` for a service instance, as described in [View service data](ug-svc-view.md)\.
+When you update your service instance with a modified `spec`, you can use `"${Proton::CURRENT_VAL}"` to indicate which parameter values to preserve from the original `spec`, if the values exist in the `spec`\. Use `get-service` to view the original `spec` for a service instance, as described in [View service data](ag-svc-view.md)\.
 
 The following example shows how you can use `"${Proton::CURRENT_VAL}"` in a `spec`\.
 
@@ -85,7 +85,7 @@ Command: to update
 $ aws proton update-service-instance \
     --name "instance-one" \
     --service-name "simple-svc" \
-    --spec "file://service-spec.yaml" \
+    --spec file://service-spec.yaml \
     --template-major-version "1" \
     --template-minor-version "1" \
     --deployment-type "MINOR_VERSION"
@@ -151,7 +151,7 @@ Response:
 
 1. In the list of service instances, choose the name of the service instance with the deployment update that you want to cancel\.
 
-1. If your update deployment status is **In progress**, on the service instance detail page, choose **Actions** and then **Cancel deployment**\.
+1. If your update deployment status is **In progress**, in the service instance detail page, choose **Actions** and then **Cancel deployment**\.
 
 1. A modal asks you to confirm the cancellation\. Choose **Cancel deployment**\.
 

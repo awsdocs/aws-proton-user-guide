@@ -1,6 +1,8 @@
-# Delete<a name="ug-svc-delete"></a>
+# Delete a service<a name="ag-svc-delete"></a>
 
-You can delete a service, with its instances and pipeline, by using the console or the AWS CLI\.
+You can delete an AWS Proton service, with its instances and pipeline, by using the AWS Proton console or the AWS CLI\.
+
+You can't delete a service that has any service instance with an attached component\. To delete such a service, you should first update all attached components to detach them from their service instances\. For more information about components, see [AWS Proton components](ag-components.md)\.
 
 ------
 #### [ AWS Management Console ]
@@ -13,7 +15,7 @@ You can delete a service, with its instances and pipeline, by using the console 
 
 1. In the list of services, choose the name of the service that you want to delete\.
 
-1. Choose **Actions** and then **Delete**\.
+1. On the service detail page, choose **Actions** and then **Delete**\.
 
 1. A modal prompts you to confirm the delete action\.
 

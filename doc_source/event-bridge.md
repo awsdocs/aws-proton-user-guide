@@ -18,20 +18,21 @@ Event objects contain standard fields of ID, account, AWS Region, detail\-type, 
 
 AWS Proton events are emitted on a best effort basis\. Best effort delivery means that the service attempts to send all events to EventBridge, but in some rare cases an event might not be delivered\.
 
-The following table lists the detail\-type values, status values, and detail fields for each AWS Proton resource that can emit events\. When a resource is deleted, the `"status"` detail field value is `"DELETED"`\.
+For each AWS Proton resource that can emit events, the following table lists the detail\-type value, detail fields, and \(where available\) a reference to a list of values for the `status` and `previousStatus` detail fields\. When a resource is deleted, the `status` detail field value is `DELETED`\.
 
 
-| Resource | detail\-type value | detail field: values | 
+| Resource | Detail\-type value | Detail fields | 
 | --- | --- | --- | 
-|  Environment Template  |  "AWS Proton Environment Template Status Change"  |  "name": "*myTemplate*" "status": [EnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplate.html) "previousStatus": [EnvironmentTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplate.html)  | 
-|  Environment Template Version  |  "AWS Proton Environment Template Version Status Change"  |  "name": "*myTemplate*" "majorVersion": "*1*" "minorVersion": "*0*" "status": [EnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersion.html) "previousStatus": [EnvironmentTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersion.html)  | 
-|  Service Template  |  "AWS Proton Service Template Status Change"  |  "name": "*myTemplate*" "status": [ServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplate.html) "previousStatus": [ServiceTemplate](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplate.html)  | 
-|  Service Template Version  |  "AWS Proton Service Template Version Status Change"  |  "name": "*myTemplate*" "majorVersion": "*1*" "minorVersion": "*0*" "status": [ServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersion.html) "previousStatus": [ServiceTemplateVersion](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersion.html)  | 
-|  Environment  |  "AWS Proton Environment Status Change"  |  "name": "*myEnvironment*" "status": [Environment](https://docs.aws.amazon.com/proton/latest/APIReference/API_Environment.html) "previousStatus": [Environment](https://docs.aws.amazon.com/proton/latest/APIReference/API_Environment.html)  | 
-|  Service  |  "AWS Proton Service Status Change"  |  "name": "*myService*" "status": [Service](https://docs.aws.amazon.com/proton/latest/APIReference/API_Service.html) "previousStatus": [Service](https://docs.aws.amazon.com/proton/latest/APIReference/API_Service.html)  | 
-|  Service Instance  |  "AWS Proton Service Instance Status Change"  |  "name": "*myServiceInstance*" "serviceName": "*myService*" "status": [ServiceInstance](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceInstance.html) "previousStatus": [ServiceInstance](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceInstance.html)  | 
-|  Service Pipeline  |  "AWS Proton Service Pipeline Status Change"  |  "serviceName": "*myService*" "status": [ServicePipeline](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServicePipeline.html) "previousStatus": [ServicePipeline](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServicePipeline.html)  | 
-|  Environment Account Connection  |  "AWS Proton Environment Account Connection Status Change"  |  "id": "*myEnvironmentAccountConnection*" "status": [EnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentAccountConnection.html) "previousStatus": [EnvironmentAccountConnection](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentAccountConnection.html)  | 
+|  `EnvironmentTemplate`  |  AWS Proton Environment Template Status Change  |  `name` `status` `previousStatus`  | 
+|  `EnvironmentTemplateVersion`  |  AWS Proton Environment Template Version Status Change  |  `name` `majorVersion` `minorVersion` `status` `previousStatus` [status values](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentTemplateVersion.html#proton-Type-EnvironmentTemplateVersion-status)  | 
+|  `ServiceTemplate`  |  AWS Proton Service Template Status Change  |  `name` `status` `previousStatus`  | 
+|  `ServiceTemplateVersion`  |  AWS Proton Service Template Version Status Change  |  `name` `majorVersion` `minorVersion` `status` `previousStatus` [status values](https://docs.aws.amazon.com/proton/latest/APIReference/API_ServiceTemplateVersion.html#proton-Type-ServiceTemplateVersion-status)  | 
+|  `Environment`  |  AWS Proton Environment Status Change  |  `name` `status` `previousStatus`  | 
+|  `Service`  |  AWS Proton Service Status Change  |  `name` `status` `previousStatus` [status values](https://docs.aws.amazon.com/proton/latest/APIReference/API_Service.html#proton-Type-Service-status)  | 
+|  `ServiceInstance`  |  AWS Proton Service Instance Status Change  |  `name` `serviceName` `status` `previousStatus`  | 
+|  `ServicePipeline`  |  AWS Proton Service Pipeline Status Change  |  `serviceName` `status` `previousStatus`  | 
+|  `EnvironmentAccountConnection`  |  AWS Proton Environment Account Connection Status Change  |  `id` `status` `previousStatus` [status values](https://docs.aws.amazon.com/proton/latest/APIReference/API_EnvironmentAccountConnection.html#proton-Type-EnvironmentAccountConnection-status)  | 
+|  `Component`  |  AWS Proton Component Status Change  |  `name` `status` `previousStatus`  | 
 
 ## AWS Proton event examples<a name="event-examples"></a>
 

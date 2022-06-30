@@ -1,6 +1,6 @@
 # AWS Proton resources and tagging<a name="resources"></a>
 
-AWS Proton resources that are assigned an Amazon Resource Name \(ARN\) include environment templates and their major and minor versions, service templates and their major and minor versions, environments, services, service instances, and repositories\. You can tag these resources to help you organize and identify them\. You can use tags to categorize resources by purpose, owner, environment, or other criteria\. For more information, see [ Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\. To track and manage your AWS Proton resources, you can use the tagging features described in the following sections\.
+AWS Proton resources that are assigned an Amazon Resource Name \(ARN\) include environment templates and their major and minor versions, service templates and their major and minor versions, environments, services, service instances, components, and repositories\. You can tag these resources to help you organize and identify them\. You can use tags to categorize resources by purpose, owner, environment, or other criteria\. For more information, see [ Tagging Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/)\. To track and manage your AWS Proton resources, you can use the tagging features described in the following sections\.
 
 ## AWS tagging<a name="aws-tags"></a>
 
@@ -31,25 +31,26 @@ With AWS Proton, you can use both the tags that you create as well as the tags t
 When you create an AWS Proton resource, AWS Proton automatically generates AWS managed tags for your new resource as shown in the following diagram\. AWS managed tags later propagate to other AWS Proton resources that are based on your new resource\. For example, managed tags from an environment template propagate to its versions, and managed tags from a service propagate to its service instances\.
 
 **Note**  
-AWS managed tags *aren’t* generated for environment account connections\. For more information, see [Environment account connections](https://docs.aws.amazon.com/proton/latest/adminguide/ag-env-account-connections.html)\.
+AWS managed tags *aren’t* generated for environment account connections\. For more information, see [Environment account connections](ag-env-account-connections.md)\.
 
 ![\[A diagram that describes the AWS managed tag propagation.\]](http://docs.aws.amazon.com/proton/latest/userguide/images/tag-diag.png)
 
 If provisioned resources, such as those defined in service and environment templates, support AWS tagging, the AWS managed tags propagate as customer managed tags to provisioned resources\. These tags won't propagate to a provisioned resource that doesn't support AWS tagging\.
 
 **Note**  
-Tag propagation to provisioned resources doesn't happen for environments that use self\-managed provisioning\. For more information, see [Provisioning methods](https://docs.aws.amazon.com/proton/latest/adminguide/ag-works-prov-methods.html#ag-works-prov-methods-self)\.
+Tag propagation to provisioned resources doesn't happen for environments that use self\-managed provisioning\. For more information, see [How self\-managed provisioning works](ag-works-prov-methods.md#ag-works-prov-methods-self)\.
 
 AWS Proton applies tags to your resources by AWS Proton accounts, registered templates and deployed environments, as well as services and service instances as described in the following table\. You can use AWS managed tags to view and manage your AWS Proton resources, but you can't modify them\.
 
 
 | AWS managed tag key | Propagated customer managed key | Description | 
 | --- | --- | --- | 
-|  `aws:proton:account`  |  `proton:account`  |  The ARN of the account that creates and deploys AWS Proton resources\.  | 
+|  `aws:proton:account`  |  `proton:account`  |  The AWS account that creates and deploys AWS Proton resources\.  | 
 |  `aws:proton:template`  |  `proton:template`  |  The ARN of a selected template\.  | 
+|  `aws:proton:environment`  |  `proton:environment`  |  The ARN of a selected environment\.  | 
 |  `aws:proton:service`  |  `proton:service`  |  The ARN of a selected service\.  | 
 |  `aws:proton:service-instance`  |  `proton:service-instance`  |  The ARN of a selected service instance\.  | 
-|  `aws:proton:environment`  |  `proton:environment`  |  The ARN of a selected environment\.  | 
+|  `aws:proton:component`  |  `proton:component`  |  The ARN of a selected component\.  | 
 
 The following is an example of an AWS managed tag for an AWS Proton resource\.
 

@@ -6,7 +6,7 @@ In this tutorial, you use an AWS Proton pre\-configured *event rule* that captur
 
 You have an existing AWS Proton service with an `Active` status\. As part of this tutorial, you can add service instances to this service, and then delete the instances\.
 
-If you need to create an AWS Proton service, see [Getting started with AWS Proton](https://docs.aws.amazon.com/proton/latest/userguide/ug-getting-started.html)\. For more information, see [Quotas](https://docs.aws.amazon.com/proton/latest/userguide/ag-limits.html) and [Edit a service](https://docs.aws.amazon.com/proton/latest/userguide/ug-svc-update.html)\.
+If you need to create an AWS Proton service, see [Getting started with AWS Proton](ag-getting-started.md)\. For more information, see [AWS Proton quotas](ag-limits.md) and [Edit a service](ag-svc-update.md)\.
 
 ## Step 1: Create and subscribe to an Amazon SNS topic<a name="event-tutorial-sns-step1"></a>
 

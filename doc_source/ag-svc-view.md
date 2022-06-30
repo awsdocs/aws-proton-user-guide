@@ -1,17 +1,17 @@
-# View service data<a name="ug-svc-view"></a>
+# View service data<a name="ag-svc-view"></a>
 
-You can view service detail data with the console or the AWS CLI\.
+You can view and list service detail data using the AWS Proton console or the AWS CLI\.
 
 ------
 #### [ AWS Management Console ]
 
 **List and view service details using the [AWS Proton console](https://console.aws.amazon.com/proton/) as shown in the following steps\.**
 
-1. To view a list of the services, choose **Services**\.
+1. To view a list of your services, choose **Services** in the navigation pane\.
 
-1. To view detail data, choose the name of your service\.
+1. To view detail data, choose the name of a service\.
 
-   View your service detail\.
+   View your service detail data\.
 
 ------
 #### [ AWS CLI ]
@@ -61,7 +61,7 @@ Command:
 
 ```
 $ aws proton get-service \
-    --name "simple-svc-without-pipeline"
+    --name "simple-svc-no-pipeline"
 ```
 
 Response:

@@ -231,3 +231,83 @@ Replace `123456789012` with your AWS account ID\.
 ```
 
 To see an example of a scoped down policy, see [AWS Proton service role](#proton-svc-role)\.
+
+## AWS Proton component role<a name="proton-custom-comp-role"></a>
+
+As a member of the platform team, you can as an administrator create an AWS Proton service role to allow AWS Proton to provision directly defined components on your behalf\. This role scopes down the infrastructure that directly defined components can provision\. For more information about components, see [AWS Proton components](ag-components.md)\.
+
+The following example policy supports creating a directly defined component that provisions an Amazon Simple Storage Service \(Amazon S3\) bucket and a related access policy\.
+
+**IAM AWS Proton directly defined component policy example**
+
+Replace `123456789012` with your AWS account ID\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CancelUpdateStack",
+        "cloudformation:CreateChangeSet",
+        "cloudformation:DeleteChangeSet",
+        "cloudformation:DescribeStacks",
+        "cloudformation:ContinueUpdateRollback",
+        "cloudformation:DetectStackResourceDrift",
+        "cloudformation:DescribeStackResourceDrifts",
+        "cloudformation:DescribeStackEvents",
+        "cloudformation:CreateStack",
+        "cloudformation:DeleteStack",
+        "cloudformation:UpdateStack",
+        "cloudformation:DescribeChangeSet",
+        "cloudformation:ExecuteChangeSet",
+        "cloudformation:ListChangeSets",
+        "cloudformation:ListStackResources"
+      ],
+      "Resource": "arn:aws:cloudformation:*:123456789012:stack/AWSProton-*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:GetBucket",
+        "iam:CreatePolicy",
+        "iam:DeletePolicy",
+        "iam:GetPolicy",
+        "iam:ListPolicyVersions",
+        "iam:DeletePolicyVersion"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "ForAnyValue:StringEquals": {
+          "aws:CalledVia": "cloudformation.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
+```
+
+**IAM AWS Proton service trust policy**
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "ServiceTrustRelationshipWithConfusedDeputyPrevention",
+        "Effect": "Allow",
+        "Principal": {"Service": "proton.amazonaws.com"},
+        "Action": "sts:AssumeRole",
+        "Condition": {
+            "StringEquals": {
+                "aws:SourceAccount": "123456789012"
+            },
+            "ArnLike": {
+                "aws:SourceArn": "arn:aws::proton:*:123456789012:environment/*"
+            }
+        }
+    }
+}
+```
