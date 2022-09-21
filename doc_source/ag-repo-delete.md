@@ -1,11 +1,14 @@
-# Delete a repository<a name="ag-repo-delete"></a>
+# Delete a repository link<a name="ag-repo-delete"></a>
 
-You can delete a repository, by using the console or the AWS CLI\.
+You can delete a repository link by using the console or the AWS CLI\.
+
+**Note**  
+Deleting a repository link only removes the registered link that AWS Proton has in your AWS account\. It does not delete any information from your repository\.
 
 ------
 #### [ AWS Management Console ]
 
-**Delete a repository using the console\.**
+**Delete a repository link using the console\.**
 
 **In the repository detail page\.**
 
@@ -22,7 +25,7 @@ You can delete a repository, by using the console or the AWS CLI\.
 ------
 #### [ AWS CLI ]
 
-**Delete a repository\.**
+**Delete a repository link\.**
 
 Run the following command:
 

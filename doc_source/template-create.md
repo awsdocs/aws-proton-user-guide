@@ -519,7 +519,7 @@ You can't modify `pipelineProvisioning` after the service template is created\.
    ```
    {
        "serviceTemplateMinorVersion": {
-           "arn": "arn:aws:proton:us-west-2:123456789012:service-template/fargate-service:1.0",
+           "arn": "arn:aws:proton:us-east-1:123456789012:service-template/fargate-service:1.0",
            "compatibleEnvironmentTemplates": [
                {
                    "majorVersion": "1",
@@ -594,7 +594,7 @@ You can't modify `pipelineProvisioning` after the service template is created\.
    ```
    {
        "serviceTemplateMinorVersion": {
-           "arn": "arn:aws:proton:us-west-2:123456789012:service-template/fargate-service:1.0",
+           "arn": "arn:aws:proton:us-east-1:123456789012:service-template/fargate-service:1.0",
            "compatibleEnvironmentTemplates": [
                {
                    "majorVersion": "1",

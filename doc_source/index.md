@@ -4,18 +4,17 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
 + [What is AWS Proton?](Welcome.md)
-+ [AWS Proton GA API Migration](ga-api-migration.md)
 + [Setting up](ag-setting-up.md)
    + [Setting up with IAM](ag-setting-up-iam.md)
    + [Setting up with AWS Proton](setting-up-for-service.md)
@@ -26,6 +25,7 @@ Amazon's trademarks and trade dress may not be used in
    + [Getting started with the AWS CLI](ag-getting-started-cli.md)
    + [The AWS Proton template library](ag-getting-started-templates.md)
 + [How AWS Proton works](ag-works.md)
+   + [AWS Proton objects](ag-works-objects.md)
    + [How AWS Proton provisions infrastructure](ag-works-prov-methods.md)
    + [AWS Proton terminology](terminology.md)
 + [Authoring templates and creating bundles for AWS Proton](ag-template-authoring.md)
@@ -69,10 +69,10 @@ Amazon's trademarks and trade dress may not be used in
    + [Component states](ag-components-states.md)
    + [Component infrastructure as code files](ag-components-iac.md)
    + [Component AWS CloudFormation example](ag-components-example-cfn.md)
-+ [AWS Proton repositories](ag-repositories.md)
-   + [Create and register a link to your repository](ag-create-repo.md)
-   + [View repository data](ag-repo-view.md)
-   + [Delete a repository](ag-repo-delete.md)
++ [Using git repositories with AWS Proton](ag-repositories.md)
+   + [Create a link to your repository](ag-create-repo.md)
+   + [View linked repository data](ag-repo-view.md)
+   + [Delete a repository link](ag-repo-delete.md)
 + [Monitoring AWS Proton](monitoring.md)
    + [Automate AWS Proton with EventBridge](event-bridge.md)
    + [EventBridgeTutorial: Send Amazon Simple Notification Service alerts for AWS Proton service status changes](event-tutorial-sns.md)

@@ -13,7 +13,7 @@ Learn to create AWS Proton environments\.
 + *AWS\-managed provisioning to another account* – In a single management account, create and manage an environment that is provisioned in another account with environment account connections\. AWS Proton provisions your environment in the other account\. For more information, see [Create an environment in one account and provision in another account](#ag-create-env-deploy-other) and [Environment account connections](ag-env-account-connections.md)\.
 
   This method only supports CloudFormation IaC templates\.
-+ *Self\-managed provisioning* – AWS Proton submits provisioning pull requests to a registered repository with your own provisioning infrastructure\.
++ *Self\-managed provisioning* – AWS Proton submits provisioning pull requests to a linked repository with your own provisioning infrastructure\.
 
   This method only supports Terraform IaC templates\.
 
@@ -53,7 +53,7 @@ Use the console or AWS CLI to create and provision an environment in a single ac
 
 1. In the **Environment roles** section, select the AWS Proton service role that you created as part of [Setting up AWS Proton service roles](ag-setting-up-iam.md#setting-up-cicd)\.
 
-1. \(Optional—self\-managed provisioning\) In the **Component role** section, select a service role that enables directly defined components to run in the environment and scopes down the resources that they can provision\. For more information, see [AWS Proton components](ag-components.md)\.
+1. \(Optional\) In the **Component role** section, select a service role that enables directly defined components to run in the environment and scopes down the resources that they can provision\. For more information, see [AWS Proton components](ag-components.md)\.
 
 1. \(Optional\) In the **Tags** section, choose **Add new tag** and enter a key and value to create a customer managed tag\.
 
@@ -208,8 +208,8 @@ Run the following command:
 ```
 $ aws proton create-environment-account-connection \
     --environment-name "simple-env-connected" \
-    --role-arn "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role" \
-    --management-account-id "123456789111"
+    --role-arn "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role" \
+    --management-account-id "111111111111"
 ```
 
 Response:
@@ -217,14 +217,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:region-id:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:region-id:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:13:50.847000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "PENDING"
     }
 }
@@ -244,14 +244,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:region-id:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:region-id:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:15:33.486000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "CONNECTED"
     }
 }
@@ -271,14 +271,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:region-id:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:region-id:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:15:33.486000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "CONNECTED"
     }
 }
@@ -303,11 +303,11 @@ Response:
 ```
 {
     "environment": {
-        "arn": "arn:aws:proton:region-id:123456789111:environment/simple-env-connected",
+        "arn": "arn:aws:proton:region-id:111111111111:environment/simple-env-connected",
         "createdAt": "2021-04-28T23:02:57.944000+00:00",
         "deploymentStatus": "IN_PROGRESS",
         "environmentAccountConnectionId": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "environmentAccountId": "222222222222",
         "lastDeploymentAttemptedAt": "2021-04-28T23:02:57.944000+00:00",
         "name": "simple-env-connected",
         "templateName": "simple-env-template"
@@ -319,7 +319,7 @@ Response:
 
 ## Create and provision an environment using self\-managed provisioning<a name="ag-create-env-pull-request"></a>
 
-When you use self\-managed provisioning, AWS Proton submits provisioning pull requests to a registered repository with your own provisioning infrastructure\. The pull requests trigger your own workflow, which calls AWS services to provision infrastructure\.
+When you use self\-managed provisioning, AWS Proton submits provisioning pull requests to a linked repository with your own provisioning infrastructure\. The pull requests trigger your own workflow, which calls AWS services to provision infrastructure\.
 
 **Self\-managed provisioning considerations:**
 + Before you start the following environment creation procedure, set up a repository resource directory for self\-managed provisioning\. For more information, see [AWS Proton infrastructure as code files](ag-infrastructure-tmp-files.md)\.
@@ -342,13 +342,13 @@ You can use self\-managed provisioning in the console or with the AWS CLI\. The 
 
 1. In the **Provisioning repository details** section:
 
-   1. If you haven't yet [registered your provisioning repository with AWS Proton](ag-create-repo.md), choose **New repository**, choose one of the repository providers, and then, for **CodeStar connection**, choose one of your connections\.
+   1. If you haven't yet [linked your provisioning repository to AWS Proton](ag-create-repo.md), choose **New repository**, choose one of the repository providers, and then, for **CodeStar connection**, choose one of your connections\.
 **Note**  
 If you don't yet have a connection to the relevant repository provider account, choose **Add a new CodeStar connection**, complete the connection creation process, and then choose the refresh button next to the **CodeStar connection** menu\. You should now be able to choose your new connection in the menu\.
 
-      If you've already registered your repository with AWS Proton, choose **Existing repository**\.
+      If you've already linked your repository to AWS Proton, choose **Existing repository**\.
 
-   1. For **Repository name**, choose a repository\. The drop\-down menu shows registered repositories for **Existing repository** or the list of repositories in the provider account for **New repository**\.
+   1. For **Repository name**, choose a repository\. The drop\-down menu shows linked repositories for **Existing repository** or the list of repositories in the provider account for **New repository**\.
 
    1. For **Branch name**, choose one of the repository branches\.
 

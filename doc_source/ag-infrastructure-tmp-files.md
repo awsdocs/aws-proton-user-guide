@@ -2327,6 +2327,9 @@ terraform {
 // Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = var.proton_tags
+  }
 }
 
 resource "aws_ssm_parameter" "my_ssm_parameter" {
@@ -2340,6 +2343,8 @@ resource "aws_ssm_parameter" "my_ssm_parameter" {
 ### Compiled infrastructure as code<a name="compiled-tform"></a>
 
 When you create an environment or service, AWS Proton compiles your infrastructure as code files with console or `spec file` inputs\. It creates `proton.resource-type.variables.tf` and `proton.auto.tfvars.json` files for your inputs that can be used by Terraform, as shown in the following examples\. These files are located in a specified repository in a folder that matches the environment or service instance name\.
+
+The example shows how AWS Proton includes tags in the variable definition and variable values, and how you can propagate these AWS Proton tags to provisioned resources\. For more information, see [Tag propagation to provisioned resources](resources.md#auto-tags-prop)\.
 
 #### Example 2: compiled IaC files for an environment named "dev"\.<a name="ag-compiled-example"></a>
 
@@ -2365,6 +2370,9 @@ terraform {
 // Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = var.proton_tags
+  }
 }
 
 resource "aws_ssm_parameter" "my_ssm_parameter" {
@@ -2384,6 +2392,11 @@ variable "environment" {
     name = string
   })
 }
+
+variable "proton_tags" {
+  type = map(string)
+  default = null
+}
 ```
 
 **dev/proton\.auto\.tfvars\.json:**
@@ -2391,11 +2404,16 @@ variable "environment" {
 ```
 {
   "environment": {
-    // environment name
     "name": "dev",
     "inputs": {
       "ssm_parameter_value": "MyNewParamValue"
     }
+  }
+
+  "proton_tags" : {
+    "proton:account" : "123456789012",
+    "proton:template" : "arn:aws:proton:us-east-1:123456789012:environment-template/fargate-env",
+    "proton:environment" : "arn:aws:proton:us-east-1:123456789012:environment/dev"
   }
 }
 ```

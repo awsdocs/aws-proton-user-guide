@@ -24,6 +24,7 @@ The file's full path is `service-template-name/major-version/.template-registrat
 
 Review the following considerations for using template sync configurations\.
 + Repositories must be no larger than 250 MB\.
++ To configure template sync, first link the repository to AWS Proton\. For more information, see [Create a link to your repository](ag-create-repo.md)\.
 + When a new template version is created from a synced template, it's in the `DRAFT` state\.
 + A new minor version of a template is created if one of the following is true:
   + The template bundle contents are different from those of the last synced template minor version\.

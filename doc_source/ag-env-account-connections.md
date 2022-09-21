@@ -127,8 +127,8 @@ Run the following command:
 ```
 $ aws proton create-environment-account-connection \
     --environment-name "simple-env-connected" \
-    --role-arn "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role" \
-    --management-account-id "123456789111"
+    --role-arn "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role" \
+    --management-account-id "111111111111"
 ```
 
 Response:
@@ -136,14 +136,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:region-id:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:region-id:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:13:50.847000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "PENDING"
     }
 }
@@ -170,14 +170,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:region-id:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:region-id:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:15:33.486000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "CONNECTED"
     }
 }
@@ -195,15 +195,15 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:us-east-1:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "arn": "arn:aws:proton:us-east-1:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "status": "REJECTED",
-        "environmentAccountId": "123456789222",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-reject",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:13:50.847000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role"
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role"
     }
 }
 ```
@@ -222,14 +222,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:region-id:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:region-id:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:15:33.486000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "CONNECTED"
     }
 }
@@ -252,14 +252,14 @@ Response:
 ```
 {
     "environmentAccountConnection": {
-        "arn": "arn:aws:proton:us-east-1:123456789222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
-        "environmentAccountId": "123456789222",
+        "arn": "arn:aws:proton:us-east-1:222222222222:environment-account-connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
+        "environmentAccountId": "222222222222",
         "environmentName": "simple-env-connected",
         "id": "a1b2c3d4-5678-90ab-cdef-EXAMPLE11111",
         "lastModifiedAt": "2021-04-28T23:13:50.847000+00:00",
-        "managementAccountId": "123456789111",
+        "managementAccountId": "111111111111",
         "requestedAt": "2021-04-28T23:13:50.847000+00:00",
-        "roleArn": "arn:aws:iam::123456789222:role/service-role/env-account-proton-service-role",
+        "roleArn": "arn:aws:iam::222222222222:role/service-role/env-account-proton-service-role",
         "status": "CONNECTED"
     }
 }

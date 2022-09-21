@@ -1,11 +1,11 @@
-# Create and register a link to your repository<a name="ag-create-repo"></a>
+# Create a link to your repository<a name="ag-create-repo"></a>
 
-You can create and register a link to your repository using the console or CLI\. When you create a repository link, AWS Proton creates a [service linked role](using-service-linked-roles.md) for you\.
+You can create a link to your repository using the console or CLI\. When you create a repository link, AWS Proton creates a [service linked role](using-service-linked-roles.md) for you\.
 
 ------
 #### [ AWS Management Console ]
 
-**Create and register a link to your repository as shown in the following console steps\.**
+**Create a link to your repository as shown in the following console steps\.**
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Repositories**\.
 
@@ -57,7 +57,7 @@ Response:
 }
 ```
 
-After you create a repository, you can view a list of AWS and customer managed tags, as shown in the following example command\. AWS Proton automatically generates AWS managed tags for you\. You can also modify and create customer managed tags using the AWS CLI\. For more information, see [AWS Proton resources and tagging](resources.md)\.
+After you create a repository link, you can view a list of AWS and customer managed tags, as shown in the following example command\. AWS Proton automatically generates AWS managed tags for you\. You can also modify and create customer managed tags using the AWS CLI\. For more information, see [AWS Proton resources and tagging](resources.md)\.
 
 Command:
 

@@ -14,9 +14,8 @@ The AWSServiceRoleForProtonSync service\-linked role trusts the following servic
 + `sync.proton.amazonaws.com`
 
 The role permissions policy named AWSProtonSyncServiceRolePolicy allows AWS Proton to complete the following actions on the specified resources:
-+ Action: `create and manage templates and template versions` on `AWS Proton`
-
-  Action: `connect AWS Proton to repositories` using `AWS CodeStar connections`
++ Action: *create, manage, and read* on *AWS Proton templates and template versions*
++ Action: *use connection* on *AWS CodeStar connections*
 
 You must configure permissions to allow an IAM entity \(such as a user, group, or role\) to create, edit, or delete a service\-linked role\. For more information, see [Service\-linked role permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#service-linked-role-permissions) in the *IAM User Guide*\.
 
@@ -32,9 +31,7 @@ AWS Proton doesn't allow you to edit the AWSServiceRoleForProtonSync service\-li
 
 ## Deleting a service\-linked role for AWS Proton<a name="delete-slr"></a>
 
-IMPORTANT: If a service\-linked role is deleted as a 'side effect' of removing a resource from your service, make sure that you add a note in the procedure for deleting that resource\.
-
-You don't need to manually delete the AWSServiceRoleForProtonSync role\. When you delete all repositories in AWS Proton in the AWS Management Console, the AWS CLI, or the AWS API, AWS Proton cleans up the resources and deletes the service\-linked role for you\.
+You don't need to manually delete the AWSServiceRoleForProtonSync role\. When you delete all AWS Proton linked repositories for repository sync in the AWS Management Console, the AWS CLI, or the AWS API, AWS Proton cleans up the resources and deletes the service\-linked role for you\. For more information, see [Delete a template sync configuration](delete-template-sync.md) and [Delete a repository link](ag-repo-delete.md)\.
 
 You can also use the IAM console, the AWS CLI or the AWS API to manually delete the service\-linked role\. To do this, you must first manually clean up the resources for your service\-linked role and then you can manually delete it\.
 

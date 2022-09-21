@@ -1,44 +1,20 @@
-# View repository data<a name="ag-repo-view"></a>
+# View linked repository data<a name="ag-repo-view"></a>
 
-You can view and list repository detail data using the console or the AWS CLI\. View repository sync status with the AWS CLI\.
+You can list and view linked repository details using the console or the AWS CLI\. For repository links that are used to sync git repositories with AWS Proton, you can retrieve repository sync definition and status using the AWS CLI\.
 
 ------
 #### [ AWS Management Console ]
 
-**List and view repository details using the [AWS Proton console](https://console.aws.amazon.com/proton/)\.**
+**List and view linked repository details using the [AWS Proton console](https://console.aws.amazon.com/proton/)\.**
 
-1. To view a list of your repositories, choose **Repositories** in the navigation pane\.
+1. To list of your linked repositories, choose **Repositories** in the navigation pane\.
 
 1. To view detail data, choose the name of a repository\.
-
-   View your repository detail data\.
 
 ------
 #### [ AWS CLI ]
 
-**View the details of a repository\.**
-
-Run the following command:
-
-```
-$ aws proton get-repository \
-    --name myrepos/templates \
-    --provider "GITHUB"
-```
-
-Response:
-
-```
-{
-    "repository": {
-        "arn": "arn:aws:proton:region-id:123456789012:repository/github:myrepos/templates",
-        "name": "myrepos/templates",
-        "provider": "GITHUB"
-    }
-}
-```
-
-**View a list of your repositories\.**
+**List your linked repositories\.**
 
 Run the following command:
 
@@ -65,7 +41,31 @@ Response:
 }
 ```
 
-**View a list of your repository sync definitions\.**
+**View the details of a linked repository\.**
+
+Run the following command:
+
+```
+$ aws proton get-repository \
+    --name myrepos/templates \
+    --provider "GITHUB"
+```
+
+Response:
+
+```
+{
+    "repository": {
+        "arn": "arn:aws:proton:region-id:123456789012:repository/github:myrepos/templates",
+        "name": "myrepos/templates",
+        "provider": "GITHUB"
+    }
+}
+```
+
+**List your synced repositories\.**
+
+The following example lists repositories that you configured for template sync\.
 
 Run the following command:
 
@@ -77,7 +77,9 @@ $ aws proton list-repository-sync-definitions \
     --sync-type "TEMPLATE_SYNC"
 ```
 
-**View repository sync status for template syncs\.**
+**View repository sync status\.**
+
+The following example retrieves sync status of a template sync repository\.
 
 Run the following command:
 

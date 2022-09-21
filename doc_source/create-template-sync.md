@@ -3,12 +3,12 @@
 Learn how to create a template sync configuration with AWS Proton\.
 
 **Create a template sync configuration prerequisites:**
-+ A [registered a repository](ag-create-repo.md) with AWS Proton\.
++ You've [linked a repository](ag-create-repo.md) with AWS Proton\.
 + A [template bundle](ag-template-authoring.md#ag-template-bundles) is located in your repository\.
 
-**The repository registration consists of the following:**
+**The repository link consists of the following:**
 + An AWS CodeStar connections connection that gives AWS Proton permission to access your repository and subscribe to its notifications\.
-+ A [service linked role](using-service-linked-roles.md)\. When you register your repository, the service linked role is created for you\.
++ A [service linked role](using-service-linked-roles.md)\. When you link your repository, the service linked role is created for you\.
 
 Before you create your first template sync configuration, push a template bundle to your repository as shown in the following directory layout\.
 
@@ -76,7 +76,7 @@ You can create a template sync configuration using the console or CLI\.
 
 1. In the **Source code repository** section:
 
-   1. For **Repository**, select the repository that contains your template bundle\.
+   1. For **Repository**, select the linked repository that contains your template bundle\.
 
    1. For **Branch**, select a repository branch to sync from\.
 
@@ -135,7 +135,7 @@ The procedure for creating a service template and template sync configuration is
    ```
    {
        "environmentTemplate": {
-           "arn": "arn:aws:proton:us-east-2:123456789012:environment-template/env-template",
+           "arn": "arn:aws:proton:us-east-1:123456789012:environment-template/env-template",
            "createdAt": "2021-11-07T23:32:43.045000+00:00",
            "displayName": "env-template",
            "lastModifiedAt": "2021-11-07T23:32:43.045000+00:00",
@@ -152,8 +152,8 @@ The procedure for creating a service template and template sync configuration is
    + The template that you want to sync to\. After you have created the template sync configuration, you can still create new versions from it manually in the console or with the AWS CLI\.
    + The template name\.
    + The template type\.
-   + The repository that you want to sync from\.
-   + The repository provider type\.
+   + The linked repository that you want to sync from\.
+   + The linked repository provider\.
    + The branch where the template bundle is located\.
    + \(Optional\) The path to the directory containing your template bundle\. By default, AWS Proton looks for the first directory that matches your template name\.
 

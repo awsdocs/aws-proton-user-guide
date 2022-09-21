@@ -35,10 +35,9 @@ AWS managed tags *aren’t* generated for environment account connections\. For 
 
 ![\[A diagram that describes the AWS managed tag propagation.\]](http://docs.aws.amazon.com/proton/latest/userguide/images/tag-diag.png)
 
-If provisioned resources, such as those defined in service and environment templates, support AWS tagging, the AWS managed tags propagate as customer managed tags to provisioned resources\. These tags won't propagate to a provisioned resource that doesn't support AWS tagging\.
+### Tag propagation to provisioned resources<a name="auto-tags-prop"></a>
 
-**Note**  
-Tag propagation to provisioned resources doesn't happen for environments that use self\-managed provisioning\. For more information, see [How self\-managed provisioning works](ag-works-prov-methods.md#ag-works-prov-methods-self)\.
+If provisioned resources, such as those defined in service and environment templates, support AWS tagging, the AWS managed tags propagate as customer managed tags to provisioned resources\. These tags won't propagate to a provisioned resource that doesn't support AWS tagging\.
 
 AWS Proton applies tags to your resources by AWS Proton accounts, registered templates and deployed environments, as well as services and service instances as described in the following table\. You can use AWS managed tags to view and manage your AWS Proton resources, but you can't modify them\.
 
@@ -62,6 +61,63 @@ The following is an example of a customer managed tag applied to a provisioned r
 
 ```
 "proton:environment:database" = "arn:aws:proton:region-id:account-id:rds/env-db"
+```
+
+With [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-direct), AWS Proton applies propagated tags directly to provisioned resources\.
+
+With [self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self), AWS Proton makes propagated tags available together with the rendered IaC files that it submits in the provisioning pull request \(PR\)\. Tags are provided in the string map variable `proton_tags`\. We recommend that you make a reference to this variable in your Terraform configuration to include AWS Proton tags in `default_tags`\. This propagates AWS Proton tags to all provisioned resources\.
+
+The following example shows this method of tag propagation in an environment Terraform template\.
+
+Here's the `proton_tags` variable definition:
+
+**proton\.environment\.variables\.tf:**
+
+```
+variable "environment" {
+  type = object({
+    inputs = map(string)
+    name = string
+  })
+}
+
+variable "proton_tags" {
+  type = map(string)
+  default = null
+}
+```
+
+Here's how tag values are assigned to this variable:
+
+**proton\.auto\.tfvars\.json:**
+
+```
+{
+  "environment": {
+    "name": "dev",
+    "inputs": {
+      "ssm_parameter_value": "MyNewParamValue"
+    }
+  }
+
+  "proton_tags" : {
+    "proton:account" : "123456789012",
+    "proton:template" : "arn:aws:proton:us-east-1:123456789012:environment-template/fargate-env",
+    "proton:environment" : "arn:aws:proton:us-east-1:123456789012:environment/dev"
+  }
+}
+```
+
+And here's how you can add AWS Proton tags to your Terraform configuration so that they're added to provisioned resources:
+
+```
+# Configure the AWS Provider
+provider "aws" {
+  region = var.aws_region
+  default_tags {
+    tags = var.proton_tags
+  }
+}
 ```
 
 ### Customer managed tags<a name="user-tags"></a>

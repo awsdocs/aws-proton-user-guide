@@ -23,5 +23,6 @@ When you create an environment or service template, you upload a template bundle
 When you select an environment or service template to create or update an environment or service, you provide values for the template bundle IaC file parameters\.
 
 **Topics**
++ [AWS Proton objects](ag-works-objects.md)
 + [How AWS Proton provisions infrastructure](ag-works-prov-methods.md)
 + [AWS Proton terminology](terminology.md)

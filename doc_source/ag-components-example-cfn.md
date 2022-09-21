@@ -109,7 +109,7 @@ The example covers authoring the various required AWS CloudFormation infrastruct
 
 1. Publish the new service template minor version\. For more information, see [Register and publish templates](template-create.md)\.
 
-1. Be sure to allow the `proton:CreateComopnent` in the IAM role of developers that use this service template\.
+1. Be sure to allow the `proton:CreateComponent` in the IAM role of developers that use this service template\.
 
 ## Developer steps<a name="ag-components-example-cfn.dev"></a>
 

@@ -26,6 +26,9 @@ terraform {
 // Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
+  default_tags {
+    tags = var.proton_tags
+  }
 }
 
 resource "aws_ssm_parameter" "my_ssm_parameter" {

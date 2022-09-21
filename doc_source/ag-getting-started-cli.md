@@ -12,7 +12,7 @@ In this step, as an administrator, you register an example environment template,
 
 1. Fork the [AWS Proton Sample CloudFormation Templates](https://github.com/aws-samples/aws-proton-cloudformation-sample-templates/) repository into your GitHub account or organization\. This repository includes the environment and service templates that we use in this tutorial\.
 
-   Then, register your forked repository with AWS Proton\. For more information, see [Create and register a link to your repository](ag-create-repo.md)\.
+   Then, register your forked repository with AWS Proton\. For more information, see [Create a link to your repository](ag-create-repo.md)\.
 
 1. Create an environment template\.
 
