@@ -22,8 +22,8 @@ You must create at least one service instance when you create your service\.
 
 A service instance and optional pipeline are associated with a service\. You can only create or delete a pipeline within the context of service *create* and *delete* actions\. To learn how to add and remove instances from a service, see [Edit a service](ag-svc-update.md)\.
 
-**Note**  
-Your environment is configured for either AWS\- or self\-managed provisioning\. AWS Proton provisions services in an environment using the same provisioning method as the environment uses\. The developer creating or updating service instances doesn't see the difference and their experience is the same in both case\.  
+**Note**
+Your environment is configured for either AWS\- or self\-managed provisioning\. AWS Proton provisions services in an environment using the same provisioning method as the environment uses\. The developer creating or updating service instances doesn't see the difference and their experience is the same in both case\.
 For more information about provisioning methods, see [How AWS Proton provisions infrastructure](ag-works-prov-methods.md)\.
 
 ## Service templates<a name="ag-create-svc.templates"></a>
@@ -32,7 +32,7 @@ Both major and minor versions of service templates are available\. When you use 
 
 The following describes the difference between major and minor template versions and their use\.
 + New versions of a template become `Recommended` as soon as they're approved by a member of the platform team\. This means that new services are created using that version, and you're prompted to update existing services to the new version\.
-+ Through AWS Proton, the platform team can automatically update service instances to a new minor version of a service template\. Minor versions must be backward compatible\. 
++ Through AWS Proton, the platform team can automatically update service instances to a new minor version of a service template\. Minor versions must be backward compatible\.
 + Because major versions require you to provide new inputs as part of the update process, you need to update your service to a major version of its service template\. Major versions *aren't* backward compatible\.
 
 ## Create a service<a name="ag-create-svc.procedure"></a>
@@ -56,7 +56,7 @@ The following procedures show how to use the AWS Proton console or AWS CLI to cr
 
 1. \(Optional\) Enter a description for the service\.
 
-1. 
+1.
 
 **In the **Service repository settings** section:**
 
@@ -110,11 +110,11 @@ If you want to use a service template that has `pipelineProvisioning: "CUSTOMER_
 
    ```
    proton: ServiceSpec
-   
+
    pipeline:
      my_sample_pipeline_required_input: "hello"
      my_sample_pipeline_optional_input: "bye"
-   
+
    instances:
      - name: "acme-network-dev"
        environment: "ENV_NAME"
@@ -129,13 +129,13 @@ If you want to use a service template that has `pipelineProvisioning: "CUSTOMER_
 
    ```
    $ aws proton create-service \
-           -name "MySimpleService" \
-           -branch-name "mainline" \
-           -template-major-version "1" \
-           -template-name "fargate-service" \
-           -repository-connection-arn "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111" \
-           -repository-id "myorg/myapp" \
-           -spec "file://spec.yaml"
+           --name "MySimpleService" \
+           --branch-name "mainline" \
+           --template-major-version "1" \
+           --template-name "fargate-service" \
+           --repository-connection-arn "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111" \
+           --repository-id "myorg/myapp" \
+           --spec "file://spec.yaml"
    ```
 
    Response:
@@ -178,10 +178,10 @@ Command:
 
 ```
 $ aws proton create-service \
-        -name "MySimpleServiceNoPipeline" \
-        -template-major-version "1" \
-        -template-name "fargate-service" \
-        -spec "file://spec-no-pipeline.yaml"
+        --name "MySimpleServiceNoPipeline" \
+        --template-major-version "1" \
+        --template-name "fargate-service" \
+        --spec "file://spec-no-pipeline.yaml"
 ```
 
 Response:
