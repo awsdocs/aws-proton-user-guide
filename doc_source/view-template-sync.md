@@ -49,9 +49,9 @@ Run the following command\.
 
 ```
 $ aws proton get-template-sync-status \
-    -template-name "env-template" \
-    -template-type "ENVIRONMENT" \
-    -template-version "1"
+    --template-name "env-template" \
+    --template-type "ENVIRONMENT" \
+    --template-version "1"
 ```
 
 ------
