@@ -5,14 +5,14 @@
 Learn how to create and manage an AWS Proton environment in one account and provision its infrastructure resources in another account\. This can help improve visibility and efficiency at scale\. Environment account connections only support standard provisioning with AWS CloudFormation infrastructure as code\.
 
 **Note**  
-The information provided in this topic is relevant to environments configured with *AWS\-managed provisioning*\. With environments configured with *self\-managed provisioning*, AWS Proton doesn't directly provision your infrastructure\. Instead, it sends pull requests \(PRs\) to your repository for provisioning\. It's your responsibility to ensure that your automation code assumes the right identity and role\.  
+The information in this topic is relevant to environments that are configured with *AWS managed provisioning*\. With environments configured with *self\-managed provisioning*, AWS Proton doesn't directly provision your infrastructure\. Instead, it sends pull requests \(PRs\) to your repository for provisioning\. It's your responsibility to ensure that your automation code assumes the right identity and role\.  
 For more information about provisioning methods, see [How AWS Proton provisions infrastructure](ag-works-prov-methods.md)\.
 
 **Terminology**
 
 ![\[A diagram that describes AWS Proton resources within a single account (management account) that's in a single AWS Region. It also shows how AWS Proton environments in that account can use environment account connections to deploy to other accounts (environment accounts) in the same Region.\]](http://docs.aws.amazon.com/proton/latest/userguide/images/xaccount-diagram.png)
 
-With AWS Proton *environment account connections*, you can create an AWS Proton environment from one account and provision it's infrastructure in another account\.
+With AWS Proton *environment account connections*, you can create an AWS Proton environment from one account and provision its infrastructure in another account\.
 
 Management account  
 The single account where you, as an administrator, create an AWS Proton environment that provisions infrastructure resources in another *environment account*\.
@@ -23,7 +23,7 @@ An account that environment infrastructure is provisioned in, when you create an
 Environment account connection  
 A secure bi\-directional connection between a *management account* and an *environment account*\. It maintains authorization and permissions as described further in the following sections\.
 
-When you create an environment account connection in an environment account, in a specific Region, only the management accounts in the same Region can see and use the environment account connection\. This means that the AWS Proton environment created in the management account and the environment infrastructure provisioned in the environment account must be in the same Region\.
+When you create an environment account connection in an environment account in a specific Region, only the management accounts in the same Region can see and use the environment account connection\. This means that the AWS Proton environment created in the management account and the environment infrastructure provisioned in the environment account must be in the same Region\.
 
 **Environment account connection considerations**
 + You need an environment account connection for each environment that you want to provision in an environment account\.
@@ -39,9 +39,9 @@ To create and provision an environment from a single management account, set up 
 
 **Start in the environment account and create connection\.**
 
-In the environment account, create an AWS Proton service role that's scoped down to only the permissions that are needed for provisioning your environment infrastructure resources\. For more information, see [AWS Proton service role](security_iam_service-role-policy-examples.md#proton-svc-role)\.
+In the environment account, create an AWS Proton service role that's scoped down to only the permissions that are needed for provisioning your environment infrastructure resources\. For more information, see [AWS Proton service role for provisioning using AWS CloudFormation](security_iam_service-role-policy-examples.md#proton-svc-role)\.
 
-Then create and send an environment account connection request to your management account\. When the request is accepted, AWS Proton can use the associated IAM role that permits environment resource provisioning in the associated environment account\.
+Then, create and send an environment account connection request to your management account\. When the request is accepted, AWS Proton can use the associated IAM role that permits environment resource provisioning in the associated environment account\.
 
 **In the management account, accept or reject the environment account connection\.**
 
@@ -60,7 +60,7 @@ You *can’t* reject an environment account connection that's connected to an en
 
 In the environment account, you can view and access the provisioned infrastructure resources\. For example, you can use CloudFormation API actions to monitor and clean up stacks if needed\. You can’t use the AWS Proton API actions to access or manage the AWS Proton environment that was used to provision the infrastructure resources\.
 
-In the environment account, you can delete environment account connections that you have created in the environment account\. You *can’t* accept or reject them\. If you delete an environment account connection that’s in use by an AWS Proton environment, AWS Proton *won’t* be able to manage the environment infrastructure resources until a new environment connection is accepted for the environment account and named environment\. You're responsible for cleaning up provisioned resources that remain without an environment connection\.
+In the environment account, you can delete environment account connections that you have created in the environment account\. You *can’t* accept or reject them\. If you delete an environment account connection that’s in use by an AWS Proton environment, AWS Proton won't be able to manage the environment infrastructure resources until a new environment connection is accepted for the environment account and named environment\. You're responsible for cleaning up provisioned resources that remain without an environment connection\.
 
 ## Use the console or CLI to manage environment account connections<a name="ag-env-account-connections-create-env-console"></a>
 
@@ -85,7 +85,7 @@ Verify the account ID that's listed in the **Environment account connection** pa
 
    1. In the **Environment role** section, choose **New service role** and AWS Proton automatically creates a new role for you\. Or, select **Existing service role** and the name of the service role that you created previously\.
 **Note**  
-The role that AWS Proton automatically creates for you has broad permissions\. We recommend that you scope down the role to the permissions required to provision your environment infrastructure resources\. For more information, see [AWS Proton service role](security_iam_service-role-policy-examples.md#proton-svc-role)\.
+The role that AWS Proton automatically creates for you has broad permissions\. We recommend that you scope down the role to the permissions required to provision your environment infrastructure resources\. For more information, see [AWS Proton service role for provisioning using AWS CloudFormation](security_iam_service-role-policy-examples.md#proton-svc-role)\.
 
    1. \(Optional\) In the **Tags** section, choose **Add new tag** to create a customer managed tag for your environment account connection\.
 
@@ -113,7 +113,7 @@ Verify the account ID that's listed in the **Environment account connection** pa
 
 1. In the **Environment account connections** page, in the **Sent requests to connect to management account** section, choose **Delete**\.
 
-1. A modal prompts you to confirm the deletion\. Choose **Delete**\.
+1. A modal prompts you to confirm that you want to delete\. Choose **Delete**\.
 
 ------
 #### [ AWS CLI ]
@@ -152,7 +152,7 @@ Response:
 **Accept or reject an environment account connection in a management account as shown in the following command and response\.**
 
 **Note**  
-If you reject this environment account connection, you *won’t* be able to accept or use the rejected environment account connection\.
+If you reject this environment account connection, you won't be able to accept or use the rejected environment account connection\.
 
 If you specify **Reject**, the status changes from *pending* to *rejected*\.
 
@@ -208,7 +208,7 @@ Response:
 }
 ```
 
-**View an environment account connections\. You can *get* or *list* environment account connections**\.
+**View an environment account's connections\. You can *get* or *list* environment account connections**\.
 
 Run the following get command:
 
@@ -238,7 +238,7 @@ Response:
 **Delete an environment account connection in an environment account\.**
 
 **Note**  
-If you delete this environment account connection, AWS Proton *won’t* be able to manage the environment infrastructure resources in the environment account until a new environment connection has been accepted for the environment account and named environment\. You're responsible for cleaning up provisioned resources that remain without an environment connection\.
+If you delete this environment account connection, AWS Proton won't be able to manage the environment infrastructure resources in the environment account until a new environment connection has been accepted for the environment account and named environment\. You're responsible for cleaning up provisioned resources that remain without an environment connection\.
 
 Run the following command:
 

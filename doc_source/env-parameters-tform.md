@@ -1,6 +1,6 @@
 # Terraform infrastructure as code \(IaC\) file parameter details and examples<a name="env-parameters-tform"></a>
 
-You can include Terraform input variables in `variable.tf` files in your template bundle\. You can also create a schema to create AWS Proton managed variables\. AWS Proton creates variable `.tf files` from your schema file\. For more information, see [Terraform IaC files](ag-infrastructure-tmp-files.md#terraform)\.
+You can include Terraform input variables in `variable.tf` files in your template bundle\. You can also create a schema to create AWS Proton managed variables\. AWS Proton creates variable `.tf files` from your schema file\. For more information, see [Terraform IaC files](ag-infrastructure-tmp-files-terraform.md)\.
 
 To reference your schema defined AWS Proton variables in your infrastructure `.tf files`, you use the AWS Proton namespaces shown in the *Parameters and namespaces for Terraform IaC* table\. For example, you can use `var.environment.inputs.vpc_cidr`\. Inside quotation marks, surround these variables with single brackets and add a dollar sign in front of the first brace \(for example, `“${var.environment.inputs.vpc_cidr}”`\)\.
 

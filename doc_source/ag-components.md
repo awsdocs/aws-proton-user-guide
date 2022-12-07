@@ -23,7 +23,7 @@ When you use template sync, AWS Proton creates service template versions implici
 
   For more information about assigning a component role, see the [componentRoleArn](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateEnvironment.html#proton-CreateEnvironment-request-componentRoleArn) parameter of the [CreateEnvironment](https://docs.aws.amazon.com/proton/latest/APIReference/API_CreateEnvironment.html) API action in the *AWS Proton API Reference*\.
 **Note**  
-Component roles are used only in [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-direct) environments\. They aren't used in [Self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self) environments\.
+Component roles aren't used in [Self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self) environments\.
 
 **Topics**
 + [How do components compare to other AWS Proton resources?](#ag-components.compare)
@@ -43,6 +43,7 @@ Components are, however, different from other AWS Proton resources in a few ways
 + *No schema* – Components don't have an associated schema like [template bundles](ag-template-authoring.md#ag-template-bundles) have\. Component inputs are defined by a service\. A component can consume inputs when it is attached to a service instance\.
 + *No customer\-managed components* – AWS Proton always provisions component infrastructure for you\. There isn't a *bring your own resources* version of components\. For more information about customer\-managed environments, see [Create an environment](ag-create-env.md)\.
 + *No template resource* – Directly defined components don't have an associated template resource similar to environment and service templates\. You provide an IaC template file directly to the component\. Similarly, you directly provide a manifest that defines the template language and rendering engine for provisioning the component's infrastructure\. You author the template file and the manifest in a way similar to authoring a [template bundle](ag-template-authoring.md#ag-template-bundles)\. However, with directly defined components, there's no requirement to store IaC files as bundles in particular locations, and you don't create a template resource in AWS Proton out of IaC files\.
++ *No CodeBuild\-based provisioning* – You can't provision directly defined components using your own custom provisioning script, known as *CodeBuild\-based provisioning*\. For more information, see [How CodeBuild provisioning works](ag-works-prov-methods.md#ag-works-prov-methods-codebuild)\.
 
 ## Components in the AWS Proton console<a name="ag-components.console"></a>
 

@@ -5,6 +5,8 @@ The following table describes the important changes to the documentation related
 
 | Change | Description | Date | 
 | --- |--- |--- |
+| [CodeBuild](#doc-history) | AWS Proton adds support for CodeBuild\. | November 16, 2022 | 
+| [Managed policy update](#doc-history) | Added `[AWSProtonCodeBuildProvisioningBasicAccess](https://docs.aws.amazon.com/proton/latest/userguide/security-iam-awsmanpol.html#security-iam-awsmanpol-AWSProtonCodeBuildProvisioningBasicAccess)` policy that gives CodeBuild the permissions it needs to run a build for AWS Proton CodeBuild Provisioning\. | November 11, 2022 | 
 | [Terraform tag propagation](#doc-history) | Added Terraform tag propagation to the [Tagging](resources.html) chapter\. | September 16, 2022 | 
 | [API migration guide](#doc-history) | Removed the pre\-GA API migration guide\. | August 12, 2022 | 
 | [AWS Proton objects](#doc-history) | Added a topic about AWS Proton objects and their relationship to other AWS and third\-party objects\. See [AWS Proton objects](ag-works-objects.html)\. | July 29, 2022 | 

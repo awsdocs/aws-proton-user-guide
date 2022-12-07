@@ -2,7 +2,9 @@
 
 You can define and use parameters in your infrastructure as code \(IaC\) files to make them flexible and re\-usable\. You read a parameter value in your IaC files by referring to the parameter's name in the AWS Proton *parameter namespace*\. AWS Proton injects parameter values into the rendered IaC files that it generates during resource provisioning\. To process AWS CloudFormation IaC parameters, AWS Proton uses [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)\. To process Terraform IaC parameters, AWS Proton generates a Terraform parameter value file and relies on the parametrization ability built into HCL\.
 
-You can refer to parameters in your environment, service, and component IaC files with the following requirements:
+With [CodeBuild provisioning](ag-works-prov-methods.md#ag-works-prov-methods-codebuild), AWS Proton generates an input file that your code can import\. The file is a JSON or HCL file, depending on a property in your template's manifest\. For more information, see [CodeBuild provisioning parameter details and examples](parameters-codebuild.md)\.
+
+You can refer to parameters in your environment, service, and component IaC files or provisioning code with the following requirements:
 + The length of each parameter name doesn't exceed 100 characters\.
 + The length of the parameter namespace and resource name combined doesn't exceed the character limit for the resource name\.
 
@@ -33,7 +35,7 @@ The following table shows the reference syntax for each supported template langu
 | Template language | Syntax | Example: environment input named "VPC" | 
 | --- | --- | --- | 
 |  CloudFormation  |  `"{{ parameter-name }}"`  |  `"{{ environment.inputs.VPC }}"`  | 
-|  Terraform  |  `var.parameter-name`  |  `var.environment.inputs.VPC` [Generated Terraform variable definitions](ag-infrastructure-tmp-files.md#compiled-tform)  | 
+|  Terraform  |  `var.parameter-name`  |  `var.environment.inputs.VPC` [Generated Terraform variable definitions](ag-infrastructure-tmp-files-terraform.md#compiled-tform)  | 
 
 **Note**  
 If you use [CloudFormation dynamic parameters](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/dynamic-references.html) in your IaC file, you must [escape them](https://jinja.palletsprojects.com/en/2.11.x/templates/#escaping) to prevent Jinja misinterpretation errors\. For more information, see [Troubleshooting AWS Proton](ag-troubleshooting.md)
@@ -51,4 +53,5 @@ For more information and examples, see the subtopics about parameters in IaC tem
 + [Service CloudFormation IaC file parameter details and examples](svc-parameters.md)
 + [Component CloudFormation IaC file parameter details and examples](comp-parameters.md)
 + [Parameter filters for CloudFormation IaC files](parameter-filters.md)
++ [CodeBuild provisioning parameter details and examples](parameters-codebuild.md)
 + [Terraform infrastructure as code \(IaC\) file parameter details and examples](env-parameters-tform.md)

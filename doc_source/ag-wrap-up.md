@@ -34,7 +34,46 @@ infrastructure:
       template_language: terraform
 ```
 
- After you set up the directories and manifest files for your environment or service template bundle, you gzip the directories into a tar ball upload them to an Amazon Simple Storage Service \(Amazon S3\) bucket where AWS Proton can retrieve them\.
+**CodeBuild\-based provisioning manifest file format:**
+
+With CodeBuild\-based provisioning, you specify provisioning and deprovisioning shell commands\.
+
+**Note**  
+In addition to the manifest, your bundle should include any files that your commands depend on\.
+
+The following example manifest uses CodeBuild\-based provisioning to provision \(*deploy*\) and deprovision \(*destroy*\) resources using the AWS Cloud Development Kit \(AWS CDK\) \(AWS CDK\)\. The template bundle should also include the CDK code\.
+
+During provisioning, AWS Proton creates an input file with values for input parameters that you defined in the template's schema\. You can configure the format of the generated input file by using the `input_type` property of the template's manifest file\. This property can take the following values:
++ `JSON` \(the default\) – AWS Proton generates a JSON input file named `proton-input.json`\.
++ `HCL` – AWS Proton generates an HCL input file with the extension `.tfvars`\. This file is useful if your provisioning code uses Terraform to provision infrastructure\.
+
+```
+infrastructure:
+  templates:
+    - rendering_engine: codebuild
+      codebuild:
+        image: aws/codebuild/amazonlinux2-x86_64-standard:4.0
+        runtimes:
+          nodejs: 16
+        provision:
+          - npm install
+          - npm run build
+          - npm run cdk bootstrap
+          - npm run cdk deploy -- --require-approval never --outputs-file proton-outputs.json
+          - jq 'to_entries | map_values(.value) | add | to_entries | map({key:.key, valueString:.value})' < proton-outputs.json > outputs.json
+          - aws proton notify-resource-deployment-status-change --resource-arn $RESOURCE_ARN --status IN_PROGRESS --outputs file://./outputs.json
+        deprovisioning:
+          - npm install
+          - npm run build
+          - npm run cdk destroy
+        project_properties:
+          VpcConfig:
+            VpcId: "{{ environment.inputs.codebuild_vpc_id }}"
+            Subnets: "{{ environment.inputs.codebuild_subnets }}"
+            SecurityGroupIds: "{{ environment.inputs.codebuild_security_groups }}"
+```
+
+After you set up the directories and manifest files for your environment or service template bundle, you gzip the directories into a tar ball and upload them to an Amazon Simple Storage Service \(Amazon S3\) bucket where AWS Proton can retrieve them, or to a [template sync Git repository](ag-template-sync-configs.md)\.
 
 When you create a minor version of an environment or a service template that you registered with AWS Proton, you provide the path to your environment or service template bundle tar ball that's located in your S3 bucket\. AWS Proton saves it with the new template minor version\. You can select the new template minor version to create or update environments or services with AWS Proton\.
 

@@ -25,7 +25,7 @@ The second example *standard* environment template schema lists the `required` p
 You can create a schema for two types of environment templates\. For more information, see [Register and publish templates](template-create.md)\.
 + ***Standard* environment templates**
 
-  In the following example, an environment input type is defined with a description and input properties\. This schema example can be used with the AWS Proton CloudFormation IaC file shown in [Example 3](ag-infrastructure-tmp-files.md#ag-proton-env-cfn-example)\.
+  In the following example, an environment input type is defined with a description and input properties\. This schema example can be used with the AWS Proton CloudFormation IaC file shown in [Example 3](ag-infrastructure-tmp-files-cloudformation.md#ag-proton-env-cfn-example)\.
 
   Example schema for a *standard* environment template:
 
@@ -88,7 +88,7 @@ You can create a schema for two types of environment templates\. For more inform
   ```
 + ***Customer managed* environment templates**
 
-  In the following example, the schema only includes a list of outputs that replicate the outputs from the IaC that you used to provision your *customer managed* infrastructure\. You need to define output value types as *strings only* \(*not* lists, arrays or other types\)\. For example, the next code snippet shows the outputs section of an external AWS CloudFormation template\. This is from the template shown in [Example 1](ag-infrastructure-tmp-files.md#ag-env-cfn-example)\. It can be used to create external *customer managed* infrastructure for an AWS Proton Fargate service created from [Example 4](ag-infrastructure-tmp-files.md#ag-proton-svc-cfn-example)\.
+  In the following example, the schema only includes a list of outputs that replicate the outputs from the IaC that you used to provision your *customer managed* infrastructure\. You need to define output value types as *strings only* \(*not* lists, arrays or other types\)\. For example, the next code snippet shows the outputs section of an external AWS CloudFormation template\. This is from the template shown in [Example 1](ag-infrastructure-tmp-files-cloudformation.md#ag-env-cfn-example)\. It can be used to create external *customer managed* infrastructure for an AWS Proton Fargate service created from [Example 4](ag-infrastructure-tmp-files-cloudformation.md#ag-proton-svc-cfn-example)\.
 **Important**  
 As an administrator, you must ensure that your provisioned and managed infrastructure and all output parameters are compatible with the associated *customer managed* environment templates\. AWS Proton can't account for changes on your behalf because these changes aren't visible to AWS Proton\. Inconsistencies result in failures\.
 
@@ -162,7 +162,7 @@ If you want to create a service template with a service pipeline, include the `p
 
 **Example service schema file for a service that includes an AWS Proton service pipeline\.**
 
- This schema example can be used with the AWS Proton IaC files shown in [Example 4](ag-infrastructure-tmp-files.md#ag-proton-svc-cfn-example) and [Example 5](ag-infrastructure-tmp-files.md#ag-proton-pipeline-cfn-example)\. A service pipeline is included\.
+ This schema example can be used with the AWS Proton IaC files shown in [Example 4](ag-infrastructure-tmp-files-cloudformation.md#ag-proton-svc-cfn-example) and [Example 5](ag-infrastructure-tmp-files-cloudformation.md#ag-proton-pipeline-cfn-example)\. A service pipeline is included\.
 
 ```
 schema:                            # required

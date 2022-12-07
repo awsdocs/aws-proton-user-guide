@@ -9,8 +9,8 @@ If you want to use the AWS CLI to run AWS Proton APIs, verify that you have inst
 + **To provision infrastructure:**
   + For [self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self), you must set up an [AWS CodeStar connection](#setting-up-vcontrol)\.
 + **\(Optional\) To provision pipelines:**
-  + For [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-direct), set up an [AWS CodeStar connection](#setting-up-vcontrol)\.
-  + For [self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self), set up [CI/CD pipeline repository](#setting-up-pr-repo)\. 
+  + For [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-direct) and [CodeBuild\-based provisioning](ag-works-prov-methods.md#ag-works-prov-methods-codebuild), set up [pipeline roles](#setting-up-pr-role)\.
+  + For [self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self), set up a [pipeline repository](#setting-up-pr-repo)\. 
 
 For more information about provisioning methods, see [How AWS\-managed provisioning works](ag-works-prov-methods.md#ag-works-prov-methods-direct)\.
 
@@ -37,15 +37,15 @@ You can connect to Bitbucket, GitHub, GitHub Enterprise and GitHub Enterprise Se
 
 1. Choose **Create connection** and follow the instructions\.
 
-## Setting up account CI/CD settings<a name="setting-up-pr-pipelines"></a>
+## Setting up account CI/CD pipeline settings<a name="setting-up-pr-pipelines"></a>
 
 AWS Proton can provision CI/CD pipelines for deploying application code into your service instances\. The AWS Proton settings you need for pipeline provisioning depend on the provisioning method you choose for your pipeline\.
 
-### AWS\-managed provisioning—set up a CI/CD pipeline role<a name="setting-up-pr-role"></a>
+### AWS\-managed and CodeBuild\-based provisioning—set up pipeline roles<a name="setting-up-pr-role"></a>
 
-With [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-direct), AWS Proton provisions pipelines for you\. Therefore, AWS Proton needs a service role that provides permissions for provisioning pipelines\.
+With [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-direct) and [CodeBuild provisioning](ag-works-prov-methods.md#ag-works-prov-methods-codebuild), AWS Proton provisions pipelines for you\. Therefore, AWS Proton needs a service role that provides permissions for provisioning pipelines\. Each one of these two provisioning methods uses its own service role\. These roles are shared across all AWS Proton service pipelines and you configure them once in your account settings\.
 
-**To create a pipeline service role using the console**
+**To create pipeline service roles using the console**
 
 1. Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
 
@@ -53,19 +53,29 @@ With [AWS\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-
 
 1. In the **Account CI/CD settings** page, choose **Configure**\.
 
-1. In the **Configure account settings** page, in the **CI/CD pipeline roles** section:
+1. Do one of the following:
+   + **To have AWS Proton create a pipeline service role for you**
 
-   1. Select **New service role**\.
+     \[To enable AWS\-managed provisioning of pipelines\] In the **Configure account settings** page, in the **AWS\-managed provisioning pipeline role** section:
 
-   1. Enter a name for the role, for example, **myProtonPipelineServiceRole**\.
+     1. Select **New service role**\.
 
-   1. Check the check box to agree to create an AWS Proton role with administrative privileges in your account\.
+     1. Enter a name for the role, for example, **myProtonPipelineServiceRole**\.
+
+     1. Check the check box to agree to create an AWS Proton role with administrative privileges in your account\.
+
+     \[To enable CodeBuild\-based provisioning of pipelines\] In the **Configure account settings** page, in the **CodeBuild pipeline role** section, choose **Existing service role**, and choose the service role that you created in the **CloudFormation pipeline role** section\. Or, if you did not assign a CloudFormation pipeline role, repeat the previous three steps to create a new service role\.
+   + **To choose existing pipeline service roles**
+
+     \[To enable AWS\-managed provisioning of pipelines\] In the **Configure account settings** page, in the **AWS\-managed provisioning pipeline role** section, choose **Existing service role**, and choose a service role in your AWS account\.
+
+     \[To enable CodeBuild provisioning of pipelines\] In the **Configure account settings** page, in the **CodeBuild pipeline provisioning role** section, choose **Existing service role**, and choose a service role in your AWS account\.
 
 1. Choose **Save changes**\.
 
    Your new pipeline service role is displayed on the **Account settings** page\.
 
-### Self\-managed provisioning—set up a CI/CD pipeline repository<a name="setting-up-pr-repo"></a>
+### Self\-managed provisioning—set up a pipeline repository<a name="setting-up-pr-repo"></a>
 
 With [self\-managed provisioning](ag-works-prov-methods.md#ag-works-prov-methods-self), AWS Proton sends a pull request \(PR\) to a provisioning repository that you have set up, and your automation code is responsible for provisioning pipelines\. Therefore, AWS Proton doesn't need a service role to provision pipelines\. Instead, it needs a registered provisioning repository\. Your automation code in the repository has to assume an appropriate role that provides permissions for provisioning pipelines\.
 

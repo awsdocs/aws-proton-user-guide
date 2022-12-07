@@ -300,17 +300,12 @@ You can use the console or the AWS CLI to register and publish a service templat
 1. Choose **Create service template**\.
 
 1. In the **Create service template** page, in the **Template bundle source** section, choose one of the available template options\.
-   + **Use one of our sample template bundles**\.
    + **Use your own template bundle**\.
    + **Sync templates from Git**\.
 
 1. 
 
 **Provide a path to a template bundle\.**
-
-   1. If you chose **Use one of our sample template bundles**:
-
-      In the **Sample template bundle** section, select a sample template bundle\.
 
    1. If you chose **Sync templates from Git**, in the **Source code repository** section:
 
@@ -368,13 +363,9 @@ For more information, see [Versioned templates](ag-template-versions.md)\.
 
 1. In the service template detail view, choose **Create new version** in the **Template versions** section\.
 
-1. In the **Create a new service template version** page, in the **Sample template bundle source** section, choose one of the two available template options\.
-   + **Use one of our sample template bundles**\.
-   + **Use your own template bundle**\.
+1. In the **Create a new service template version** page, in the **Bundle source** section, select **Use your own template bundle**\.
 
-1. Provide a path to the selected template bundle\.
-   + If you chose **Use one of our sample template bundles**, in the **Sample template bundle** section, select a sample template bundle\.
-   + If you chose **Use your own template bundle**, in the **S3 bundle location** section, choose the path to your template bundle\.
+1. In the **S3 bundle location** section, choose the path to your template bundle\.
 
 1. In the **Template details** section\.
 

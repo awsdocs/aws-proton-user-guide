@@ -17,3 +17,4 @@ This documentation helps you understand how to apply the shared responsibility m
 + [Resilience in AWS Proton](disaster-recovery-resiliency.md)
 + [Security best practices for AWS Proton](security-best-practices.md)
 + [Cross\-service confused deputy prevention](cross-service-confused-deputy-prevention.md)
++ [CodeBuild provisioning custom Amazon VPC support](vpc-codebuild-custom-support.md)

@@ -6,20 +6,20 @@ A service instance belongs to a service\. You can only create or delete an insta
 
 There are four modes for updating a service instance as described in the following list\. When using the AWS CLI, the `deployment-type` field defines the mode\. When using the console, these modes map to the **Edit** and the **Update to latest minor version** and **Update to latest major version** actions that drop down from **Actions** in the service instance detail page\.
 
-
-`NONE`
+  
+`NONE`  
 In this mode, a deployment *doesn't* occur\. Only the requested metadata parameters are updated\.
 
-
-`CURRENT_VERSION`
+  
+`CURRENT_VERSION`  
 In this mode, the service instance is deployed and updated with the new spec that you provide\. Only requested parameters are updated\. *Don’t* include minor or major version parameters when you use this `deployment-type`\.
 
-
-`MINOR_VERSION`
+  
+`MINOR_VERSION`  
 In this mode, the service instance is deployed and updated with the published, recommended \(latest\) minor version of the current major version in use by default\. You can also specify a different minor version of the current major version in use\.
 
-
-`MAJOR_VERSION`
+  
+`MAJOR_VERSION`  
 In this mode, the service instance is deployed and updated with the published, recommended \(latest\) major and minor version of the current template by default\. You can also specify a different major version that is higher than the major version in use and a minor version \(optional\)\.
 
 You can attempt to cancel a service instance update deployment if the `deploymentStatus` is `IN_PROGRESS`\. AWS Proton attempts to cancel the deployment\. Successful cancellation *isn’t* guaranteed\.

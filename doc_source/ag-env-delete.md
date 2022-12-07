@@ -3,7 +3,7 @@
 You can delete an AWS Proton environment by using the AWS Proton console or the AWS CLI\.
 
 **Note**  
-You can't delete an environment that has any associated component\. To delete such an environment, you should first delete all components running in the environment\. For more information about components, see [AWS Proton components](ag-components.md)\.
+You can't delete an environment that has any associated component\. To delete such an environment, you should first delete all components that are running in the environment\. For more information about components, see [AWS Proton components](ag-components.md)\.
 
 ------
 #### [ AWS Management Console ]
@@ -14,7 +14,7 @@ You can't delete an environment that has any associated component\. To delete su
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Environments**\.
 
-1. In the list of environments, select the radio button to the left of the environment you want to delete\.
+1. In the list of environments, select the radio button to the left of the environment that you want to delete\.
 
 1. Choose **Actions** and then **Delete**\.
 
@@ -26,11 +26,11 @@ You can't delete an environment that has any associated component\. To delete su
 
 1. In the [AWS Proton console](https://console.aws.amazon.com/proton/), choose **Environments**\.
 
-1. In the list of environments, choose the name of the environment you want to delete\.
+1. In the list of environments, choose the name of the environment that you want to delete\.
 
 1. In the environment detail page, choose **Actions** and then **Delete**\.
 
-1. A modal prompts you to confirm the delete action\.
+1. A modal prompts you to confirm that you want to delete\.
 
 1. Follow the instructions and choose **Yes, delete**\.
 

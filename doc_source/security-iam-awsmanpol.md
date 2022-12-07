@@ -157,6 +157,7 @@ This policy includes the following permissions\.
         "proton:GetEnvironmentTemplateVersion",
         "proton:GetRepository",
         "proton:GetRepositorySyncStatus",
+        "proton:GetResourcesSummary",
         "proton:GetService",
         "proton:GetServiceInstance",
         "proton:GetServiceTemplate",
@@ -243,6 +244,7 @@ This policy includes the following permissions\.
         "proton:GetEnvironmentTemplateVersion",
         "proton:GetRepository",
         "proton:GetRepositorySyncStatus",
+        "proton:GetResourcesSummary",
         "proton:GetService",
         "proton:GetServiceInstance",
         "proton:GetServiceTemplate",
@@ -334,6 +336,44 @@ This policy includes the following permissions\.
 }
 ```
 
+## AWS managed policy: AWSProtonCodeBuildProvisioningBasicAccess<a name="security-iam-awsmanpol-AWSProtonCodeBuildProvisioningBasicAccess"></a>
+
+Permissions CodeBuild needs to run a build for AWS Proton CodeBuild Provisioning\. You can attach `AWSProtonCodeBuildProvisioningBasicAccess` to your CodeBuild Provisioning Role\. 
+
+This policy grants the minimum permissions for AWS Proton CodeBuild Provisioning to function\. It grants permissions that allow CodeBuild to generate build logs\. It also grants permission for Proton to make Infrastructure as Code \(IaC\) outputs available to AWS Proton users\. It does not provide permissions needed by IaC tools to manage infrastructure\.
+
+The policy includes the following key action namespaces:
++ `logs` ‐ Allows CodeBuild to generate build logs\. Without this permission, CodeBuild will fail to start\.
++ `proton` ‐ Allows a CodeBuild Provisioning command to call `aws proton notify-resource-deployment-status-change` for updating the IaaC outputs for a given AWS Proton resource\.
+
+### Permissions details<a name="security-iam-awsmanpol-AWSProtonCodeBuildProvisioningBasicAccess.details"></a>
+
+This policy includes the following permissions\.
+
+```
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Effect": "Allow",
+			"Action": [
+				"logs:CreateLogStream",
+				"logs:CreateLogGroup",
+				"logs:PutLogEvents"
+			],
+			"Resource": [
+				"arn:aws:logs:*:*:log-group:/aws/codebuild/AWSProton-*"
+			]
+		},
+		{
+			"Effect": "Allow",
+			"Action": "proton:NotifyResourceDeploymentStatusChange",
+			"Resource": "arn:aws:proton:*:*:*"
+		}
+	]
+}
+```
+
 ## AWS Proton updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 
 View details about updates to AWS managed policies for AWS Proton since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the AWS Proton Document history page\.
@@ -341,6 +381,10 @@ View details about updates to AWS managed policies for AWS Proton since this ser
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+|  [AWSProtonDeveloperAccess](#security-iam-awsmanpol-AWSProtonDeveloperAccess) – Update to an existing policy  |  AWS Proton added a new `GetResourcesSummary` action that allows you to view a summary of your templates, deployed template resources, and out of date resources\.  | November 18, 2022 | 
+|  [AWSProtonReadOnlyAccess](#security-iam-awsmanpol-AWSProtonReadOnlyAccess) – Update to an existing policy  |  AWS Proton added a new `GetResourcesSummary` action that allows you to view a summary of your templates, deployed template resources, and out of date resources\.  | November 18, 2022 | 
+|  [AWSProtonCodeBuildProvisioningBasicAccess](#security-iam-awsmanpol-AWSProtonCodeBuildProvisioningBasicAccess) – New policy  |  AWS Proton added a new policy that gives CodeBuild the permissions it needs to run a build for AWS Proton CodeBuild Provisioning\.  | November 16, 2022 | 
+|  [AWSProtonCodeBuildProvisioningServiceRolePolicy](#security-iam-awsmanpol-AWSProtonSyncServiceRolePolicy) – New policy  |  AWS Proton added a new policy to allow AWS Proton to perform operations related to CodeBuild\-based provisioning\. The policy is used in the [AWSServiceRoleForProtonCodeBuildProvisioning](using-service-linked-roles-codebuild.md) service\-linked role\.  | September 02, 2022 | 
 |  [AWSProtonFullAccess](#security-iam-awsmanpol-AWSProtonFullAccess) – Update to an existing policy  |  AWS Proton update this policy to provide access to new AWS Proton API operations and to fix permission issues for some AWS Proton console operations\.  | March 30, 2022 | 
 |  [AWSProtonDeveloperAccess](#security-iam-awsmanpol-AWSProtonDeveloperAccess) – Update to an existing policy  |  AWS Proton update this policy to provide access to new AWS Proton API operations and to fix permission issues for some AWS Proton console operations\.  | March 30, 2022 | 
 |  [AWSProtonReadOnlyAccess](#security-iam-awsmanpol-AWSProtonReadOnlyAccess) – Update to an existing policy  |  AWS Proton update this policy to provide access to new AWS Proton API operations and to fix permission issues for some AWS Proton console operations\.  | March 30, 2022 | 

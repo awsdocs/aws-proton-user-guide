@@ -56,7 +56,7 @@ Register an *event rule* that captures status changes for your AWS Proton servic
 
       1. For **Service provider**, choose **AWS**\.
 
-      1. For **Service name**, choose **Proton**\.
+      1. For **Service name**, choose **AWS Proton**\.
 
       1. For **Event type**, choose **AWS Proton Service Status Change**\.
 

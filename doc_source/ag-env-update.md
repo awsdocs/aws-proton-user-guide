@@ -3,8 +3,8 @@
 If the AWS Proton environment is associated with an environment account connection, *don't* update or include the `protonServiceRoleArn` parameter to update or connect to an environment account connection\.
 
 You can only update to a new environment account connection if both of the following is true:
-+ It was created in the same environment account that the current environment account connection was created in\.
-+ It is associated with the current environment\.
++ The environment account connection was created in the same environment account that the current environment account connection was created in\.
++ >The environment account connection is associated with the current environment\.
 
 If the environment *isn’t* associated with an environment account connection, *don’t* update or include the `environmentAccountConnectionId` parameter\.
 
@@ -31,11 +31,11 @@ In this mode, the environment is deployed and updated with the published, recomm
 In this mode, the environment is deployed and updated with the published, recommended \(latest\) major and minor version of the current template by default\. You can also specify a different major version that is higher than the major version in use and a minor version \(optional\)\.
 
 **Topics**
-+ [Update an AWS\-managed provisioning environment](#ag-env-std-update)
++ [Update an AWS managed provisioning environment](#ag-env-std-update)
 + [Update a self\-managed provisioning environment](#ag-env-pr-update)
 + [Cancel an environment deployment in progress](#ag-env-cancel)
 
-## Update an AWS\-managed provisioning environment<a name="ag-env-std-update"></a>
+## Update an AWS managed provisioning environment<a name="ag-env-std-update"></a>
 
 Standard provisioning is only supported by environments that provision with AWS CloudFormation\.
 
@@ -342,7 +342,7 @@ Self\-managed provisioning is only supported by environments that provision with
 1. Review the pull request that was sent by AWS Proton\.
    + If you approve the request, provisioning is in progress\.
    + If you reject the request, the environment creation is cancelled\.
-   + If the pull request times out, environment creation is not complete\.
+   + If the pull request times out, environment creation isn't complete\.
 
 1. Provide provisioning status to AWS Proton\.
 
@@ -360,13 +360,13 @@ You can attempt to cancel an environment update deployment if the `deploymentSta
 
 When you cancel an update deployment, AWS Proton attempts to cancel the deployment as listed in the following steps\.
 
-**With AWS\-managed provisioning, AWS Proton:**
+**With AWS\-managed provisioning, AWS Proton does the following:**
 + Sets the deployment state to `CANCELLING`\.
 + Stops the deployment in progress and deletes any new resources that were created by the deployment when `IN_PROGRESS`\.
 + Sets the deployment state to `CANCELLED`\.
 + Reverts the state of the resource to what it was before the deployment was started\.
 
-**With self\-managed provisioning, AWS Proton:**
+**With self\-managed provisioning, AWS Proton does the following:**
 + Attempts to close the pull request to prevent merging the changes to your repository\.
 + Sets the deployment state to `CANCELLED` if the pull request was successfully closed\.
 
@@ -385,7 +385,7 @@ You can use the console or CLI to cancel environments that are in progress\.
 
 1. If your update deployment status is **In progress**, in the environment detail page, choose **Actions** and then **Cancel deployment**\.
 
-1. A modal prompts you to confirm the cancellation\. Choose **Cancel deployment**\.
+1. A modal prompts you to confirm that you want to cancel\. Choose **Cancel deployment**\.
 
 1. Your update deployment status is set to **Cancelling** and then **Cancelled** to complete the cancellation\.
 
@@ -423,7 +423,7 @@ Response:
 }
 ```
 
-Run the following command to get and confirm the status:
+Run the following command to get and confirm the status:"
 
 ```
 $ aws proton get-environment \
