@@ -2,7 +2,7 @@
 
 The AWS Proton dashboard provides a summary of AWS Proton resources in your AWS account, with a particular focus on *staleness*—how updated deployed resources are\. A deployed resource is up to date when it uses the recommended version of its associated template\. An out\-of\-date deployed resource might need a major or minor template version update\.
 
-## View the dashboard in the AWS Proton console<a name="w128aac32b9b7"></a>
+## View the dashboard in the AWS Proton console<a name="w131aac32b9b7"></a>
 
 To view the AWS Proton dashboard, open the [AWS Proton console](https://console.aws.amazon.com/proton/), and then, in the navigation pane, choose **Dashboard**\.
 

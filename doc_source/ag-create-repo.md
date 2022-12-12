@@ -34,7 +34,7 @@ Run the following command:
 
 ```
 $ aws proton create-repository \
-    --name "myrepos/environments" \
+    --name myrepos/environments \
     --connection-arn "arn:aws:codestar-connections:region-id:123456789012:connection/a1b2c3d4-5678-90ab-cdef-EXAMPLE11111" \
     --provider "GITHUB" \
     --encryption-key "arn:aws:kms:region-id:123456789012:key/bPxRfiCYEXAMPLEKEY" \

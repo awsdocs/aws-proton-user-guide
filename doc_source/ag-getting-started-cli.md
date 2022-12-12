@@ -138,7 +138,7 @@ In this step, as an administrator, you instantiate an AWS Proton environment fro
 1. Wait for the environment to successfully deploy\.
 
    ```
-   $ aws proton wait environment-deployed --name fargate-env-prod
+   $ aws proton wait environment-deployed --name "fargate-env-prod"
    ```
 
 ## Step 4: Deploy a service \[application developer\]<a name="ag-getting-started-cli.srv-deploy"></a>
@@ -172,7 +172,7 @@ In the previous steps, an administrator registered and published a service templ
 1. Wait for the service to successfully deploy\.
 
    ```
-   $ aws proton wait service-created --name static-website
+   $ aws proton wait service-created --name "static-website"
    ```
 
 1. Retrieve outputs and view your new website\.
