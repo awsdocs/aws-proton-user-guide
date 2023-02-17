@@ -202,7 +202,7 @@ import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as cdk from 'aws-cdk-lib';
 import * as ssm from 'aws-cdk-lib/aws-ssm';
-import input from '../proton-input.json';
+import input from '../proton-inputs.json';
 
 export class ProtonEnvironmentStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -227,7 +227,7 @@ export class ProtonEnvironmentStack extends Stack {
 
 When you create an environment using a CodeBuild\-based provisioning template, AWS Proton renders an input file with [input parameter values](https://docs.aws.amazon.com/proton/latest/userguide/parameters.html) that you provided\. Your code can refer to these values\. The following file is an example to a rendered input file\.
 
-**Example infrastructure/proton\-input\.json**  
+**Example infrastructure/proton\-inputs\.json**  
 
 ```
 {

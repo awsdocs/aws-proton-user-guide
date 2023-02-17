@@ -51,7 +51,7 @@ During provisioning, AWS Proton creates an input file with values for input para
 infrastructure:
   templates:
     - rendering_engine: codebuild
-      codebuild:
+      settings:
         image: aws/codebuild/amazonlinux2-x86_64-standard:4.0
         runtimes:
           nodejs: 16
@@ -62,7 +62,7 @@ infrastructure:
           - npm run cdk deploy -- --require-approval never --outputs-file proton-outputs.json
           - jq 'to_entries | map_values(.value) | add | to_entries | map({key:.key, valueString:.value})' < proton-outputs.json > outputs.json
           - aws proton notify-resource-deployment-status-change --resource-arn $RESOURCE_ARN --status IN_PROGRESS --outputs file://./outputs.json
-        deprovisioning:
+        deprovision:
           - npm install
           - npm run build
           - npm run cdk destroy

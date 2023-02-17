@@ -6,7 +6,7 @@ AWS services maintain and update AWS managed policies\. You can't change the per
 
 Additionally, AWS supports managed policies for job functions that span multiple services\. For example, the **ReadOnlyAccess** AWS managed policy provides read\-only access to all AWS services and resources\. When a service launches a new feature, AWS adds read\-only permissions for new operations and resources\. For a list and descriptions of job function policies, see [AWS managed policies for job functions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html) in the *IAM User Guide*\.
 
-AWS Proton provides managed IAM policies and trust relationships that you can attach to IAM users, groups, or roles that allow differing levels of control over resources and API operations\. You can apply these policies directly, or you can use them as starting points for creating your own policies\.
+AWS Proton provides managed IAM policies and trust relationships that you can attach to users, groups, or roles that allow differing levels of control over resources and API operations\. You can apply these policies directly, or you can use them as starting points for creating your own policies\.
 
 The following trust relationship is used for each of the AWS Proton managed policies\.
 

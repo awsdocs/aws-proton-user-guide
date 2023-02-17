@@ -19,7 +19,7 @@ Example AWS Proton parameter Jinja syntax:
 
 To avoid these misinterpretation errors, Jinja escape your CloudFormation dynamic parameters as shown in the following examples\.
 
-This example is from the AWS CloudFormation User Guide\. The AWS Secrets Manager secret\-name and json\-key segments can be used to retrieve the user name and password values stored in the secret\.
+This example is from the AWS CloudFormation User Guide\. The AWS Secrets Manager secret\-name and json\-key segments can be used to retrieve the sign\-in credentials stored in the secret\.
 
 ```
 MyRDSInstance:

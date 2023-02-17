@@ -44,7 +44,7 @@ This adds three new properties that will be used by the manifest:
 + `codebuild_security_groups`
 
 **Manifest**  
-To configure Amazon VPC settings in CodeBuild, an optional property called `project_properties` is available in the template manifest\. Contents of `project_properties` are added to the AWS CloudFormation stack that creates the CodeBuild project\. This makes it possible to add not only [Amazon VPC AWS CloudFormation properties](https://docs.aws.amazon.com/#cfn-codebuild-project-vpcconfig), but also any supported [CodeBuild CloudFormation property](AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html), such as build timeout\. The same data provided to `proton-input.json` is made available to the values of `project_properties`\.
+To configure Amazon VPC settings in CodeBuild, an optional property called `project_properties` is available in the template manifest\. Contents of `project_properties` are added to the AWS CloudFormation stack that creates the CodeBuild project\. This makes it possible to add not only [Amazon VPC AWS CloudFormation properties](https://docs.aws.amazon.com/#cfn-codebuild-project-vpcconfig), but also any supported [CodeBuild CloudFormation property](AWSCloudFormation/latest/UserGuide/aws-resource-codebuild-project.html), such as build timeout\. The same data provided to `proton-inputs.json` is made available to the values of `project_properties`\.
 
 Add this section to your `manifest.yaml`:
 
