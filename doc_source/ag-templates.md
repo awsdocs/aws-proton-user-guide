@@ -30,3 +30,4 @@ For additional information, see the [https://docs.aws.amazon.com/proton/latest/A
 + [Update a template](template-update.md)
 + [Delete templates](template-delete.md)
 + [Template sync configurations](ag-template-sync-configs.md)
++ [Service sync configurations](ag-service-sync-configs.md)

@@ -7,9 +7,17 @@
 + Delete the service template, environment template, environment and service, if created\.
 
 ## Step 1: Open the AWS Proton console<a name="ag-getting-started-step1"></a>
-+ Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
++ Open the [AWS Proton console](https://console.aws.amazon.com/proton/)
 
-## Step 2: Create an environment template<a name="ag-getting-started-step2"></a>
+## Step 2: Prepare to use the example templates<a name="ag-getting-started-step2"></a>
+
+1. Create a Codestar Connection to Github and name the connection my\-proton\-connection\.
+
+1. Navigate to [https://github.com/aws-samples/aws-proton-cloudformation-sample-templates](https://github.com/aws-samples/aws-proton-cloudformation-sample-templates)
+
+1. Create a fork of the repository in your Github account\. 
+
+## Step 3: Create an environment template<a name="ag-getting-started-step3"></a>
 
 In the navigation pane, choose **Environment templates**\.
 
@@ -17,13 +25,17 @@ In the navigation pane, choose **Environment templates**\.
 
 1. In the **Create environment template** page, in the **Template options** section, choose **Create a template for provisioning new environments**\.
 
-1. In the **Template bundle source** section, choose **Use one of our sample template bundles**\.
+1. In the **Template bundle source** section, choose **Sync a template bundle from Git**\.
 
-1. In the **Sample template bundle** section, select **fargate\-environment**\.
+1. In the **Template definition repository** section, select **Choose a linked Git repository**\.
 
-1. In the **Template details** section\.
+1. Select **my\-proton\-connection** from the **Repository list**\.
 
-   1. Enter the template name as **my\-env\-template**\.
+1. Select **main** from the **Branch list**\.
+
+1. In the **Proton environment template details** section\.
+
+   1. Enter the template name as **fargate\-env**\.
 
    1. Enter the environment template display name as **My Fargate Environment**\.
 
@@ -47,7 +59,7 @@ In the navigation pane, choose **Environment templates**\.
 
    A new page displays a list of your environment templates along with template details\.
 
-## Step 3: Create a service template<a name="ag-getting-started-step3"></a>
+## Step 4: Create a service template<a name="ag-getting-started-step4"></a>
 
 **Create a service template\.**
 
@@ -55,13 +67,17 @@ In the navigation pane, choose **Environment templates**\.
 
 1. In the **Service templates** page, choose **Create Service template**\.
 
-1. In the **Create service template** page, in the **Template bundle source** section, choose **Use one of our sample template bundles**\.
+1. In the **Create service template** page, in the **Template bundle source** section, choose **Sync a template bundle from Git**\.
 
-1. In the **Sample template bundle** section, select **fargate\-service**\.
+1. In the **Template ** section, select **Choose a linked Git repository**\.
 
-1. In the **Template details** section\.
+1. Select **my\-proton\-connection** from the **Repository list**\.
 
-   1. Enter the service template name as **my\-svc\-template**\.
+1. Select **main** from the **Branch list**\.
+
+1. In the **Proton service template details** section\.
+
+   1. Enter the service template name as **backend\-fargate\-svc**\.
 
    1. Enter the service template display name as **My Fargate Service**\.
 
@@ -73,9 +89,9 @@ In the navigation pane, choose **Environment templates**\.
 
 1. For **Encryption settings**, keep the defaults\.
 
-1. In the **Pipeline \- optional** section\.
+1. In the **Pipeline definition** section\.
 
-   1. Keep the check box checked to include a service pipeline in your service template\.
+   1. Keep the **This template includes a CI/CD pipeline** button selected\.
 
 1. Choose **Create service template**\.
 
@@ -95,7 +111,7 @@ In the navigation pane, choose **Environment templates**\.
 
    A new page displays a list of your service templates and details\.
 
-## Step 4: Create an environment<a name="ag-getting-started-step4"></a>
+## Step 5: Create an environment<a name="ag-getting-started-step5"></a>
 
 In the navigation pane, choose **Environments**\.
 
@@ -135,7 +151,7 @@ In the navigation pane, choose **Environments**\.
 
    A new page displays a list of your environments along with the status and other environment details\.
 
-## Step 5: Optional \- Create a service and deploy an application<a name="ag-getting-started-step5"></a>
+## Step 6: Optional \- Create a service and deploy an application<a name="ag-getting-started-step6"></a>
 
 1. Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
 
@@ -189,7 +205,7 @@ In the navigation pane, choose **Environments**\.
 
 1. After the service is created, in the navigation pane, choose **Services** to view a list of your services\.
 
-## Step 6: Clean up\.<a name="ag-getting-started-step6"></a>
+## Step 7: Clean up\.<a name="ag-getting-started-step7"></a>
 
 1. Open the [AWS Proton console](https://console.aws.amazon.com/proton/)\.
 
@@ -250,3 +266,7 @@ In the navigation pane, choose **Environments**\.
    1. A modal prompts you to confirm the delete action\.
 
    1. Follow the instructions and choose **Yes, delete**\. This deletes the environment template and all of its versions\.
+
+1. 
+
+**Delete your Codestar Connection**

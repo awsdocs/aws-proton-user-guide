@@ -1,6 +1,6 @@
 # Template sync configurations<a name="ag-template-sync-configs"></a>
 
-Learn how to configure a template to let AWS Proton sync from template bundles located in registered git repositories that you define\. When a commit is pushed to your repository, AWS Proton checks for changes to your repository template bundles\. If it detects a template bundle change, a new minor or major version of its template is created, if the version doesn’t already exist\. 
+Learn how to configure a template to let AWS Proton sync from template bundles located in registered git repositories that you define\. When a commit is pushed to your repository, AWS Proton checks for changes to your repository template bundles\. If it detects a template bundle change, a new minor or major version of its template is created, if the version doesn’t already exist\. AWS Proton currently supports GitHub, GitHub Enterprise, and BitBucket\.
 
 ## Pushing a commit to a synced template bundle<a name="ag-commits"></a>
 

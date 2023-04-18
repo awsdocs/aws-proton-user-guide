@@ -1,6 +1,6 @@
 # Using git repositories with AWS Proton<a name="ag-repositories"></a>
 
-AWS Proton uses git repositories for a variety of purposes\. The following list categorizes the repository types associated with AWS Proton resources\. For AWS Proton features that repeatedly connect to your repository to either push content to it or pull content from it, you have to register a *repository link* with AWS Proton in your AWS account\. A repository link is a set of properties that AWS Proton can use when it connects to a repository\.
+AWS Proton uses git repositories for a variety of purposes\. The following list categorizes the repository types associated with AWS Proton resources\. For AWS Proton features that repeatedly connect to your repository to either push content to it or pull content from it, you have to register a *repository link* with AWS Proton in your AWS account\. A repository link is a set of properties that AWS Proton can use when it connects to a repository\. AWS Proton currently supports GitHub, GitHub Enterprise, and BitBucket\.
 
 Developer repositories  
 *Code repository* – A repository that developers use to store application code\. Used for *code deployment*\. AWS Proton doesn't interact directly with this repository\. When a developer provisions a service that includes a pipeline, they provide the repository name and branch to read their application code from\. AWS Proton passes this information to the pipeline that it provisions\.  

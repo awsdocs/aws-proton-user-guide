@@ -291,50 +291,7 @@ The policy includes the following key action namespaces:
 + `proton` – Allows AWS Proton sync limited access to AWS Proton APIs\.
 + `codestar-connections` – Allows AWS Proton sync limited access to AWS CodeStar connections APIs\.
 
-### Permissions details<a name="security-iam-awsmanpol-AWSProtonSyncServiceRolePolicy.details"></a>
-
-This policy includes the following permissions\.
-
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "SyncToProton",
-      "Effect": "Allow",
-      "Action": [
-        "proton:UpdateServiceTemplateVersion",
-        "proton:UpdateServiceTemplate",
-        "proton:UpdateEnvironmentTemplateVersion",
-        "proton:UpdateEnvironmentTemplate",
-        "proton:GetServiceTemplateVersion",
-        "proton:GetServiceTemplate",
-        "proton:GetEnvironmentTemplateVersion",
-        "proton:GetEnvironmentTemplate",
-        "proton:DeleteServiceTemplateVersion",
-        "proton:DeleteEnvironmentTemplateVersion",
-        "proton:CreateServiceTemplateVersion",
-        "proton:CreateServiceTemplate",
-        "proton:CreateEnvironmentTemplateVersion",
-        "proton:CreateEnvironmentTemplate",
-        "proton:ListEnvironmentTemplateVersions",
-        "proton:ListServiceTemplateVersions",
-        "proton:CreateEnvironmentTemplateMajorVersion",
-        "proton:CreateServiceTemplateMajorVersion"
-      ],
-      "Resource": "*"
-    },
-    {
-      "Sid": "AccessGitRepos",
-      "Effect": "Allow",
-      "Action": [
-        "codestar-connections:UseConnection"
-      ],
-      "Resource": "arn:aws:codestar-connections:*:*:connection/*"
-    }
-  ]
-}
-```
+For information on the permission details for the AWSProtonSyncServiceRolePolicy, see [Service\-linked role permissions for AWS Proton](https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles-sync.html)\.
 
 ## AWS managed policy: AWSProtonCodeBuildProvisioningBasicAccess<a name="security-iam-awsmanpol-AWSProtonCodeBuildProvisioningBasicAccess"></a>
 
@@ -374,6 +331,76 @@ This policy includes the following permissions\.
 }
 ```
 
+## AWS managed policy: AWSProtonCodeBuildProvisioningServiceRolePolicy<a name="security-iam-awsmanpol-AWSProtonCodeBuildProvisioningServiceRolePolicy"></a>
+
+AWS Proton attaches this policy to the AWSServiceRoleForProtonCodeBuildProvisioning service\-linked role that allows AWS Proton to perform CodeBuild\-based provisioning\.
+
+This policy grants permissions that allow limited access to AWS service actions that AWS Proton depends on\.
+
+The policy includes the following key action namespaces:
++ `cloudformation` – Allows AWS Proton CodeBuild\-based provisioning limited access to AWS CloudFormation APIs\.
++ `codebuild` – Allows AWS Proton CodeBuild\-based provisioning limited access to CodeBuild APIs\.
+
+### Permissions details<a name="security-iam-awsmanpol-AWSProtonCodeBuildProvisioningServiceRolePolicy.details"></a>
+
+This policy includes the following permissions\.
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CreateStack",
+        "cloudformation:CreateChangeSet",
+        "cloudformation:DeleteChangeSet",
+        "cloudformation:DeleteStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:ListStackResources"
+      ],
+      "Resource": [
+        "arn:aws:cloudformation:*:*:stack/AWSProton-CodeBuild-*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codebuild:CreateProject",
+        "codebuild:DeleteProject",
+        "codebuild:StartBuild",
+        "codebuild:StopBuild",
+        "codebuild:RetryBuild",
+        "codebuild:BatchGetBuilds",
+        "codebuild:BatchGetProjects"
+      ],
+      "Resource": "arn:aws:codebuild:*:*:project/AWSProton*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "*",
+      "Condition": {
+        "StringEqualsIfExists": {
+          "iam:PassedToService": "codebuild.amazonaws.com"
+        }
+      }
+    }
+  ]
+}
+```
+
+## AWS managed policy: AwsProtonServiceGitSyncServiceRolePolicy<a name="security-iam-awsmanpol-AwsProtonServiceGitSyncServiceRolePolicy"></a>
+
+AWS Proton attaches this policy to the AwsProtonServiceGitSyncServiceRolePolicy service\-linked role that allows AWS Proton to perform service sync\.
+
+This policy grants permissions that allow limited access to AWS Proton actions and to other AWS service actions that AWS Proton depends on\.
+
+The policy includes the following key action namespaces:
++ `proton` – Allows AWS Proton sync limited access to AWS Proton APIs\.
+
+For information on the permission details for the AwsProtonServiceGitSyncServiceRolePolicy, see [Service\-linked role permissions for AWS Proton](https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles-sync.html)\.
+
 ## AWS Proton updates to AWS managed policies<a name="security-iam-awsmanpol-updates"></a>
 
 View details about updates to AWS managed policies for AWS Proton since this service began tracking these changes\. For automatic alerts about changes to this page, subscribe to the RSS feed on the AWS Proton Document history page\.
@@ -381,6 +408,7 @@ View details about updates to AWS managed policies for AWS Proton since this ser
 
 | Change | Description | Date | 
 | --- | --- | --- | 
+|  [AwsProtonServiceGitSyncServiceRolePolicy](#security-iam-awsmanpol-AwsProtonServiceGitSyncServiceRolePolicy) – New policy  |  AWS Proton added a new policy to allow AWS Proton to perform service syncing\. The policy is used in the [AWSServiceRoleForProtonServiceSync](https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles-sync.html#service-linked-role-permissions-sync) service\-linked role\.  | March 31, 2023 | 
 |  [AWSProtonDeveloperAccess](#security-iam-awsmanpol-AWSProtonDeveloperAccess) – Update to an existing policy  |  AWS Proton added a new `GetResourcesSummary` action that allows you to view a summary of your templates, deployed template resources, and out of date resources\.  | November 18, 2022 | 
 |  [AWSProtonReadOnlyAccess](#security-iam-awsmanpol-AWSProtonReadOnlyAccess) – Update to an existing policy  |  AWS Proton added a new `GetResourcesSummary` action that allows you to view a summary of your templates, deployed template resources, and out of date resources\.  | November 18, 2022 | 
 |  [AWSProtonCodeBuildProvisioningBasicAccess](#security-iam-awsmanpol-AWSProtonCodeBuildProvisioningBasicAccess) – New policy  |  AWS Proton added a new policy that gives CodeBuild the permissions it needs to run a build for AWS Proton CodeBuild Provisioning\.  | November 16, 2022 | 
